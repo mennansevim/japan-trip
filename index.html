@@ -1,0 +1,2618 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Japonya Seyahat Planlayıcı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --surface: #1c1c1e;
+      --surface-2: #2c2c2e;
+      --surface-3: #3a3a3c;
+      --text: #ffffff;
+      --text-secondary: #8e8e93;
+      --accent: #ff6b9d;
+      --accent-2: #c084fc;
+      --success: #30d158;
+      --warning: #ffd60a;
+      --danger: #ff453a;
+      --border: rgba(255, 255, 255, 0.1);
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      padding: 60px 24px 40px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .header-icon {
+      width: 80px; height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+    }
+    .header h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .header p { font-size: 17px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .card-header-icon {
+      width: 36px; height: 36px;
+      background: var(--surface-2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .card-header h2 { font-size: 17px; font-weight: 600; }
+    .card-header-badge {
+      margin-left: auto;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(255, 107, 157, 0.15);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .card-body { padding: 8px 0; }
+
+    .input-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .input-row:last-child { border-bottom: none; }
+    .input-row-left { display: flex; align-items: center; gap: 14px; flex: 1; }
+    .input-icon {
+      width: 32px; height: 32px;
+      background: var(--surface-2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .input-label { font-size: 15px; color: var(--text); }
+    .input-sublabel { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+
+    .input-row input[type="number"],
+    .input-row input[type="date"] {
+      width: 140px; padding: 10px 14px;
+      background: var(--surface-2); border: none;
+      border-radius: var(--radius-sm);
+      color: var(--text); font-family: inherit; font-size: 15px;
+      text-align: right; outline: none;
+    }
+    .input-row input:focus { background: var(--surface-3); }
+    .input-row input[type="date"] { width: 160px; color-scheme: dark; }
+
+    .stepper {
+      display: flex; align-items: center; gap: 4px;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm); padding: 4px;
+    }
+    .stepper-btn {
+      width: 36px; height: 36px; border: none;
+      background: transparent; color: var(--accent);
+      font-size: 20px; font-weight: 500; cursor: pointer;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stepper-btn:hover { background: var(--surface-3); }
+    .stepper-value { width: 40px; text-align: center; font-size: 17px; font-weight: 600; }
+
+    .person-cards { display: flex; gap: 12px; padding: 16px 24px; }
+    .person-card {
+      flex: 1; background: var(--surface-2);
+      border-radius: var(--radius-sm); padding: 16px; text-align: center;
+    }
+    .person-card-icon { font-size: 32px; margin-bottom: 8px; }
+    .person-card-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 12px; padding: 16px 24px;
+    }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stat-box { background: var(--surface-2); border-radius: var(--radius-sm); padding: 16px; }
+    .stat-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
+    .stat-value { font-size: 24px; font-weight: 700; }
+    .stat-value.success { color: var(--success); }
+    .stat-value.danger { color: var(--danger); }
+
+    .progress-section { padding: 24px; text-align: center; }
+    .progress-circle-container { position: relative; width: 180px; height: 180px; margin: 0 auto 20px; }
+    .progress-circle { transform: rotate(-90deg); }
+    .progress-circle-bg { fill: none; stroke: var(--surface-2); stroke-width: 12; }
+    .progress-circle-fill {
+      fill: none; stroke: url(#progressGradient);
+      stroke-width: 12; stroke-linecap: round;
+      stroke-dasharray: 502; stroke-dashoffset: 502;
+      transition: stroke-dashoffset 1s ease-out;
+    }
+    .progress-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .progress-percent { font-size: 42px; font-weight: 700; }
+    .progress-label { font-size: 13px; color: var(--text-secondary); }
+    .progress-message { font-size: 15px; color: var(--text-secondary); }
+
+    .countdown { display: flex; justify-content: center; gap: 16px; padding: 20px 24px; }
+    .countdown-item { text-align: center; }
+    .countdown-value { font-size: 32px; font-weight: 700; color: var(--accent); }
+    .countdown-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; }
+
+    .savings-row { display: flex; gap: 12px; padding: 16px 24px; }
+    .savings-box {
+      flex: 1;
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(192, 132, 252, 0.1));
+      border: 1px solid rgba(255, 107, 157, 0.2);
+      border-radius: var(--radius-sm); padding: 16px; text-align: center;
+    }
+    .savings-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+    .savings-value { font-size: 20px; font-weight: 700; color: var(--accent); }
+
+    .info-list { padding: 8px 0; }
+    .info-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 24px; border-bottom: 1px solid var(--border);
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-item-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .info-item-icon.success { background: rgba(48, 209, 88, 0.15); }
+    .info-item-icon.warning { background: rgba(255, 214, 10, 0.15); }
+    .info-item-icon.danger { background: rgba(255, 69, 58, 0.15); }
+    .info-item-content { flex: 1; }
+    .info-item-title { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+    .info-item-desc { font-size: 13px; color: var(--text-secondary); }
+    .info-item-badge { font-size: 13px; font-weight: 500; padding: 4px 10px; border-radius: 6px; }
+    .info-item-badge.success { background: rgba(48, 209, 88, 0.15); color: var(--success); }
+    .info-item-badge.warning { background: rgba(255, 214, 10, 0.15); color: var(--warning); }
+    .info-item-badge.danger { background: rgba(255, 69, 58, 0.15); color: var(--danger); }
+
+    .button-row { display: flex; gap: 12px; padding: 16px 24px; }
+    .btn {
+      flex: 1; padding: 14px 20px; border: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; }
+    .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
+    .btn-secondary { background: var(--surface-2); color: var(--text); }
+    .btn-secondary:hover { background: var(--surface-3); }
+
+    .notice {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 24px; background: var(--surface-2);
+      margin: 0 24px 16px; border-radius: var(--radius-sm);
+    }
+    .notice-icon { font-size: 20px; }
+    .notice-text { font-size: 13px; color: var(--text-secondary); }
+
+    .illustration { display: flex; justify-content: center; padding: 20px; gap: 8px; }
+    .illustration-item { font-size: 40px; opacity: 0.8; animation: float 3s ease-in-out infinite; }
+    .illustration-item:nth-child(2) { animation-delay: 0.5s; }
+    .illustration-item:nth-child(3) { animation-delay: 1s; }
+    .illustration-item:nth-child(4) { animation-delay: 1.5s; }
+    .illustration-item:nth-child(5) { animation-delay: 2s; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    .footer { text-align: center; padding: 40px 24px; color: var(--text-secondary); font-size: 13px; }
+
+    /* Activity Styles */
+    .activity-category {
+      padding: 16px 24px 8px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .activity-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .activity-item:hover { background: var(--surface-2); }
+    .activity-item.checked { background: rgba(48, 209, 88, 0.08); }
+
+    .activity-checkbox {
+      width: 24px; height: 24px;
+      border: 2px solid var(--surface-3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all 0.2s;
+    }
+    .activity-item.checked .activity-checkbox {
+      background: var(--success); border-color: var(--success);
+    }
+    .activity-checkbox::after {
+      content: '✓'; color: white; font-size: 14px; font-weight: 700;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .activity-item.checked .activity-checkbox::after { opacity: 1; }
+
+    .activity-icon {
+      width: 44px; height: 44px;
+      background: var(--surface-2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .activity-item.checked .activity-icon { background: rgba(48, 209, 88, 0.15); }
+
+    .activity-content { flex: 1; min-width: 0; }
+    .activity-name { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+    .activity-location { font-size: 13px; color: var(--text-secondary); }
+
+    .activity-actions { display: flex; align-items: center; gap: 8px; }
+    .activity-info-btn {
+      width: 32px; height: 32px;
+      background: var(--surface-3);
+      border: none; border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .activity-info-btn:hover { background: var(--accent); color: white; }
+
+    .activity-price {
+      font-size: 14px; font-weight: 600;
+      color: var(--accent); white-space: nowrap;
+      text-align: right;
+    }
+    .activity-price-note {
+      font-size: 11px; color: var(--text-secondary); font-weight: 400;
+    }
+
+    .activities-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px; background: var(--surface-2);
+      margin: 16px 24px; border-radius: var(--radius-sm);
+    }
+    .activities-total-label { font-size: 14px; color: var(--text-secondary); }
+    .activities-total-value { font-size: 20px; font-weight: 700; color: var(--accent); }
+
+    .map-button-container {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 16px 24px 24px; gap: 8px;
+    }
+    .map-button {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; max-width: 320px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      border: none; border-radius: 12px;
+      color: white; font-family: inherit;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    }
+    .map-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+    }
+    .map-button:disabled {
+      background: var(--surface-3);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .map-button svg { flex-shrink: 0; }
+    .map-button-hint {
+      font-size: 12px; color: var(--text-secondary);
+    }
+
+    /* Trip Advisor - Konaklama Planı */
+    .trip-advisor-card { background: linear-gradient(180deg, rgba(30,58,138,0.1) 0%, var(--card) 30%); }
+    .trip-advisor-intro { 
+      padding: 0 24px 16px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .city-breakdown { padding: 0 24px; }
+    .no-selection-msg {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-dim);
+    }
+    .no-selection-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+    .city-plan-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--accent);
+    }
+    .city-plan-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .city-plan-name {
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .city-plan-nights {
+      background: var(--accent);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .city-plan-activities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .city-activity-tag {
+      background: rgba(255,255,255,0.05);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .hotel-pricing-info {
+      margin: 20px 24px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+    }
+    .pricing-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .pricing-icon { font-size: 20px; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    .price-card {
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .price-card.budget { 
+      border-color: #22c55e;
+      background: rgba(34,197,94,0.05);
+    }
+    .price-card.midrange { 
+      border-color: #f59e0b;
+      background: rgba(245,158,11,0.05);
+    }
+    .price-card.premium { 
+      border-color: #a855f7;
+      background: rgba(168,85,247,0.05);
+    }
+    .price-label {
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .price-card.budget .price-label { color: #22c55e; }
+    .price-card.midrange .price-label { color: #f59e0b; }
+    .price-card.premium .price-label { color: #a855f7; }
+    .price-range {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .price-desc {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .trip-summary {
+      margin: 0 24px 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(30,58,138,0.2), rgba(59,130,246,0.1));
+      border-radius: 12px;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+    .summary-header {
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .summary-content { font-size: 14px; line-height: 1.8; }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .summary-item:last-child { border-bottom: none; }
+    .summary-total {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid var(--accent);
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Shopping Guide */
+    .shopping-guide { padding: 0 24px 24px; }
+    .shopping-city { margin-bottom: 20px; }
+    .shopping-city-header {
+      font-size: 16px; font-weight: 600;
+      padding: 12px 0 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .shopping-list { display: flex; flex-direction: column; gap: 8px; }
+    .shopping-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+    }
+    .shopping-item.clickable {
+      cursor: pointer;
+    }
+    .shopping-item.clickable:hover {
+      background: var(--surface-3);
+      transform: translateX(4px);
+    }
+    .shopping-info-btn {
+      background: rgba(59,130,246,0.2);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-left: auto;
+      transition: all 0.2s;
+    }
+    .shopping-info-btn:hover {
+      background: rgba(59,130,246,0.4);
+      transform: scale(1.1);
+    }
+    .shopping-icon {
+      font-size: 24px;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+    }
+    .shopping-info { flex: 1; }
+    .shopping-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .shopping-desc { font-size: 12px; color: var(--text-secondary); }
+    .shopping-tip {
+      margin-top: 16px; padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(255, 149, 0, 0.1));
+      border: 1px solid rgba(255, 214, 10, 0.2);
+      border-radius: var(--radius-sm);
+      font-size: 13px; color: var(--text-secondary);
+    }
+    .shopping-tip strong { color: var(--warning); }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+
+    .modal {
+      background: var(--surface);
+      border-radius: 20px;
+      max-width: 600px; width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal { transform: scale(1) translateY(0); }
+
+    .modal-header {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .modal-image {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border: none; border-radius: 50%;
+      color: white; font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: var(--danger); }
+
+    .modal-icon-badge {
+      position: absolute; bottom: -24px; left: 24px;
+      width: 56px; height: 56px;
+      background: var(--surface);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-body {
+      padding: 40px 24px 24px;
+      max-height: calc(90vh - 200px);
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-size: 24px; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .modal-location {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .modal-description {
+      font-size: 15px; line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .modal-tips {
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .modal-tips-title {
+      font-size: 13px; font-weight: 600;
+      color: var(--warning);
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .modal-tips-list {
+      font-size: 13px; color: var(--text-secondary);
+      padding-left: 16px;
+    }
+    .modal-tips-list li { margin-bottom: 4px; }
+
+    .modal-video-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: white;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: all 0.2s;
+    }
+    .modal-video-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+    }
+    .modal-video-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .modal-buttons .modal-video-btn {
+      flex: 1;
+      margin-bottom: 0;
+    }
+    .modal-map-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: white;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-map-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(66, 133, 244, 0.3);
+    }
+    .modal-map-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Timeline Styles */
+    .timeline-card {
+      background: linear-gradient(180deg, rgba(244,114,182,0.08) 0%, var(--card) 20%);
+    }
+    .timeline-badge {
+      background: linear-gradient(135deg, #f472b6, #c084fc) !important;
+      font-size: 11px !important;
+    }
+    .timeline-intro {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+      padding: 0 24px 20px;
+      margin: 0;
+    }
+    .timeline-container {
+      padding: 0 16px 24px;
+    }
+    .timeline-day {
+      position: relative;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .timeline-day:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    .timeline-day.expanded .day-content {
+      max-height: 1000px;
+      padding: 16px;
+    }
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--surface-3), var(--surface-2));
+    }
+    .day-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .day-number .num { font-size: 20px; line-height: 1; }
+    .day-number .label { font-size: 10px; opacity: 0.9; }
+    .day-number.osaka { background: linear-gradient(135deg, #f97316, #ea580c); }
+    .day-number.kyoto { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+    .day-number.nara { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .day-number.tokyo { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .day-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .day-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .day-subtitle {
+      font-size: 13px;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .day-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: transform 0.3s;
+    }
+    .timeline-day.expanded .day-toggle {
+      transform: rotate(180deg);
+    }
+    .day-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 16px;
+      transition: all 0.3s ease;
+    }
+    .activity-block {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .activity-block:last-child {
+      border-bottom: none;
+    }
+    .activity-time {
+      width: 50px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-align: center;
+      padding-top: 4px;
+    }
+    .activity-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .activity-dot.food { background: #f97316; }
+    .activity-dot.activity { background: #3b82f6; }
+    .activity-dot.travel { background: #22c55e; }
+    .activity-dot.sleep { background: #a855f7; }
+    .activity-dot.photo { background: #ec4899; }
+    .activity-details {
+      flex: 1;
+    }
+    .activity-name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .activity-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .activity-tip {
+      margin-top: 6px;
+      padding: 8px 10px;
+      background: rgba(34,197,94,0.1);
+      border-radius: 8px;
+      font-size: 11px;
+      color: #22c55e;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .activity-tip::before {
+      content: '💡';
+      flex-shrink: 0;
+    }
+    .highlight-box {
+      margin-top: 12px;
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(168,85,247,0.1));
+      border-radius: 10px;
+      border-left: 3px solid #3b82f6;
+    }
+    .highlight-title {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .highlight-text {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .food-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .food-tag {
+      padding: 4px 10px;
+      background: rgba(249,115,22,0.15);
+      border-radius: 20px;
+      font-size: 12px;
+      color: #f97316;
+    }
+    .timeline-legend {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 16px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .legend-dot.food { background: #f97316; }
+    .legend-dot.activity { background: #3b82f6; }
+    .legend-dot.travel { background: #22c55e; }
+    .legend-dot.sleep { background: #a855f7; }
+    
+    /* Travel indicator */
+    .travel-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      margin: 8px 0;
+      background: linear-gradient(90deg, transparent, rgba(34,197,94,0.1), transparent);
+    }
+    .travel-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(34,197,94,0.15);
+      border-radius: 20px;
+      font-size: 13px;
+      color: #22c55e;
+      font-weight: 500;
+    }
+
+    .modal-footer {
+      display: flex; gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .modal-price {
+      flex: 1;
+      font-size: 24px; font-weight: 700;
+      color: var(--accent);
+    }
+    .modal-price-note { font-size: 12px; color: var(--text-secondary); font-weight: 400; }
+
+    .modal-btn {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none; border-radius: var(--radius-sm);
+      color: white; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .modal-btn:hover { transform: scale(1.02); }
+    .modal-btn.added { background: var(--success); }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-icon">🗾</div>
+    <h1>Japonya Seyahat Planlayıcı</h1>
+    <p>Hayalindeki Japonya gezisi için bütçeni planla, aktivitelerini seç!</p>
+  </header>
+
+  <main class="container">
+    <div class="illustration">
+      <span class="illustration-item">🌸</span>
+      <span class="illustration-item">⛩️</span>
+      <span class="illustration-item">🏯</span>
+      <span class="illustration-item">🍣</span>
+      <span class="illustration-item">🗻</span>
+    </div>
+
+    <!-- Trip Details -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-header-icon">✈️</div>
+        <h2>Seyahat Detayları</h2>
+        </div>
+      <div class="card-body">
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">📅</div>
+            <div><div class="input-label">Seyahat Tarihi</div><div class="input-sublabel">Ne zaman gideceksin?</div></div>
+        </div>
+          <input type="date" id="tripDate" />
+        </div>
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">🌙</div>
+            <div><div class="input-label">Kaç Gün Kalacaksın?</div><div class="input-sublabel">Toplam gün sayısı</div></div>
+        </div>
+          <div class="stepper">
+            <button class="stepper-btn" onclick="adjustValue('days', -1)">−</button>
+            <span class="stepper-value" id="daysDisplay">8</span>
+            <button class="stepper-btn" onclick="adjustValue('days', 1)">+</button>
+          </div>
+          <input type="hidden" id="days" value="8" />
+        </div>
+      </div>
+      <div class="card-header" style="border-top: 1px solid var(--border);">
+        <div class="card-header-icon">👥</div>
+        <h2>Kaç Kişi Gidecek?</h2>
+      </div>
+      <div class="person-cards">
+        <div class="person-card">
+          <div class="person-card-icon">🧑</div>
+          <div class="person-card-label">Yetişkin</div>
+          <div class="stepper" style="justify-content: center;">
+            <button class="stepper-btn" onclick="adjustValue('adults', -1)">−</button>
+            <span class="stepper-value" id="adultsDisplay">2</span>
+            <button class="stepper-btn" onclick="adjustValue('adults', 1)">+</button>
+          </div>
+          <input type="hidden" id="adults" value="2" />
+        </div>
+        <div class="person-card">
+          <div class="person-card-icon">👧</div>
+          <div class="person-card-label">Çocuk</div>
+          <div class="stepper" style="justify-content: center;">
+            <button class="stepper-btn" onclick="adjustValue('children', -1)">−</button>
+            <span class="stepper-value" id="childrenDisplay">1</span>
+            <button class="stepper-btn" onclick="adjustValue('children', 1)">+</button>
+          </div>
+          <input type="hidden" id="children" value="1" />
+        </div>
+      </div>
+      <div class="notice">
+        <span class="notice-icon">💳</span>
+        <span class="notice-text">Uçak biletleri kredi kartı ile ödenecek, nakit bütçeye dahil değil.</span>
+      </div>
+    </section>
+
+    <!-- Budget Card -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-header-icon">💰</div>
+        <h2>Bütçe Bilgileri</h2>
+        </div>
+      <div class="card-body">
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">🏦</div>
+            <div><div class="input-label">Mevcut Birikim</div><div class="input-sublabel">Şu an ne kadar paran var?</div></div>
+        </div>
+          <input type="number" id="savings" min="0" step="1000" placeholder="100.000" />
+        </div>
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">🏨</div>
+            <div><div class="input-label">Konaklama</div><div class="input-sublabel">Gece başı (oda fiyatı)</div></div>
+          </div>
+          <input type="number" id="nightly" min="0" step="100" placeholder="6.000" />
+        </div>
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">🍜</div>
+            <div><div class="input-label">Günlük Harcama</div><div class="input-sublabel">Yeme-içme + ulaşım (kişi başı)</div></div>
+          </div>
+          <input type="number" id="daily" min="0" step="100" placeholder="2.500" />
+        </div>
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">🛍️</div>
+            <div><div class="input-label">Alışveriş / Elektronik</div><div class="input-sublabel">Toplam alışveriş bütçesi</div></div>
+          </div>
+          <input type="number" id="electronics" min="0" step="1000" placeholder="30.000" />
+        </div>
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">📋</div>
+            <div><div class="input-label">Sabit Giderler</div><div class="input-sublabel">Vize, sigorta, SIM kart vb.</div></div>
+          </div>
+          <input type="number" id="fixed" min="0" step="100" placeholder="15.000" />
+        </div>
+        <div class="input-row">
+          <div class="input-row-left">
+            <div class="input-icon">🛡️</div>
+            <div><div class="input-label">Güvenlik Payı</div><div class="input-sublabel">Ekstra buffer (%)</div></div>
+          </div>
+          <input type="number" id="bufferPct" min="0" max="50" step="1" placeholder="10" />
+        </div>
+      </div>
+      <div class="button-row">
+        <button class="btn btn-primary" id="saveBtn">💾 Kaydet</button>
+        <button class="btn btn-secondary" id="resetBtn">Sıfırla</button>
+      </div>
+    </section>
+
+    <!-- Trip Timeline -->
+    <section class="card timeline-card">
+      <div class="card-header">
+        <div class="card-header-icon">🗾</div>
+        <h2>9 Günlük Macera Planı</h2>
+        <span class="card-header-badge timeline-badge">🚂 Osaka → Kyoto → Tokyo</span>
+      </div>
+      <p class="timeline-intro">🎒 Hazır mısın? İşte seni bekleyen harika macera!</p>
+      
+      <div class="timeline-container" id="tripTimeline"></div>
+      
+      <div class="timeline-legend">
+        <div class="legend-item"><span class="legend-dot food"></span> Yemek</div>
+        <div class="legend-item"><span class="legend-dot activity"></span> Aktivite</div>
+        <div class="legend-item"><span class="legend-dot travel"></span> Yolculuk</div>
+        <div class="legend-item"><span class="legend-dot sleep"></span> Dinlenme</div>
+      </div>
+    </section>
+
+    <!-- Activities Checklist -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-header-icon">🎯</div>
+        <h2>Yapılacaklar & Aktiviteler</h2>
+        <span class="card-header-badge" id="activitiesCount">0 seçili</span>
+        </div>
+      <div id="activityList"></div>
+      <div class="activities-total">
+        <span class="activities-total-label">Seçilen Aktiviteler Toplamı</span>
+        <span class="activities-total-value" id="activitiesTotal">0 ₺</span>
+        </div>
+      <div class="map-button-container">
+        <button class="map-button" id="showMapBtn" onclick="showOnMap()">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          🗺️ Seçilenleri Haritada Göster
+        </button>
+        <span class="map-button-hint" id="mapHint">Aktivite seçin</span>
+      </div>
+    </section>
+
+    <!-- Trip Advisor - Konaklama Planı -->
+    <section class="card trip-advisor-card">
+      <div class="card-header">
+        <div class="card-header-icon">🏨</div>
+        <h2>Akıllı Konaklama Planı</h2>
+      </div>
+      <p class="trip-advisor-intro">Seçtiğiniz aktivitelere göre önerilen konaklama planı:</p>
+      
+      <div id="cityBreakdown" class="city-breakdown">
+        <div class="no-selection-msg">
+          <span class="no-selection-icon">🎯</span>
+          <p>Aktivite seçerek konaklama planınızı oluşturun</p>
+        </div>
+      </div>
+      
+      <div class="hotel-pricing-info">
+        <div class="pricing-header">
+          <span class="pricing-icon">💰</span>
+          <span>Ortalama Otel Fiyatları (Gecelik)</span>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card budget">
+            <div class="price-label">Bütçe</div>
+            <div class="price-range">₺800 - ₺1,500</div>
+            <div class="price-desc">Hostel, Capsule Otel</div>
+          </div>
+          <div class="price-card midrange">
+            <div class="price-label">Orta</div>
+            <div class="price-range">₺1,500 - ₺3,000</div>
+            <div class="price-desc">3★ Otel, Business Hotel</div>
+          </div>
+          <div class="price-card premium">
+            <div class="price-label">Premium</div>
+            <div class="price-range">₺3,000 - ₺6,000</div>
+            <div class="price-desc">4★-5★ Otel, Ryokan</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="trip-summary" id="tripSummary" style="display: none;">
+        <div class="summary-header">
+          <span>📋</span> Gezi Özeti
+        </div>
+        <div class="summary-content" id="tripSummaryContent"></div>
+      </div>
+    </section>
+
+    <!-- Shopping Guide -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-header-icon">🛒</div>
+        <h2>Önemli Alışveriş Merkezleri</h2>
+      </div>
+      <div class="shopping-guide" id="shoppingList"></div>
+      <div class="shopping-tip">
+        💡 <strong>Tax-Free İpucu:</strong> 5.000¥ üzeri alışverişlerde pasaport göstererek %10 vergi iadesi alabilirsiniz!
+      </div>
+    </section>
+
+    <!-- Progress Card -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-header-icon">📊</div>
+        <h2>İlerleme Durumu</h2>
+      </div>
+      <div class="progress-section">
+        <div class="progress-circle-container">
+          <svg class="progress-circle" width="180" height="180" viewBox="0 0 180 180">
+            <defs>
+              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ff6b9d" />
+                <stop offset="100%" style="stop-color:#c084fc" />
+              </linearGradient>
+            </defs>
+            <circle class="progress-circle-bg" cx="90" cy="90" r="80" />
+            <circle class="progress-circle-fill" id="progressCircle" cx="90" cy="90" r="80" />
+          </svg>
+          <div class="progress-text">
+            <div class="progress-percent" id="progressPercent">0%</div>
+            <div class="progress-label">tamamlandı</div>
+        </div>
+      </div>
+        <div class="progress-message" id="progressMessage">Verilerini girerek başla</div>
+      </div>
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdownDays">—</div>
+          <div class="countdown-label">Gün</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdownWeeks">—</div>
+          <div class="countdown-label">Hafta</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="countdownMonths">—</div>
+          <div class="countdown-label">Ay</div>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Hedef Bütçe</div>
+          <div class="stat-value" id="statTarget">—</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Mevcut Birikim</div>
+          <div class="stat-value" id="statSavings">—</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Eksik / Fazla</div>
+          <div class="stat-value" id="statGap">—</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Kalış Süresi</div>
+          <div class="stat-value" id="statStay">—</div>
+        </div>
+      </div>
+      <div class="savings-row">
+        <div class="savings-box">
+          <div class="savings-label">📆 Haftalık Biriktirmen Gereken</div>
+          <div class="savings-value" id="weeklySavings">—</div>
+        </div>
+        <div class="savings-box">
+          <div class="savings-label">📅 Aylık Biriktirmen Gereken</div>
+          <div class="savings-value" id="monthlySavings">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis Card -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-header-icon">✅</div>
+        <h2>Durum Analizi</h2>
+      </div>
+      <div class="info-list" id="analysisList"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>🌸 Hayalindeki Japonya seyahatine bir adım daha yaklaş!</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <img class="modal-image" id="modalImage" src="" alt="" />
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-icon-badge" id="modalIcon"></div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-location" id="modalLocation">📍 <span></span></div>
+        <p class="modal-description" id="modalDesc"></p>
+        <div class="modal-tips" id="modalTips"></div>
+        <div class="modal-buttons">
+          <button class="modal-video-btn" id="modalYoutubeBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            YouTube'da İzle
+          </button>
+          <button class="modal-map-btn" id="modalMapBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Haritada Göster
+          </button>
+        </div>
+        <div class="modal-footer" id="modalBtnContainer">
+          <div class="modal-price">
+            <span id="modalPrice"></span>
+            <div class="modal-price-note" id="modalPriceNote"></div>
+          </div>
+          <button class="modal-btn" id="modalBtn" onclick="toggleFromModal()">Listeye Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // --- Helpers (En başta tanımlanmalı) ---
+  const fmt = (n) => !isFinite(n) ? "—" : new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 }).format(Math.round(n)) + " ₺";
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const byId = (id) => document.getElementById(id);
+
+  // --- Aktiviteler Veritabanı (Detaylı) ---
+  const ACTIVITIES = [
+    // 🎢 TEMA PARKLARI
+    {
+      id: 'usj', icon: '🧙', name: 'Universal Studios Japan',
+      location: 'Osaka', price: 2100, perPerson: true, category: 'theme',
+      lat: 34.6654, lng: 135.4323,
+      image: 'https://images.unsplash.com/photo-1565618754154-c8011e5df2a6?w=800',
+      description: 'Osaka\'nın en popüler tema parkı! Harry Potter\'ın Büyülü Dünyası, Super Nintendo World, Minions Park ve daha fazlası sizi bekliyor. Hogwarts Kalesi\'nde büyü yapın, Mario Kart\'ta yarışın!',
+      tips: ['Hafta içi gidin, hafta sonu çok kalabalık', 'Express Pass alarak kuyrukları atlayın', 'Super Nintendo World için sabah erkenden giriş yapın', 'Butterbeer denemeden dönmeyin!'],
+      youtube: 'dXc-UxdEjbs'
+    },
+    {
+      id: 'nintendo', icon: '🍄', name: 'Super Nintendo World',
+      location: 'Osaka - USJ içinde', price: 0, perPerson: true, category: 'theme',
+      lat: 34.6660, lng: 135.4318,
+      image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800',
+      description: 'Mario\'nun dünyasına adım atın! Gerçek boyutlu Mushroom Kingdom, interaktif Power-Up Band ile oyunlar, Mario Kart: Koopa\'s Challenge ve Yoshi\'s Adventure sizleri bekliyor.',
+      tips: ['USJ biletine dahil, ekstra ücret yok', 'Power-Up Band (bileklik) ayrı satın alınır', 'Toad\'s Cafe\'de Mario temalı yemekler var', 'Sabah parkla birlikte açılıyor, erken gidin'],
+      youtube: 'fG-ZaWarDKA'
+    },
+    {
+      id: 'disney', icon: '🏰', name: 'Tokyo Disneyland',
+      location: 'Tokyo - Maihama', price: 2300, perPerson: true, category: 'theme',
+      lat: 35.6329, lng: 139.8804,
+      image: 'https://images.unsplash.com/photo-1624601573012-efb68931cc8f?w=800',
+      description: 'Japonya\'nın en büyülü yeri! Cinderella Kalesi, Space Mountain, Splash Mountain ve sayısız gösteriler. Dünyaca ünlü Disney hospitalitysi ile unutulmaz anılar biriktirin.',
+      tips: ['Gece geçit töreni (Electrical Parade) mutlaka izleyin', 'Popcorn kovaları koleksiyon için harika', 'Premier Access ile popüler oyunlara öncelik alın', 'Hafta ortası daha az kalabalık'],
+      youtube: 'UPi6Xw_zHJI'
+    },
+    {
+      id: 'disneysea', icon: '🚢', name: 'Tokyo DisneySea',
+      location: 'Tokyo - Maihama', price: 2300, perPerson: true, category: 'theme',
+      lat: 35.6267, lng: 139.8850,
+      image: 'https://images.unsplash.com/photo-1545893835-abaa50cbe628?w=800',
+      description: 'Dünyada tek! Deniz temalı bu park, yetişkinler için mükemmel. Mediterrean Harbor, Mysterious Island, Mermaid Lagoon. Journey to the Center of the Earth efsanevi!',
+      tips: ['Disneyland\'den daha yetişkin odaklı', 'Tower of Terror harika!', 'Akşam Mediterrean Harbor\'da şarap tadımı yapılabilir', 'Fantasy Springs yeni açıldı, kaçırmayın!'],
+      youtube: 'WVS2p3d6GFI'
+    },
+    {
+      id: 'teamlab', icon: '💫', name: 'teamLab Borderless',
+      location: 'Tokyo - Azabudai Hills', price: 900, perPerson: true, category: 'theme',
+      lat: 35.6609, lng: 139.7414,
+      image: 'https://images.unsplash.com/photo-1549887534-1541e9326642?w=800',
+      description: 'Dijital sanatın sınırsız dünyası! Duvarsız, sınırsız bir müze. Işık, renk ve hareket içinde kaybolun. Çiçekler üzerinizden akıyor, balıklar etrafınızda yüzüyor.',
+      tips: ['Beyaz kıyafet giyin, renkler üzerinize yansır', 'Online bilet mutlaka önceden alın', 'En az 2-3 saat ayırın', 'Fotoğraf çekmek serbest ve harika sonuçlar çıkıyor'],
+      youtube: 'IwLSrNu1ppI'
+    },
+    {
+      id: 'ghibli', icon: '🐱', name: 'Ghibli Müzesi',
+      location: 'Tokyo - Mitaka', price: 250, perPerson: true, category: 'theme',
+      lat: 35.6962, lng: 139.5704,
+      image: 'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=800',
+      description: 'Hayao Miyazaki\'nin büyülü dünyası! Totoro, Spirited Away, Howl\'s Moving Castle... Animasyon stüdyosu atmosferinde orijinal çizimler, dev Robot Soldier ve özel kısa filmler.',
+      tips: ['Biletler 1 ay önceden satışa çıkar, hemen tükenir', 'Lawson\'dan veya resmi siteden alın', 'İçeride fotoğraf çekmek yasak', 'Çatıdaki Robot Soldier kaçırılmaz'],
+      youtube: '1QG6xOCgtjY'
+    },
+
+    // ⛩️ TAPINAKLAR
+    {
+      id: 'fushimi', icon: '⛩️', name: 'Fushimi Inari Tapınağı',
+      location: 'Kyoto', price: 0, perPerson: false, category: 'temple',
+      lat: 34.9671, lng: 135.7727,
+      image: 'https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=800',
+      description: '10.000 kırmızı torii kapısı! Dağın tepesine kadar uzanan bu mistik yol, Japonya\'nın en ikonik görüntüsü. İnari tilki tanrısına adanmış bu tapınak 24 saat açık ve ücretsiz.',
+      tips: ['Gün doğumunda gidin, turist yok', 'Tepeye yürüyüş 2-3 saat sürüyor', 'Yarıda inari sushi (tofu) deneyin', 'Gece de açık ve çok atmosferik'],
+      youtube: 'FmRyJ-RtBPg'
+    },
+    {
+      id: 'kinkakuji', icon: '🏯', name: 'Kinkaku-ji (Altın Tapınak)',
+      location: 'Kyoto', price: 120, perPerson: true, category: 'temple',
+      lat: 35.0394, lng: 135.7292,
+      image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800',
+      description: 'Altın yapraklarla kaplı ikonik Zen tapınağı! Gölet üzerindeki yansıması efsanevi. UNESCO Dünya Mirası listesinde. Her mevsim farklı güzellikte.',
+      tips: ['Sabah 9\'da açılışta gidin', 'Sonbaharda kırmızı yapraklarla muhteşem', 'Bahçede matcha ve tatlı var', 'Yakındaki Ryoan-ji zen bahçesini de görün'],
+      youtube: 'V6h77ziYmIE'
+    },
+    {
+      id: 'sensoji', icon: '🏮', name: 'Senso-ji Tapınağı',
+      location: 'Tokyo - Asakusa', price: 0, perPerson: false, category: 'temple',
+      lat: 35.7148, lng: 139.7967,
+      image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800',
+      description: 'Tokyo\'nun en eski tapınağı (645 yılından beri)! Dev kırmızı fener (Kaminarimon), Nakamise alışveriş sokağı, tütsü dumanları... Asakusa\'nın kalbi.',
+      tips: ['Sabah erken saatler boş ve huzurlu', 'Nakamise\'de ningyo-yaki ve senbei alın', 'Omikuji (kağıt fal) çekin', 'Akşam aydınlatması çok güzel'],
+      youtube: 'fFLVheK5_C4'
+    },
+    {
+      id: 'meiji', icon: '🌳', name: 'Meiji Jingu',
+      location: 'Tokyo - Harajuku', price: 0, perPerson: false, category: 'temple',
+      lat: 35.6764, lng: 139.6993,
+      image: 'https://images.unsplash.com/photo-1583400417478-c14b0d0a6dc8?w=800',
+      description: 'Dev torii kapısından geçip ormanın içine dalın! İmparator Meiji\'ye adanmış bu türbe, Tokyo\'nun tam ortasında doğal bir vaha. Pazar günleri düğünler görebilirsiniz.',
+      tips: ['Harajuku\'dan yürüyerek 10 dk', 'Dilek tahtalarına yazın', 'İri torii kapısı fotoğraf için mükemmel', 'İç bahçe ücretli ama çok güzel'],
+      youtube: 'CQZLG0sQp8U'
+    },
+    {
+      id: 'todaiji', icon: '🦌', name: 'Todai-ji & Nara Parkı',
+      location: 'Nara', price: 150, perPerson: true, category: 'temple',
+      lat: 34.6890, lng: 135.8398,
+      image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800',
+      description: 'Dünyanın en büyük bronz Buda heykeli ve onu koruyan devasa ahşap tapınak! Parkta 1.200+ serbest geyik dolaşıyor. Geyikler selam veriyor ve shika senbei (bisküvi) yiyor!',
+      tips: ['Geyik bisküvisi (shika senbei) 200¥', 'Geyikler eğilirseniz eğilerek selamlar', 'Yiyeceğinizi saklayın, geyikler açgözlü!', 'Kyoto\'dan tren ile 45 dk'],
+      youtube: 'u7-lA1WFBsc'
+    },
+    {
+      id: 'arashiyama', icon: '🎋', name: 'Arashiyama Bambu Ormanı',
+      location: 'Kyoto', price: 0, perPerson: false, category: 'temple',
+      lat: 35.0094, lng: 135.6737,
+      image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=800',
+      description: 'Dev bambuların arasında yürüyün! Rüzgarda bambuların sesi meditasyon gibi. Tenryu-ji tapınağı, Togetsukyo köprüsü ve maymun parkı aynı bölgede.',
+      tips: ['Sabah 7\'de gidin, turist yok', 'Kimono kiralayıp fotoğraf çekin', 'Yakındaki Tenryu-ji bahçesi UNESCO mirası', 'Tekne turu için Hozu Nehri\'ne gidin'],
+      youtube: 'uSGnLKm0ICA'
+    },
+    {
+      id: 'himeji', icon: '🏯', name: 'Himeji Kalesi',
+      location: 'Himeji', price: 250, perPerson: true, category: 'temple',
+      lat: 34.8394, lng: 134.6939,
+      image: 'https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?w=800',
+      description: 'Japonya\'nın en güzel ve en iyi korunmuş kalesi! "Beyaz Balıkçıl" lakaplı bu UNESCO mirası, feodal Japonya\'nın ihtişamını gözler önüne seriyor.',
+      tips: ['Shinkansen ile Osaka\'dan 30 dk', 'İç kısımda merdiven çok, rahat ayakkabı', 'Kiraz çiçeği sezonunda muhteşem', 'Koko-en bahçesi hemen yanında'],
+      youtube: 'f7Z2KTxfYQU'
+    },
+
+    // 🍜 YEMEK DENEYİMLERİ
+    {
+      id: 'tsukiji', icon: '🐟', name: 'Tsukiji/Toyosu Balık Pazarı',
+      location: 'Tokyo', price: 750, perPerson: true, category: 'food',
+      lat: 35.6654, lng: 139.7707,
+      image: 'https://images.unsplash.com/photo-1580442151529-343f2f6e0e27?w=800',
+      description: 'Dünyanın en büyük balık pazarı! Toyosu\'da ton balığı müzayedesi, Tsukiji Outer Market\'te taze sushi, sashimi, tamagoyaki. Sabah kahvaltısı için mükemmel.',
+      tips: ['Ton müzayedesi için 5:30\'da orada olun (kayıt gerekli)', 'Tsukiji Outer Market 9-14 arası açık', 'Sushi Dai veya Daiwa Sushi için kuyruk var', 'Tamagoyaki (Japon omleti) deneyin'],
+      youtube: '5TGz5KrE3Bc'
+    },
+    {
+      id: 'ramen', icon: '🍜', name: 'Shin-Yokohama Ramen Müzesi',
+      location: 'Yokohama', price: 100, perPerson: true, category: 'food',
+      lat: 35.5066, lng: 139.6178,
+      image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800',
+      description: '1958 Japonya\'sını yeniden yaşayın! Retro sokak atmosferinde 9 farklı ramen dükkanı. Tokyo, Sapporo, Hakata, Kumamoto... Tüm Japonya\'nın ramenleri bir arada.',
+      tips: ['Mini boyut sipariş edip birkaç çeşit deneyin', 'Tokyo\'dan 30 dk tren mesafesi', 'Girişte sadece kapı ücreti, ramen ayrı', 'Cumartesi çok kalabalık'],
+      youtube: 'KgHsMzT1k70'
+    },
+    {
+      id: 'sake', icon: '🍶', name: 'Sake Tadım Turu',
+      location: 'Kyoto - Fushimi', price: 400, perPerson: true, category: 'food',
+      lat: 34.9293, lng: 135.7589,
+      image: 'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?w=800',
+      description: 'Japonya\'nın en eski sake bölgesi Fushimi! Gekkeikan ve Kizakura gibi tarihi sake evlerini gezin, üretimi öğrenin, onlarca çeşit sake tadın.',
+      tips: ['Gekkeikan Okura Sake Museum\'da tur + tadım', 'Kizakura Kappa Country\'de restoran da var', 'Fushimi Inari ile aynı gün yapılabilir', 'Junmai Daiginjo en kaliteli çeşit'],
+      youtube: 'wg3MeCXkS40'
+    },
+    {
+      id: 'sushicourse', icon: '🍣', name: 'Sushi Yapım Kursu',
+      location: 'Tokyo/Kyoto', price: 2000, perPerson: true, category: 'food',
+      lat: 35.6654, lng: 139.7707,
+      image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800',
+      description: 'Sushi ustasından nigiri, maki ve temaki yapmayı öğrenin! Balık seçimi, pirinç hazırlama, kesim teknikleri... Yaptıklarınızı yiyerek bitirin!',
+      tips: ['Airbnb Experiences\'ta kurslar var', 'Tsukiji yakınında daha otantik', '2-3 saat sürüyor', 'Vejetaryen seçenekler de mevcut'],
+      youtube: 'joAbKdfqPP8'
+    },
+    {
+      id: 'izakaya', icon: '🍻', name: 'Izakaya Turu',
+      location: 'Tokyo/Osaka', price: 1200, perPerson: true, category: 'food',
+      lat: 35.6938, lng: 139.7034,
+      image: 'https://images.unsplash.com/photo-1554502078-ef0fc409efce?w=800',
+      description: 'Japon pub kültürünü yaşayın! Yakitori, edamame, karaage ile bira ve sake. Yerel halkla omuz omuza Memory Lane (Omoide Yokocho) veya Shinsekai sokaklarında.',
+      tips: ['Shinjuku - Omoide Yokocho atmosferik', 'Osaka - Shinsekai daha yerel', 'Nomihoudai (sınırsız içki) paketleri var', 'Yalnız da gidilebilir, bar kültürü güçlü'],
+      youtube: 'V5Gv56FYXdE'
+    },
+
+    // 🎭 KÜLTÜREL DENEYİMLER
+    {
+      id: 'kimono', icon: '👘', name: 'Kimono Kiralama',
+      location: 'Kyoto/Tokyo', price: 1200, perPerson: true, category: 'culture',
+      lat: 35.0036, lng: 135.7786,
+      image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800',
+      description: 'Geleneksel kimono giyip Kyoto sokaklarında gezin! Profesyonel giydirme, saç yapımı ve aksesuar dahil. Fotoğraflarınız müthiş olacak.',
+      tips: ['Yume Kyoto ve Okamoto popüler dükkanlar', 'Sabah erken randevu alın', 'Erkekler için de seçenekler var', 'Arashiyama veya Gion\'da yürüyün'],
+      youtube: 'C5L1_gnHrmc'
+    },
+    {
+      id: 'tea', icon: '🍵', name: 'Çay Seremonisi',
+      location: 'Kyoto/Tokyo', price: 750, perPerson: true, category: 'culture',
+      lat: 35.0116, lng: 135.7681,
+      image: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=800',
+      description: 'Zen felsefesinin özünü yaşayın! Matcha hazırlama sanatı, wagashi tatlıları, meditasyon... Sessizlik ve huzur içinde Japon estetiğini keşfedin.',
+      tips: ['Urasenke veya Camellia çay evleri ünlü', 'Tatami\'de oturmak zor olabilir, sandalyeli seçenek var', '45-60 dk sürüyor', 'İngilizce seremoni seçenekleri mevcut'],
+      youtube: 'Hm-n_uzzE64'
+    },
+    {
+      id: 'geisha', icon: '🎭', name: 'Gion Geisha Bölgesi',
+      location: 'Kyoto - Gion', price: 500, perPerson: true, category: 'culture',
+      lat: 35.0037, lng: 135.7750,
+      image: 'https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?w=800',
+      description: 'Japonya\'nın en ünlü geisha bölgesi! Akşam saatlerinde maiko (çırak geisha) ve geiko (usta geisha) görme şansınız var. Tarihi ahşap evler, çay evleri...',
+      tips: ['Akşam 17-19 arası maiko görebilirsiniz', 'Fotoğraf çekerken mesafeli olun', 'Gion Corner\'da geisha gösterisi var', 'Pontocho sokağı da güzel'],
+      youtube: 'eMpKUDhglSU'
+    },
+    {
+      id: 'sumo', icon: '🤼', name: 'Sumo Antrenmanı İzleme',
+      location: 'Tokyo', price: 750, perPerson: true, category: 'culture',
+      lat: 35.6966, lng: 139.7932,
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800',
+      description: 'Sumo güreşçilerinin sabah antrenmanını izleyin! Geleneksel ahaylar (sumo evi), terli güreşler, chanko nabe (sumo yemeği). Japonya\'nın ulusal sporu.',
+      tips: ['Sabah 7-10 arası antrenman', 'Arashio-beya veya Musashigawa-beya', 'Rezervasyon şart, yerler sınırlı', 'Sessiz olun, bu ciddi bir antrenman'],
+      youtube: 'aGQk8EvNl2s'
+    },
+    {
+      id: 'onsen', icon: '♨️', name: 'Onsen Deneyimi',
+      location: 'Hakone/Beppu', price: 500, perPerson: true, category: 'culture',
+      lat: 35.2325, lng: 139.1069,
+      image: 'https://images.unsplash.com/photo-1553653924-39b70295f8da?w=800',
+      description: 'Volkanik sıcak su kaynaklarında rahatlayın! Açık hava (rotenburo) ve kapalı havuzlar. Japon banyo kültürü, etiketi ve ritüellerini yaşayın.',
+      tips: ['Dövme yasağı olan yerler var, önceden kontrol edin', 'Havuza girmeden önce iyice yıkanın', 'Havlu suya girmiyor', 'Hakone, Tokyo\'dan 1.5 saat'],
+      youtube: 'UZL0FKx_C2M'
+    },
+    {
+      id: 'karaoke', icon: '🎤', name: 'Karaoke Gecesi',
+      location: 'Her yerde', price: 500, perPerson: true, category: 'culture',
+      lat: 35.6938, lng: 139.7034,
+      image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800',
+      description: 'Japonya\'nın vazgeçilmez gece aktivitesi! Özel odalar, binlerce şarkı, içki dahil paketler. Utangaçlığı atın, Japon pop müziği deneyin!',
+      tips: ['Big Echo, Karaoke Kan zincirleri yaygın', 'Nomihoudai (içki dahil) paketleri var', 'İngilizce şarkı arşivi geniş', 'Gece yarısından sonra ucuzlar'],
+      youtube: 'z92bmlcmyq0'
+    },
+
+    // 🗻 DOĞA & MANZARA
+    {
+      id: 'fuji', icon: '🗻', name: 'Fuji Dağı Günlük Tur',
+      location: 'Tokyo çevresi', price: 2400, perPerson: true, category: 'nature',
+      lat: 35.3606, lng: 138.7274,
+      image: 'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800',
+      description: 'Japonya\'nın simgesi 3.776 m! Beş Göller bölgesi (Kawaguchiko), Chureito Pagoda, mağaralar, manzara noktaları. Her mevsim farklı güzellik.',
+      tips: ['Hava durumunu kontrol edin, bulutlu olabilir', 'Kawaguchiko\'da konaklama düşünün', 'Kış aylarında kar muhteşem', 'Ropeway ile Kachi Kachi dağına çıkın'],
+      youtube: 'pU3GWAZU944'
+    },
+    {
+      id: 'hakone', icon: '🚠', name: 'Hakone Günlük Tur',
+      location: 'Kanagawa', price: 1500, perPerson: true, category: 'nature',
+      lat: 35.2325, lng: 139.1069,
+      image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800',
+      description: 'Teleferik, korsan gemi, jigokudani (cehennem vadisi), müzeler ve tabii ki onsen! Hakone Free Pass ile tüm ulaşım dahil. Fuji manzarası bonus.',
+      tips: ['Hakone Free Pass alın (Shinjuku\'dan)', 'Owakudani\'de kara yumurta yiyin (7 yıl ömür!)', 'Open Air Museum harika', 'Ryokan (geleneksel otel) deneyin'],
+      youtube: 'rE7YK5Z_nkA'
+    },
+    {
+      id: 'nikko', icon: '🍁', name: 'Nikko Tapınakları',
+      location: 'Tochigi', price: 1200, perPerson: true, category: 'nature',
+      lat: 36.7578, lng: 139.5985,
+      image: 'https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?w=800',
+      description: 'UNESCO Dünya Mirası! Toshogu türbesi, "See no evil" maymunları, Kegon şelalesi, Chuzenji gölü. Doğa ve tarih bir arada, sonbaharda efsanevi.',
+      tips: ['Tokyo\'dan 2 saat (Tobu Nikko Pass)', 'Sonbahar (Kasım) en güzel zaman', 'Toshogu çok işlemeli, detaylara dikkat', 'Yuba (tofu kabuğu) yerel lezzet'],
+      youtube: 'a9gO4FhxzvM'
+    },
+
+    // 🚄 ULAŞIM
+    {
+      id: 'jrpass7', icon: '🚄', name: 'JR Pass (7 Gün)',
+      location: 'Tüm Japonya', price: 12000, perPerson: true, category: 'transport',
+      lat: null, lng: null,
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800',
+      description: 'Shinkansen dahil tüm JR trenlerinde sınırsız seyahat! Tokyo-Kyoto tek yön 13.000¥, yani 2 yolculukta bile amorti. Japonya\'yı keşfetmenin en iyi yolu.',
+      tips: ['Sadece turistler alabilir, Japonya\'ya girmeden önce sipariş edin', 'Nozomi ve Mizuho trenlerinde geçerli DEĞİL', 'Hikari ve Sakura trenlerini kullanın', 'Yeşil (Green) wagon için ayrı pass var'],
+      youtube: 'cNlMTPjRXMA'
+    },
+    {
+      id: 'jrpass14', icon: '🚄', name: 'JR Pass (14 Gün)',
+      location: 'Tüm Japonya', price: 19200, perPerson: true, category: 'transport',
+      lat: null, lng: null,
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800',
+      description: 'Uzun seyahatler için ideal! Hiroshima, Kanazawa, Sapporo... Japonya\'nın her köşesine ulaşın. Shinkansen konforu, dakik hareket.',
+      tips: ['7 günlük ile aynı kurallar geçerli', 'Kuzey Japonya (Tohoku) için çok iyi değer', 'Kyushu veya Hokkaido\'ya da gidiyorsanız şart', 'Exchange order ile Japonya\'da aktive edin'],
+      youtube: 'cNlMTPjRXMA'
+    },
+    {
+      id: 'suica', icon: '💳', name: 'Suica/Pasmo IC Kart',
+      location: 'Tüm Japonya', price: 120, perPerson: true, category: 'transport',
+      lat: null, lng: null,
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800',
+      description: 'Temassız ödeme kartı! Metro, otobüs, tren, hatta marketler ve otomatlarda kullanılabilir. Japonya\'da cüzdanınızdan daha çok kullanacaksınız.',
+      tips: ['Havalimanında veya JR istasyonlarında alın', '500¥ depozito var (iade edilebilir)', 'Welcome Suica için depozito yok', 'Apple Pay ile iPhone\'a da eklenebilir'],
+      youtube: 'o7fFw3lEi7E'
+    },
+
+    // 🛍️ ALIŞVERİŞ BÖLGELERİ
+    {
+      id: 'akihabara', icon: '🎮', name: 'Akihabara',
+      location: 'Tokyo', price: 0, perPerson: false, category: 'shopping',
+      lat: 35.7022, lng: 139.7741,
+      image: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=800',
+      description: 'Elektronik ve anime cenneti! Yodobashi Camera, manga dükkanları, maid cafeler, retro oyun mağazaları, Gundam figürleri... Otaku kültürünün kalbi.',
+      tips: ['Yodobashi Camera devasa (8 kat elektronik)', 'Super Potato retro oyun cenneti', 'Maid cafe deneyin (en azından bir kez)', 'Gece neon ışıkları çok güzel'],
+      youtube: '7j0SkFgJFgM'
+    },
+    {
+      id: 'harajuku', icon: '🌈', name: 'Harajuku & Takeshita',
+      location: 'Tokyo', price: 0, perPerson: false, category: 'shopping',
+      lat: 35.6702, lng: 139.7026,
+      image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800',
+      description: 'Tokyo\'nun en renkli bölgesi! Takeshita Caddesi, vintage dükkanlar, crepe standları, kawaii kültür. Gençlik modası ve street style\'ın merkezi.',
+      tips: ['Hafta sonu çok kalabalık', 'Marion Crepes efsanevi', 'Cat Street daha sakin ve butik', 'Meiji Shrine\'a yürüme mesafesinde'],
+      youtube: 'pnW-VNXuFog'
+    },
+    {
+      id: 'shibuya', icon: '🚶', name: 'Shibuya Crossing',
+      location: 'Tokyo', price: 0, perPerson: false, category: 'shopping',
+      lat: 35.6595, lng: 139.7004,
+      image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800',
+      description: 'Dünyanın en kalabalık kavşağı! Her yeşil ışıkta 3.000 kişi karşıdan karşıya. Hachiko heykeli, alışveriş merkezleri, gece hayatı. Tokyo\'nun nabzı burada atar.',
+      tips: ['Starbucks\'tan yukarıdan izleyin', 'Mag\'s Park rooftop da iyi açı', 'Hachiko heykeli buluşma noktası', 'Shibuya Sky gözlem kulesi yeni ve muhteşem'],
+      youtube: 'gGLP6T6K-bE'
+    },
+    {
+      id: 'dotonbori', icon: '🦀', name: 'Dotonbori',
+      location: 'Osaka', price: 0, perPerson: false, category: 'shopping',
+      lat: 34.6687, lng: 135.5013,
+      image: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800',
+      description: 'Osaka\'nın neon cenneti! Glico koşucusu, dev yengeç tabelası, takoyaki, okonomiyaki... Yemek cennetinde gece yürüyüşü. "Kuidaore" (yiyerek batma) burada yaşanır.',
+      tips: ['Gece neon ışıkları çok güzel', 'Takoyaki ve okonomiyaki deneyin', 'Kuromon Market yakınında (sabah kahvaltı)', 'Shinsaibashi alışveriş caddesi de burada'],
+      youtube: 'wL_6gPe2LNM'
+    }
+  ];
+
+  const CATEGORIES = {
+    theme: { icon: '🎢', name: 'Tema Parkları & Eğlence' },
+    temple: { icon: '⛩️', name: 'Tapınaklar & Tarihi Yerler' },
+    food: { icon: '🍜', name: 'Yemek Deneyimleri' },
+    culture: { icon: '🎭', name: 'Kültürel Deneyimler' },
+    nature: { icon: '🗻', name: 'Doğa & Manzara' },
+    transport: { icon: '🚄', name: 'Ulaşım' },
+    shopping: { icon: '🛍️', name: 'Alışveriş Bölgeleri' }
+  };
+
+  // --- 9 Günlük Gezi Planı ---
+  const TRIP_PLAN = [
+    {
+      day: 1,
+      city: 'osaka',
+      title: 'Osaka\'ya Varış!',
+      subtitle: 'Işıklar, Neonlar ve Lezzetler 🌃',
+      emoji: '🛬',
+      activities: [
+        { time: 'Akşam', type: 'photo', icon: '📸', name: 'Dotonbori Işık Şovu', desc: 'Kanal yürüyüşü + ünlü Glico koşucusu ile selfie!', tip: 'En güzel fotoğraflar güneş battıktan sonra çıkar' },
+        { time: '', type: 'food', icon: '🐙', name: 'Takoyaki Zamanı', desc: 'Sıcak sıcak ahtapotlu toplar - dikkat dil yakar!' },
+        { time: '', type: 'food', icon: '🥞', name: 'Okonomiyaki', desc: 'Japon pizzası! İçine istediğini koy, sosla ye' },
+        { time: '', type: 'food', icon: '🍢', name: 'Kushikatsu', desc: 'Çıtır çıtır kızartılmış şişler - sosu iki kere BANMA!' }
+      ],
+      foods: ['Takoyaki', 'Okonomiyaki', 'Kushikatsu'],
+      highlight: { title: '⭐ Günün Yıldızı', text: 'Glico tabelası önünde aile fotoğrafı çektir!' }
+    },
+    {
+      day: 2,
+      city: 'osaka',
+      title: 'Osaka Keşfi',
+      subtitle: 'Akvaryum veya Kale + Alışveriş 🏯',
+      emoji: '🐋',
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '🐋', name: 'Osaka Akvaryum Kaiyukan', desc: 'Dev balina köpekbalığı! Dünyanın en büyük akvaryumlarından', tip: 'Online bilet alırsan kuyruk yok' },
+        { time: 'VEYA', type: 'activity', icon: '🏯', name: 'Osaka Kalesi', desc: 'Ninja gibi hisset! Park ve bahçelerde koş', tip: 'Kaleye çıkmak ücretli ama park ücretsiz' },
+        { time: 'Akşam', type: 'activity', icon: '🛍️', name: 'Namba / Shinsaibashi', desc: 'Dev alışveriş sokağı + sokak lezzetleri' },
+        { time: '', type: 'food', icon: '🍜', name: 'Sokak Yemekleri', desc: 'Gyoza, karaage, matcha dondurma...' }
+      ],
+      foods: ['Gyoza', 'Karaage', 'Matcha Dondurma'],
+      highlight: { title: '💡 Anne-Baba İpucu', text: 'Bugün rahat tempo - çocuk yorulmasın!' }
+    },
+    {
+      day: 3,
+      city: 'osaka',
+      title: 'UNIVERSAL STUDIOS! 🎢',
+      subtitle: 'Tüm gün eğlence - Super Nintendo World! 🍄',
+      emoji: '🎮',
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '⏰', name: 'Erken Kalk!', desc: 'Park açılışına git - kuyruklar %70 azalır', tip: 'Açılıştan 30 dk önce kapıda ol' },
+        { time: '', type: 'activity', icon: '🍄', name: 'Super Nintendo World', desc: 'Mario\'nun dünyasına gir! Gerçek Mario Kart sür!', tip: 'Timed Entry uygulamadan al - ZORUNLU!' },
+        { time: '', type: 'activity', icon: '🦖', name: 'Jurassic Park', desc: 'Dinozorların arasında! Su sıçramasına dikkat 💦' },
+        { time: '', type: 'activity', icon: '🕷️', name: 'Spider-Man / Minions', desc: 'Daha fazla macera!' },
+        { time: 'Akşam', type: 'sleep', icon: '😴', name: 'Yorgun ama Mutlu', desc: 'Bugün erken yat - yarın Kyoto!' }
+      ],
+      foods: ['Park içi yemekler', 'Mario temalı burgerler'],
+      highlight: { title: '🎟️ ÖNEMLİ', text: 'Express Pass alırsan gün kurtarır! Nintendo için özellikle şart.' }
+    },
+    {
+      day: 4,
+      city: 'kyoto',
+      title: 'Kyoto Macerası Başlıyor!',
+      subtitle: 'Bambu Ormanı - Film Sahnesi Gibi! 🎋',
+      emoji: '🎋',
+      travel: { from: 'Osaka', to: 'Kyoto', duration: '15 dk', type: 'tren' },
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '🎋', name: 'Arashiyama Bambu Ormanı', desc: 'Yüzlerce dev bambu arasında yürü - sihirli!', tip: 'Sabah 7-8 arası git, kimse olmaz' },
+        { time: 'Öğlen', type: 'photo', icon: '🌉', name: 'Togetsukyo Köprüsü', desc: 'Ay Geçiş Köprüsü - nehir kenarında piknik' },
+        { time: '', type: 'activity', icon: '🐒', name: 'Maymun Parkı', desc: 'Tepede yabani maymunlar! Besleme şansı' },
+        { time: 'Akşam', type: 'sleep', icon: '🏮', name: 'Sakin Sokaklar', desc: 'Kyoto\'nun eski mahallelerinde yürüyüş' }
+      ],
+      foods: ['Soba', 'Udon', 'Matcha Tatlı'],
+      highlight: { title: '📸 Fotoğraf İpucu', text: 'Bambu ormanında yukarı bak ve fotoğraf çek!' }
+    },
+    {
+      day: 5,
+      city: 'kyoto',
+      title: 'Kırmızı Kapılar & Market',
+      subtitle: 'Binlerce Torii Kapısı - Görev Gibi! ⛩️',
+      emoji: '⛩️',
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '⛩️', name: 'Fushimi Inari', desc: '10.000 kırmızı kapı! Tepeden şehri gör', tip: 'Video oyunu gibi düşün - her kapı bir level!' },
+        { time: 'Öğlen', type: 'food', icon: '🍡', name: 'Nishiki Market', desc: 'Atıştırmalık cenneti! Her şeyi dene', tip: 'Matcha dondurma ve mochi kaçırma' },
+        { time: 'Akşam', type: 'activity', icon: '🛕', name: 'Kiyomizu-dera', desc: 'Uçan sahne! Şehrin üstünde tapınak' },
+        { time: '', type: 'photo', icon: '👘', name: 'Gion Yürüyüşü', desc: 'Geyşa görebilirsin! (sessizce izle)' }
+      ],
+      foods: ['Mochi', 'Matcha Her Şey', 'Yaki Dango'],
+      highlight: { title: '🏆 Çocuk Görevi', text: '100 kapıdan geç, dilekte bulun, görev tamam!' }
+    },
+    {
+      day: 6,
+      city: 'nara',
+      title: 'Geyiklerle Tanış!',
+      subtitle: 'Nara + Tokyo\'ya Tren Yolculuğu 🦌',
+      emoji: '🦌',
+      travel: { from: 'Kyoto', to: 'Tokyo', duration: '2s 15dk', type: 'shinkansen' },
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '🦌', name: 'Nara Park', desc: 'Yüzlerce sevimli geyik! Bisküvi al, besle', tip: 'Geyikler eğilince sen de eğil - selam veriyorlar!' },
+        { time: '', type: 'activity', icon: '🛕', name: 'Todai-ji Tapınağı', desc: 'Dünyanın en büyük bronz Buda heykeli!' },
+        { time: 'Öğleden Sonra', type: 'travel', icon: '🚄', name: 'Shinkansen!', desc: 'Kyoto → Tokyo! Hız treni deneyimi - 300 km/s', tip: 'Pencere kenarı al, Fuji Dağı\'nı görebilirsin!' },
+        { time: 'Akşam', type: 'sleep', icon: '🏨', name: 'Tokyo Oteli', desc: 'Check-in + yakın çevrede yürüyüş' }
+      ],
+      foods: ['Kakinoha-zushi', 'Eki-ben (tren kutusu)'],
+      highlight: { title: '🚅 Shinkansen Macerası', text: '300 km/s hızla uçuyorsun! Eki-ben al ve trende ye!' }
+    },
+    {
+      day: 7,
+      city: 'tokyo',
+      title: 'Tokyo Klasikleri',
+      subtitle: 'Tapınak, Park ve Shibuya Çılgınlığı 🗼',
+      emoji: '⛩️',
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '🏯', name: 'Senso-ji & Asakusa', desc: 'Tokyo\'nun en eski tapınağı + alışveriş sokağı', tip: 'Nakamise sokağında hediyelik al' },
+        { time: 'Öğlen', type: 'activity', icon: '🌳', name: 'Ueno Park', desc: 'Dev park! Göl, hayvanat bahçesi, müzeler' },
+        { time: 'Akşam', type: 'photo', icon: '🚶', name: 'Shibuya Kavşağı', desc: 'Dünyanın en kalabalık kavşağı! Ortasında dur', tip: 'Starbucks\'tan izle, sonra ortasında yürü' },
+        { time: '', type: 'food', icon: '🍜', name: 'Ramen Gecesi', desc: 'Gerçek Tokyo rameni dene!' }
+      ],
+      foods: ['Ramen', 'Melon Pan', 'Taiyaki'],
+      highlight: { title: '🎬 Film Sahnesi', text: 'Shibuya kavşağında herkes seninle yürüyor!' }
+    },
+    {
+      day: 8,
+      city: 'tokyo',
+      title: 'TOKYO DİSNEYLAND! 🏰',
+      subtitle: 'Büyülü Krallık - Tüm Gün Masal 🎠',
+      emoji: '🏰',
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '🏰', name: 'Sihirli Kale', desc: 'Sindirella\'nın kalesine gir!', tip: 'Premier Access uygulamadan al' },
+        { time: '', type: 'activity', icon: '🚀', name: 'Space Mountain', desc: 'Karanlıkta uzay yolculuğu!' },
+        { time: '', type: 'activity', icon: '👻', name: 'Haunted Mansion', desc: '999 hayalet! Ama sevimli korku' },
+        { time: '', type: 'activity', icon: '🎠', name: 'It\'s a Small World', desc: 'Tüm dünyayı 15 dakikada gez!' },
+        { time: 'Akşam', type: 'photo', icon: '🎆', name: 'Gece Gösterisi', desc: 'Havai fişek + projektör show!' }
+      ],
+      foods: ['Mickey şekilli yemekler', 'Popcorn', 'Churros'],
+      highlight: { title: '🎢 Tercih', text: 'Disneyland = çocuk dostu | DisneySea = daha büyükler için' }
+    },
+    {
+      day: 9,
+      city: 'tokyo',
+      title: 'teamLab & Veda',
+      subtitle: 'Işık Müzesi + Son Alışveriş 🌈',
+      emoji: '✨',
+      activities: [
+        { time: 'Sabah', type: 'activity', icon: '✨', name: 'teamLab Borderless', desc: 'Sihirli ışık dünyası! Duvarlar hareket ediyor', tip: 'Koyu renk giy, ışıklar üstünde oynasın' },
+        { time: 'VEYA', type: 'activity', icon: '💧', name: 'teamLab Planets', desc: 'Suyun içinde yürü! Duyusal deneyim', tip: 'Diz altı şort/etek giy, ıslak olursun' },
+        { time: 'Öğlen', type: 'activity', icon: '🛍️', name: 'Son Alışveriş', desc: 'Odaiba veya Ginza\'da son hediyeler' },
+        { time: 'Akşam', type: 'travel', icon: '✈️', name: 'Havalimanı', desc: 'Sayonara Japonya! Görüşmek üzere 👋' }
+      ],
+      foods: ['Son ramen', 'Havalimanı bento'],
+      highlight: { title: '✈️ Uçuş İpucu', text: 'Sabah uçuşunuz varsa teamLab\'i Gün 7\'ye al!' }
+    }
+  ];
+
+  function renderTimeline() {
+    const container = byId('tripTimeline');
+    if (!container) return;
+    
+    let html = '';
+    
+    TRIP_PLAN.forEach((day, index) => {
+      // Travel indicator between days
+      if (day.travel && index > 0) {
+        html += `
+          <div class="travel-indicator">
+            <div class="travel-badge">
+              🚄 ${day.travel.from} → ${day.travel.to} (${day.travel.duration})
+            </div>
+          </div>
+        `;
+      }
+      
+      html += `
+        <div class="timeline-day" data-day="${day.day}">
+          <div class="day-header" onclick="toggleDay(${day.day})">
+            <div class="day-number ${day.city}">
+              <span class="num">${day.day}</span>
+              <span class="label">GÜN</span>
+            </div>
+            <div class="day-info">
+              <div class="day-title">${day.emoji} ${day.title}</div>
+              <div class="day-subtitle">${day.subtitle}</div>
+            </div>
+            <div class="day-toggle">▼</div>
+          </div>
+          <div class="day-content">
+            ${day.activities.map(act => `
+              <div class="activity-block">
+                <div class="activity-time">${act.time}</div>
+                <div class="activity-dot ${act.type}"></div>
+                <div class="activity-details">
+                  <div class="activity-name">${act.icon} ${act.name}</div>
+                  <div class="activity-desc">${act.desc}</div>
+                  ${act.tip ? `<div class="activity-tip">${act.tip}</div>` : ''}
+                </div>
+              </div>
+            `).join('')}
+            ${day.foods.length > 0 ? `
+              <div class="food-items">
+                ${day.foods.map(f => `<span class="food-tag">🍴 ${f}</span>`).join('')}
+              </div>
+            ` : ''}
+            ${day.highlight ? `
+              <div class="highlight-box">
+                <div class="highlight-title">${day.highlight.title}</div>
+                <div class="highlight-text">${day.highlight.text}</div>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    });
+    
+    container.innerHTML = html;
+  }
+  
+  function toggleDay(dayNum) {
+    const dayEl = document.querySelector(`.timeline-day[data-day="${dayNum}"]`);
+    if (dayEl) {
+      dayEl.classList.toggle('expanded');
+    }
+  }
+
+  // --- Alışveriş Mekanları Veritabanı ---
+  const SHOPPING_PLACES = [
+    // 🗼 TOKYO
+    {
+      id: 'donki', icon: '🏬', name: 'Don Quijote (Donki)', city: 'Tokyo',
+      description: 'Japonya\'nın en ünlü discount mağazası! 24 saat açık, her şey var: elektronik, kozmetik, snack, hediyelik eşya, kostümler ve daha fazlası. Shibuya, Shinjuku ve Akihabara\'da dev şubeleri var.',
+      tips: ['Shibuya Mega Donki 24 saat açık', 'Tax-free için pasaport getirin', 'Japonya\'ya özel snack\'ler için en ucuz yer', 'Akihabara şubesi anime ürünleri için harika'],
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800',
+      youtube: 'OBpVNyKSqyA',
+      lat: 35.6595, lng: 139.6998
+    },
+    {
+      id: 'yodobashi', icon: '📷', name: 'Yodobashi Camera', city: 'Tokyo',
+      description: 'Japonya\'nın en büyük elektronik mağazası! Akihabara\'da 8 katlı dev bina. Kamera, laptop, telefon, oyun konsolları, ev aletleri, saat ve daha fazlası. Tax-free!',
+      tips: ['Akihabara şubesi 8 kat, her şey var', 'Fiyat pazarlığı yapılabilir', 'Yodobashi Point Card çıkartın', 'Restoran katı var, yemek molası için ideal'],
+      image: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800',
+      youtube: 'QH2RpI_IpTQ',
+      lat: 35.6986, lng: 139.7713
+    },
+    {
+      id: 'biccamera', icon: '📱', name: 'Bic Camera', city: 'Tokyo',
+      description: 'Yodobashi\'nin rakibi! Elektronik, kamera, oyun konsolları için harika seçenekler. Daha merkezi konumlarda şubeleri var. Yurakucho ve Shibuya şubeleri popüler.',
+      tips: ['Yurakucho şubesi çok merkezi', 'Yodobashi ile fiyat karşılaştırın', 'Bic Camera Point Card çıkartın', 'Apple ürünleri için güvenilir'],
+      image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800',
+      youtube: 'pYG_VFWQFGA',
+      lat: 35.6745, lng: 139.7634
+    },
+    {
+      id: 'uniqlo', icon: '👚', name: 'Uniqlo Ginza Flagship', city: 'Tokyo',
+      description: '12 katlı dev Uniqlo! Japonya\'ya özel ürünler, limited edition koleksiyonlar, UT (grafik tişört) mağazası. Dünyada başka yerde bulamayacağınız ürünler var.',
+      tips: ['12. kat Japonya özel ürünleri', 'UT Store\'da anime/oyun tişörtleri', 'Heattech ve Airism ürünleri çok ucuz', 'Japonya\'da Uniqlo %30 daha ucuz'],
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800',
+      youtube: 'qQwH17RXQwo',
+      lat: 35.6712, lng: 139.7649
+    },
+    {
+      id: 'shibuya109', icon: '🎀', name: 'Shibuya 109', city: 'Tokyo',
+      description: 'Japon genç kadın modasının kalbi! Harajuku stili, Gyaru modası, aksesuarlar. Kawaii kültürünün merkezi. 10 kat moda!',
+      tips: ['B2 katı kozmetik için harika', 'Japon gençlerin ne giydiğini görün', 'Fotoğraf çekmek için izin alın', 'Hafta sonu çok kalabalık'],
+      image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800',
+      youtube: 'bK9P3e7b7zI',
+      lat: 35.6598, lng: 139.6994
+    },
+    {
+      id: 'tokyuhands', icon: '✂️', name: 'Tokyu Hands', city: 'Tokyo',
+      description: 'DIY cennetl! Kırtasiye, ev dekorasyonu, mutfak gereçleri, hobi malzemeleri, seyahat aksesuarları. Yaratıcı ürünler ve benzersiz Japon icatları.',
+      tips: ['Shibuya şubesi 8 kat', 'Japon kırtasiye ürünleri harika', 'Seyahat aksesuarları katı çok faydalı', 'Hediyelik için benzersiz ürünler'],
+      image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800',
+      youtube: 'D5ld_C2eoQY',
+      lat: 35.6620, lng: 139.6988
+    },
+    {
+      id: 'loft', icon: '📓', name: 'LOFT', city: 'Tokyo',
+      description: 'Lifestyle mağazası! Kırtasiye, kozmetik, hediyelik eşya, ev aksesuarları. Tokyu Hands\'e benzer ama daha modern ve trendy.',
+      tips: ['Shibuya ve Ginza şubeleri büyük', 'Japon kırtasiye markalarının merkezi', 'Kozmetik bölümü çok kapsamlı', 'Mevsimsel ürünler çok güzel'],
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+      youtube: 'VYsCPjOuLyI',
+      lat: 35.6608, lng: 139.7015
+    },
+    {
+      id: 'ginzasix', icon: '💎', name: 'Ginza Six', city: 'Tokyo',
+      description: 'Tokyo\'nun en lüks alışveriş merkezi! Premium markalar, sanat galerileri, çatı bahçesi. Japonya\'nın en büyük Dior, LV mağazaları burada.',
+      tips: ['Çatı bahçesi ücretsiz ve harika manzara', 'B2 kat Japon gourmet yemekleri', 'Sanat eserleri ve sergiler var', 'Tax-free lounge çok lüks'],
+      image: 'https://images.unsplash.com/photo-1555529669-2269763671c0?w=800',
+      youtube: 'J7JYrBlxlIY',
+      lat: 35.6697, lng: 139.7635
+    },
+    // 🏯 OSAKA
+    {
+      id: 'shinsaibashi', icon: '🛍️', name: 'Shinsaibashi-suji', city: 'Osaka',
+      description: '600 metre uzunluğunda kapalı alışveriş caddesi! Japonya\'nın en eski alışveriş bölgelerinden biri. Her türlü mağaza, restoran ve kafe.',
+      tips: ['Dotonbori\'ye yürüyüş mesafesinde', 'Daimarudan başlayıp Namba\'ya yürüyün', 'Drug store\'lar çok ucuz', 'Akşamları daha canlı'],
+      image: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800',
+      youtube: 'iJQpHBPfxzM',
+      lat: 34.6727, lng: 135.5012
+    },
+    {
+      id: 'nambaparks', icon: '🌳', name: 'Namba Parks', city: 'Osaka',
+      description: 'Çatı bahçeli modern AVM! 120+ mağaza, 8 katlı bahçe terası, sinema ve restoranlar. Osaka\'nın en güzel alışveriş merkezi.',
+      tips: ['Çatı bahçesi ücretsiz, fotoğraf için harika', '8. kat restoran bölgesi çok iyi', 'Namba istasyonuna direkt bağlı', 'Gün batımında çatıya çıkın'],
+      image: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800',
+      youtube: 'TyEAD4PGXHQ',
+      lat: 34.6621, lng: 135.5016
+    },
+    {
+      id: 'grandfront', icon: '🏢', name: 'Grand Front Osaka', city: 'Osaka',
+      description: 'Umeda\'daki dev kompleks! 3 bina, 266 mağaza. Moda, restoran, showroom\'lar. Osaka istasyonuna direkt bağlı.',
+      tips: ['Osaka Station City\'ye bağlı', 'Panasonic Center showroom ilginç', 'Kuzey bina restoranlar için', 'Yağmurlu günler için ideal'],
+      image: 'https://images.unsplash.com/photo-1480796927426-f609979314bd?w=800',
+      youtube: 'oXSqBZD-APs',
+      lat: 34.7046, lng: 135.4945
+    },
+    {
+      id: 'hepfive', icon: '🎡', name: 'HEP FIVE', city: 'Osaka',
+      description: 'Çatısında kırmızı dönme dolap olan AVM! Genç moda, anime mağazaları, arkad oyunları. Dönme dolap Osaka manzarası için harika.',
+      tips: ['Dönme dolap 600 yen, 15 dakika', 'Anime ve manga mağazaları var', 'Genç Japon modası için ideal', 'Fotoğraf çekimi için ikonik'],
+      image: 'https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?w=800',
+      youtube: 'rYpjPVFJ3_0',
+      lat: 34.7050, lng: 135.5005
+    }
+  ];
+
+  // --- State ---
+  const KEY = "jp_savings_app_v6";
+  const defaults = {
+    savings: 100000, tripDate: "", days: 9, adults: 2, children: 1,
+    nightly: 6000, daily: 2500, electronics: 30000, fixed: 15000, bufferPct: 10,
+    selectedActivities: []
+  };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      return raw ? { ...defaults, ...JSON.parse(raw) } : { ...defaults };
+    } catch (e) { return { ...defaults }; }
+  }
+
+  function saveState(st) { localStorage.setItem(KEY, JSON.stringify(st)); }
+
+  function getDaysUntil(dateStr) {
+    if (!dateStr) return null;
+    const target = new Date(dateStr);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    target.setHours(0, 0, 0, 0);
+    return Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  }
+
+  function adjustValue(field, delta) {
+    const input = byId(field);
+    const display = byId(field + 'Display');
+    let val = parseInt(input.value) || 0;
+    val = Math.max(field === 'days' ? 1 : 0, val + delta);
+    if (field === 'days') val = Math.min(val, 60);
+    if (field === 'adults') val = Math.min(val, 10);
+    if (field === 'children') val = Math.min(val, 10);
+    input.value = val;
+    display.textContent = val;
+    render();
+  }
+
+  // --- Modal ---
+  let currentModalActivity = null;
+
+  function openModal(id) {
+    const act = ACTIVITIES.find(a => a.id === id);
+    if (!act) return;
+    currentModalActivity = act;
+    const st = getFormState();
+    const totalPeople = st.adults + st.children;
+
+    byId('modalImage').src = act.image;
+    byId('modalIcon').textContent = act.icon;
+    byId('modalTitle').textContent = act.name;
+    byId('modalLocation').querySelector('span').textContent = act.location;
+    byId('modalLocation').style.display = 'block';
+    byId('modalDesc').textContent = act.description;
+
+    // Tips
+    let tipsHtml = '';
+    act.tips.forEach(tip => {
+      tipsHtml += `<div class="modal-tip-item">💡 ${tip}</div>`;
+    });
+    byId('modalTips').innerHTML = tipsHtml;
+
+    // YouTube Button
+    const ytBtn = byId('modalYoutubeBtn');
+    if (act.youtube) {
+      ytBtn.style.display = 'flex';
+      ytBtn.onclick = () => window.open(`https://www.youtube.com/watch?v=${act.youtube}`, '_blank');
+    } else {
+      ytBtn.style.display = 'none';
+    }
+
+    // Map Button
+    const mapBtn = byId('modalMapBtn');
+    if (act.lat && act.lng) {
+      mapBtn.style.display = 'flex';
+      mapBtn.onclick = () => window.open(`https://www.google.com/maps/search/?api=1&query=${act.lat},${act.lng}`, '_blank');
+    } else {
+      mapBtn.style.display = 'none';
+    }
+
+    // Price
+    const actPrice = act.perPerson ? act.price * totalPeople : act.price;
+    byId('modalPrice').textContent = act.price === 0 ? 'Ücretsiz' : fmt(actPrice);
+    byId('modalPriceNote').textContent = act.perPerson && act.price > 0 ? `${totalPeople} kişi × ${fmt(act.price)}` : '';
+
+    // Show footer with add button
+    byId('modalBtnContainer').style.display = 'flex';
+
+    // Button
+    const btn = byId('modalBtn');
+    const isSelected = st.selectedActivities.includes(id);
+    btn.textContent = isSelected ? '✓ Listede' : 'Listeye Ekle';
+    btn.className = isSelected ? 'modal-btn added' : 'modal-btn';
+
+    byId('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    byId('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    currentModalActivity = null;
+  }
+
+  function openVideo() {
+    if (!currentModalActivity) return;
+    const searchQuery = encodeURIComponent(currentModalActivity.name + ' Japan tour 4K');
+    window.open(`https://www.youtube.com/results?search_query=${searchQuery}`, '_blank');
+  }
+
+  function showOnMap() {
+    const st = getFormState();
+    const selectedIds = st.selectedActivities || [];
+    
+    // Get activities with coordinates
+    const selectedWithCoords = ACTIVITIES.filter(a => 
+      selectedIds.includes(a.id) && a.lat && a.lng
+    );
+    
+    if (selectedWithCoords.length === 0) {
+      alert('Lütfen haritada gösterilecek aktivite seçin!');
+      return;
+    }
+    
+    // Build Google Maps URL with multiple markers
+    if (selectedWithCoords.length === 1) {
+      // Single location
+      const a = selectedWithCoords[0];
+      const url = `https://www.google.com/maps/search/?api=1&query=${a.lat},${a.lng}`;
+      window.open(url, '_blank');
+    } else {
+      // Multiple locations - use directions mode
+      const waypoints = selectedWithCoords.map(a => `${a.lat},${a.lng}`);
+      const origin = waypoints[0];
+      const destination = waypoints[waypoints.length - 1];
+      const middle = waypoints.slice(1, -1).join('|');
+      
+      let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=transit`;
+      if (middle) {
+        url += `&waypoints=${middle}`;
+      }
+      window.open(url, '_blank');
+    }
+  }
+
+  function updateMapButton() {
+    const st = getFormState();
+    const selectedIds = st.selectedActivities || [];
+    const btn = byId('showMapBtn');
+    const hint = byId('mapHint');
+    
+    const selectedWithCoords = ACTIVITIES.filter(a => 
+      selectedIds.includes(a.id) && a.lat && a.lng
+    );
+    
+    if (selectedWithCoords.length === 0) {
+      btn.disabled = true;
+      hint.textContent = 'Haritada göstermek için aktivite seçin';
+    } else {
+      btn.disabled = false;
+      hint.textContent = `${selectedWithCoords.length} konum haritada gösterilecek`;
+    }
+  }
+
+  // --- Şehir Bazlı Konaklama Planı ---
+  const CITY_DATA = {
+    'Tokyo': { icon: '🗼', nights: 0, activities: [], hotelMin: 1500, hotelMax: 3000 },
+    'Osaka': { icon: '🏯', nights: 0, activities: [], hotelMin: 1200, hotelMax: 2500 },
+    'Kyoto': { icon: '⛩️', nights: 0, activities: [], hotelMin: 1500, hotelMax: 3500 },
+    'Nara': { icon: '🦌', nights: 0, activities: [], hotelMin: 1000, hotelMax: 2000 },
+    'Hakone': { icon: '♨️', nights: 0, activities: [], hotelMin: 2500, hotelMax: 5000 },
+    'Yokohama': { icon: '🌆', nights: 0, activities: [], hotelMin: 1200, hotelMax: 2500 },
+    'Himeji': { icon: '🏰', nights: 0, activities: [], hotelMin: 1000, hotelMax: 2000 },
+    'Nikko': { icon: '🍁', nights: 0, activities: [], hotelMin: 1500, hotelMax: 3500 }
+  };
+
+  function getCityFromLocation(location) {
+    const loc = location.toLowerCase();
+    if (loc.includes('tokyo') || loc.includes('maihama') || loc.includes('mitaka') || loc.includes('azabudai')) return 'Tokyo';
+    if (loc.includes('osaka') || loc.includes('usj')) return 'Osaka';
+    if (loc.includes('kyoto') || loc.includes('fushimi') || loc.includes('gion') || loc.includes('arashiyama')) return 'Kyoto';
+    if (loc.includes('nara')) return 'Nara';
+    if (loc.includes('hakone') || loc.includes('kanagawa')) return 'Hakone';
+    if (loc.includes('yokohama')) return 'Yokohama';
+    if (loc.includes('himeji')) return 'Himeji';
+    if (loc.includes('nikko') || loc.includes('tochigi')) return 'Nikko';
+    if (loc.includes('çevresi')) return 'Tokyo'; // Fuji Dağı günlük tur vb.
+    return null; // "Her yerde" veya "Tüm Japonya" gibi
+  }
+
+  function getActivityDuration(activity) {
+    // Tam gün gerektiren aktiviteler
+    const fullDayActivities = ['usj', 'disney', 'disneysea', 'fuji', 'hakone', 'nikko'];
+    if (fullDayActivities.includes(activity.id)) return 1;
+    // Yarım gün aktiviteler - 2 tanesi 1 gün
+    return 0.5;
+  }
+
+  function updateCityBreakdown() {
+    const st = getFormState();
+    const selectedIds = st.selectedActivities || [];
+    
+    if (selectedIds.length === 0) {
+      byId('cityBreakdown').innerHTML = `
+        <div class="no-selection-msg">
+          <span class="no-selection-icon">🎯</span>
+          <p>Aktivite seçerek konaklama planınızı oluşturun</p>
+        </div>
+      `;
+      byId('tripSummary').style.display = 'none';
+      return;
+    }
+
+    // Şehir verilerini sıfırla
+    const cityStats = {};
+    Object.keys(CITY_DATA).forEach(city => {
+      cityStats[city] = { 
+        ...CITY_DATA[city], 
+        nights: 0, 
+        activities: [],
+        duration: 0
+      };
+    });
+
+    // Seçilen aktiviteleri şehirlere göre grupla
+    selectedIds.forEach(id => {
+      const act = ACTIVITIES.find(a => a.id === id);
+      if (!act) return;
+      
+      const city = getCityFromLocation(act.location);
+      if (city && cityStats[city]) {
+        cityStats[city].activities.push(act);
+        cityStats[city].duration += getActivityDuration(act);
+      }
+    });
+
+    // Gece sayısını hesapla (duration'a göre yukarı yuvarla)
+    Object.keys(cityStats).forEach(city => {
+      if (cityStats[city].duration > 0) {
+        cityStats[city].nights = Math.ceil(cityStats[city].duration);
+      }
+    });
+
+    // Sadece aktivite olan şehirleri göster
+    const activeCities = Object.entries(cityStats)
+      .filter(([_, data]) => data.activities.length > 0)
+      .sort((a, b) => b[1].nights - a[1].nights);
+
+    if (activeCities.length === 0) {
+      byId('cityBreakdown').innerHTML = `
+        <div class="no-selection-msg">
+          <span class="no-selection-icon">🚄</span>
+          <p>Seçilen aktiviteler belirli bir şehre bağlı değil (JR Pass vb.)</p>
+        </div>
+      `;
+      byId('tripSummary').style.display = 'none';
+      return;
+    }
+
+    let html = '';
+    let totalNights = 0;
+    let minHotelCost = 0;
+    let maxHotelCost = 0;
+
+    activeCities.forEach(([city, data]) => {
+      totalNights += data.nights;
+      minHotelCost += data.nights * data.hotelMin;
+      maxHotelCost += data.nights * data.hotelMax;
+
+      html += `
+        <div class="city-plan-item">
+          <div class="city-plan-header">
+            <div class="city-plan-name">
+              <span>${data.icon}</span>
+              ${city}
+            </div>
+            <div class="city-plan-nights">${data.nights} gece</div>
+          </div>
+          <div class="city-plan-activities">
+            ${data.activities.map(a => `<span class="city-activity-tag">${a.icon} ${a.name}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    byId('cityBreakdown').innerHTML = html;
+
+    // Özet hesapla ve göster
+    const totalPeople = st.adults + st.children;
+    const minTotal = minHotelCost * totalPeople;
+    const maxTotal = maxHotelCost * totalPeople;
+
+    byId('tripSummary').style.display = 'block';
+    byId('tripSummaryContent').innerHTML = `
+      <div class="summary-item">
+        <span>👥 Kişi Sayısı</span>
+        <span>${st.adults} yetişkin${st.children > 0 ? ` + ${st.children} çocuk` : ''}</span>
+      </div>
+      <div class="summary-item">
+        <span>🏙️ Ziyaret Edilecek Şehirler</span>
+        <span>${activeCities.length} şehir</span>
+      </div>
+      <div class="summary-item">
+        <span>🌙 Önerilen Konaklama</span>
+        <span>${totalNights} gece</span>
+      </div>
+      <div class="summary-item">
+        <span>📅 Toplam Gezi Süresi</span>
+        <span>${totalNights + 1} gün</span>
+      </div>
+      <div class="summary-total">
+        <span>🏨 Tahmini Otel Maliyeti</span>
+        <span>${fmt(minTotal)} - ${fmt(maxTotal)}</span>
+      </div>
+    `;
+  }
+
+  function toggleFromModal() {
+    if (!currentModalActivity) return;
+    toggleActivity(currentModalActivity.id);
+    const st = getFormState();
+    const isSelected = st.selectedActivities.includes(currentModalActivity.id);
+    const btn = byId('modalBtn');
+    btn.textContent = isSelected ? '✓ Listede' : 'Listeye Ekle';
+    btn.className = isSelected ? 'modal-btn added' : 'modal-btn';
+  }
+
+  byId('modalOverlay').addEventListener('click', (e) => {
+    if (e.target === byId('modalOverlay')) closeModal();
+  });
+
+  // --- Activities ---
+  function renderActivities() {
+    const st = getFormState();
+    const totalPeople = st.adults + st.children;
+    let html = '';
+    let currentCategory = '';
+
+    ACTIVITIES.forEach(act => {
+      if (act.category !== currentCategory) {
+        currentCategory = act.category;
+        const cat = CATEGORIES[currentCategory];
+        html += `<div class="activity-category"><span>${cat.icon}</span>${cat.name}</div>`;
+      }
+
+      const isChecked = st.selectedActivities.includes(act.id);
+      const actPrice = act.perPerson ? act.price * totalPeople : act.price;
+      const priceText = act.price === 0 ? 'Ücretsiz' : fmt(actPrice);
+      const noteText = act.perPerson && act.price > 0 ? `<div class="activity-price-note">${totalPeople} kişi</div>` : '';
+
+      html += `
+        <div class="activity-item ${isChecked ? 'checked' : ''}">
+          <div class="activity-checkbox" onclick="toggleActivity('${act.id}')"></div>
+          <div class="activity-icon" onclick="openModal('${act.id}')">${act.icon}</div>
+          <div class="activity-content" onclick="openModal('${act.id}')">
+            <div class="activity-name">${act.name}</div>
+            <div class="activity-location">${act.location}</div>
+          </div>
+          <div class="activity-actions">
+            <button class="activity-info-btn" onclick="openModal('${act.id}')">ℹ️</button>
+          </div>
+          <div class="activity-price" onclick="toggleActivity('${act.id}')">
+            ${priceText}
+            ${noteText}
+          </div>
+        </div>
+      `;
+    });
+
+    byId('activityList').innerHTML = html;
+    updateActivitiesTotal();
+    updateMapButton();
+    updateCityBreakdown();
+  }
+
+  function toggleActivity(id) {
+    const st = getFormState();
+    const idx = st.selectedActivities.indexOf(id);
+    if (idx > -1) st.selectedActivities.splice(idx, 1);
+    else st.selectedActivities.push(id);
+    saveState(st);
+    renderActivities();
+    render();
+  }
+
+  function updateActivitiesTotal() {
+    const st = getFormState();
+    const totalPeople = st.adults + st.children;
+    let total = 0;
+    st.selectedActivities.forEach(id => {
+      const act = ACTIVITIES.find(a => a.id === id);
+      if (act) total += act.perPerson ? act.price * totalPeople : act.price;
+    });
+    byId('activitiesTotal').textContent = fmt(total);
+    byId('activitiesCount').textContent = `${st.selectedActivities.length} seçili`;
+    return total;
+  }
+
+  function getActivitiesTotal() {
+    const st = getFormState();
+    const totalPeople = st.adults + st.children;
+    let total = 0;
+    st.selectedActivities.forEach(id => {
+      const act = ACTIVITIES.find(a => a.id === id);
+      if (act) total += act.perPerson ? act.price * totalPeople : act.price;
+    });
+    return total;
+  }
+
+  // --- Shopping Functions ---
+  let currentShoppingPlace = null;
+
+  function renderShopping() {
+    const tokyoPlaces = SHOPPING_PLACES.filter(p => p.city === 'Tokyo');
+    const osakaPlaces = SHOPPING_PLACES.filter(p => p.city === 'Osaka');
+    
+    let html = '';
+    
+    // Tokyo
+    html += `<div class="shopping-city">
+      <div class="shopping-city-header">🗼 Tokyo</div>
+      <div class="shopping-list">`;
+    
+    tokyoPlaces.forEach(place => {
+      html += `
+        <div class="shopping-item clickable" onclick="openShoppingModal('${place.id}')">
+          <span class="shopping-icon">${place.icon}</span>
+          <div class="shopping-info">
+            <div class="shopping-name">${place.name}</div>
+            <div class="shopping-desc">${place.description.substring(0, 60)}...</div>
+          </div>
+          <button class="shopping-info-btn">ℹ️</button>
+        </div>
+      `;
+    });
+    
+    html += `</div></div>`;
+    
+    // Osaka
+    html += `<div class="shopping-city">
+      <div class="shopping-city-header">🏯 Osaka</div>
+      <div class="shopping-list">`;
+    
+    osakaPlaces.forEach(place => {
+      html += `
+        <div class="shopping-item clickable" onclick="openShoppingModal('${place.id}')">
+          <span class="shopping-icon">${place.icon}</span>
+          <div class="shopping-info">
+            <div class="shopping-name">${place.name}</div>
+            <div class="shopping-desc">${place.description.substring(0, 60)}...</div>
+          </div>
+          <button class="shopping-info-btn">ℹ️</button>
+        </div>
+      `;
+    });
+    
+    html += `</div></div>`;
+    
+    byId('shoppingList').innerHTML = html;
+  }
+
+  function openShoppingModal(id) {
+    const place = SHOPPING_PLACES.find(p => p.id === id);
+    if (!place) return;
+    
+    currentShoppingPlace = place;
+    
+    byId('modalImage').src = place.image;
+    byId('modalTitle').textContent = place.name;
+    byId('modalDesc').textContent = place.description;
+    
+    // Tips
+    let tipsHtml = '';
+    place.tips.forEach(tip => {
+      tipsHtml += `<div class="modal-tip-item">💡 ${tip}</div>`;
+    });
+    byId('modalTips').innerHTML = tipsHtml;
+    
+    // YouTube button
+    const ytBtn = byId('modalYoutubeBtn');
+    if (place.youtube) {
+      ytBtn.style.display = 'flex';
+      ytBtn.onclick = () => window.open(`https://www.youtube.com/watch?v=${place.youtube}`, '_blank');
+    } else {
+      ytBtn.style.display = 'none';
+    }
+    
+    // Hide the add/remove button for shopping
+    byId('modalBtnContainer').style.display = 'none';
+    
+    // Show map button for shopping places
+    const mapBtn = byId('modalMapBtn');
+    if (place.lat && place.lng) {
+      mapBtn.style.display = 'flex';
+      mapBtn.onclick = () => window.open(`https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`, '_blank');
+    } else {
+      mapBtn.style.display = 'none';
+    }
+    
+    byId('modalOverlay').classList.add('active');
+  }
+
+  // --- Compute & Render ---
+  function compute(st) {
+    const fixed = Math.max(0, st.fixed);
+    const nightly = Math.max(0, st.nightly);
+    const days = Math.max(1, st.days);
+    const nights = Math.max(0, days - 1);
+    const daily = Math.max(0, st.daily);
+    const electronics = Math.max(0, st.electronics);
+    const bufferPct = clamp(st.bufferPct || 0, 0, 50) / 100;
+    const adults = Math.max(1, st.adults);
+    const children = Math.max(0, st.children);
+    const totalPeople = adults + children;
+
+    const activitiesTotal = getActivitiesTotal();
+    const dailyTotal = daily * totalPeople * days;
+    const nightlyTotal = nightly * nights;
+    const base = fixed + nightlyTotal + dailyTotal + electronics + activitiesTotal;
+    const buffer = base * bufferPct;
+    const target = base + buffer;
+
+    const savings = Math.max(0, st.savings);
+    const gap = target - savings;
+    const pct = target > 0 ? (savings / target) * 100 : 0;
+
+    const daysUntil = getDaysUntil(st.tripDate);
+    const weeksUntil = daysUntil ? Math.max(1, Math.ceil(daysUntil / 7)) : null;
+    const monthsUntil = daysUntil ? Math.max(1, Math.ceil(daysUntil / 30)) : null;
+    const weeklySavingsNeeded = (gap > 0 && weeksUntil) ? gap / weeksUntil : 0;
+    const monthlySavingsNeeded = (gap > 0 && monthsUntil) ? gap / monthsUntil : 0;
+
+    return { target, pct, gap, savings, fixed, nights, days, totalPeople, activitiesTotal,
+      nightlyTotal, dailyTotal, electronics, daysUntil, weeksUntil, monthsUntil,
+      weeklySavingsNeeded, monthlySavingsNeeded, nightly, daily };
+  }
+
+  function render() {
+    const st = getFormState();
+    const c = compute(st);
+
+    const circle = byId('progressCircle');
+    const offset = 502 - (clamp(c.pct, 0, 100) / 100) * 502;
+    circle.style.strokeDashoffset = offset;
+
+    byId('progressPercent').textContent = Math.round(clamp(c.pct, 0, 999)) + '%';
+    byId('progressMessage').textContent = c.gap > 0 
+      ? `Hedefe ${fmt(c.gap)} daha gerekiyor`
+      : `Hedefi geçtin! +${fmt(-c.gap)} fazla var`;
+
+    if (c.daysUntil !== null && c.daysUntil > 0) {
+      byId('countdownDays').textContent = c.daysUntil;
+      byId('countdownWeeks').textContent = c.weeksUntil;
+      byId('countdownMonths').textContent = c.monthsUntil;
+    } else {
+      byId('countdownDays').textContent = '—';
+      byId('countdownWeeks').textContent = '—';
+      byId('countdownMonths').textContent = '—';
+    }
+
+    byId('statTarget').textContent = fmt(c.target);
+    byId('statSavings').textContent = fmt(c.savings);
+    byId('statStay').textContent = `${c.days}G / ${c.nights}G / ${c.totalPeople}K`;
+
+    const gapEl = byId('statGap');
+    gapEl.textContent = c.gap > 0 ? '-' + fmt(c.gap) : '+' + fmt(-c.gap);
+    gapEl.className = c.gap > 0 ? 'stat-value danger' : 'stat-value success';
+
+    byId('weeklySavings').textContent = c.gap > 0 && c.weeklySavingsNeeded > 0 
+      ? fmt(c.weeklySavingsNeeded) : (c.gap <= 0 ? '✓ Hazır' : '—');
+    byId('monthlySavings').textContent = c.gap > 0 && c.monthlySavingsNeeded > 0 
+      ? fmt(c.monthlySavingsNeeded) : (c.gap <= 0 ? '✓ Hazır' : '—');
+
+    // Analysis
+    const list = [];
+    list.push(infoItem('📋', 'Sabit Giderler', `${fmt(c.fixed)}`, c.savings >= c.fixed ? 'success' : 'danger'));
+    list.push(infoItem('🏨', 'Konaklama', `${c.nights}G × ${fmt(c.nightly)} = ${fmt(c.nightlyTotal)}`, 'success'));
+    list.push(infoItem('🍜', 'Günlük', `${c.days}G × ${c.totalPeople}K × ${fmt(c.daily)} = ${fmt(c.dailyTotal)}`, 'success'));
+    if (c.activitiesTotal > 0) list.push(infoItem('🎯', 'Aktiviteler', `${st.selectedActivities.length} adet = ${fmt(c.activitiesTotal)}`, 'success'));
+    list.push(infoItem('🛍️', 'Alışveriş', fmt(c.electronics), 'success'));
+    byId('analysisList').innerHTML = list.join('');
+  }
+
+  function infoItem(icon, title, desc, status) {
+    const badges = { success: 'Tamam', warning: 'Kısmi', danger: 'Eksik' };
+    return `<div class="info-item">
+      <div class="info-item-icon ${status}">${icon}</div>
+      <div class="info-item-content"><div class="info-item-title">${title}</div><div class="info-item-desc">${desc}</div></div>
+      <span class="info-item-badge ${status}">${badges[status]}</span>
+    </div>`;
+  }
+
+  // --- Form ---
+  function setFormState(st) {
+    byId('savings').value = st.savings || '';
+    byId('tripDate').value = st.tripDate || '';
+    byId('days').value = st.days || 8;
+    byId('daysDisplay').textContent = st.days || 8;
+    byId('adults').value = st.adults || 2;
+    byId('adultsDisplay').textContent = st.adults || 2;
+    byId('children').value = st.children || 1;
+    byId('childrenDisplay').textContent = st.children || 1;
+    byId('nightly').value = st.nightly || '';
+    byId('daily').value = st.daily || '';
+    byId('electronics').value = st.electronics || '';
+    byId('fixed').value = st.fixed || '';
+    byId('bufferPct').value = st.bufferPct || '';
+  }
+
+  function getFormState() {
+    const num = (id) => Number(byId(id).value || 0);
+    const saved = loadState();
+    return {
+      savings: num('savings'), tripDate: byId('tripDate').value || '',
+      days: num('days'), adults: num('adults'), children: num('children'),
+      nightly: num('nightly'), daily: num('daily'), electronics: num('electronics'),
+      fixed: num('fixed'), bufferPct: num('bufferPct'),
+      selectedActivities: saved.selectedActivities || []
+    };
+  }
+
+  // Events
+  ['savings', 'tripDate', 'nightly', 'daily', 'electronics', 'fixed', 'bufferPct'].forEach(id => 
+    byId(id).addEventListener('input', () => { render(); renderActivities(); })
+  );
+
+  byId('saveBtn').addEventListener('click', () => {
+    saveState(getFormState());
+    const btn = byId('saveBtn');
+    btn.textContent = '✓ Kaydedildi';
+    setTimeout(() => btn.textContent = '💾 Kaydet', 1500);
+  });
+
+  byId('resetBtn').addEventListener('click', () => { localStorage.removeItem(KEY); location.reload(); });
+
+  // Init
+  const st0 = loadState();
+  if (!st0.tripDate) {
+    const future = new Date();
+    future.setMonth(future.getMonth() + 6);
+    st0.tripDate = future.toISOString().split('T')[0];
+  }
+  setFormState(st0);
+  renderTimeline();
+  renderActivities();
+  renderShopping();
+  render();
+</script>
+</body>
+</html>
