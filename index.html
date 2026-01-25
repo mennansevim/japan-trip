@@ -832,13 +832,84 @@
 
   <!-- Main Container -->
   <main class="container">
+    <!-- Arrival Info Section -->
+    <section class="section" style="margin-bottom: 40px;">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, #64b5f6, #42a5f5);">✈️</div>
+        <div>
+          <h2 class="section-title">Varış & Pratik Bilgiler</h2>
+          <p class="section-subtitle">Havalimanından şehre, internet ve ulaşım kartı</p>
+        </div>
+      </div>
+
+      <div class="hotel-summary" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <!-- IC Card Info -->
+        <div class="hotel-card" style="border-color: rgba(100, 181, 246, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: linear-gradient(135deg, #4fc3f7, #29b6f6);">🎫</div>
+            <div>
+              <div class="hotel-city">Suica / Pasmo Kart</div>
+              <div class="hotel-dates">Toplu taşıma & alışveriş</div>
+            </div>
+          </div>
+          <div style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+            <strong style="color: var(--accent-sky);">Nereden Alınır?</strong><br>
+            • Haneda Terminal 3 - Keikyu istasyonu<br>
+            • Tokyo Monorail istasyonu<br>
+            • JR East Travel Service Center<br><br>
+            <strong style="color: var(--accent-sky);">Nasıl?</strong><br>
+            • Otomattan English > Purchase > 2000-3000¥<br>
+            • 500¥ depozito (iade edilebilir)<br>
+            • Bakiye: 7-Eleven, istasyonlarda yükle
+          </div>
+        </div>
+
+        <!-- Transportation -->
+        <div class="hotel-card" style="border-color: rgba(129, 199, 132, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: linear-gradient(135deg, #81c784, #66bb6a);">🚃</div>
+            <div>
+              <div class="hotel-city">Haneda → Şehir Merkezi</div>
+              <div class="hotel-dates">Önerilen rota</div>
+            </div>
+          </div>
+          <div style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+            <strong style="color: var(--accent-matcha);">Keikyu Line (Önerilen)</strong><br>
+            • Haneda → Shinagawa: ~15 dk, ~300¥<br>
+            • Shinagawa → Ikebukuro: JR Yamanote ~25 dk<br><br>
+            <strong style="color: var(--accent-matcha);">Tokyo Monorail (Alternatif)</strong><br>
+            • Haneda → Hamamatsucho: ~20 dk, ~500¥<br>
+            • Hamamatsucho → JR Yamanote ile devam
+          </div>
+        </div>
+
+        <!-- eSIM Info -->
+        <div class="hotel-card" style="border-color: rgba(255, 143, 171, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: var(--gradient-sakura);">📱</div>
+            <div>
+              <div class="hotel-city">İnternet: eSIM</div>
+              <div class="hotel-dates">Önerilen çözüm</div>
+            </div>
+          </div>
+          <div style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+            <strong style="color: var(--accent-sakura);">Neden eSIM?</strong><br>
+            • 💰 2 hafta ~20-30$ (Pocket WiFi'ın 1/4'ü)<br>
+            • ⚡ Anında aktif, QR ile kurulum<br>
+            • 🔋 Ekstra cihaz/şarj derdi yok<br><br>
+            <strong style="color: var(--accent-sakura);">Önerilen:</strong> Ubigi, Airalo, Holafly
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Hotel Summary -->
     <div class="hotel-summary">
       <div class="hotel-card tokyo">
         <div class="hotel-header">
           <div class="hotel-icon">🗼</div>
           <div>
-            <div class="hotel-city">Tokyo Oteli</div>
+            <div class="hotel-city">Tokyo - Ikebukuro</div>
             <div class="hotel-dates">14 - 20 Mayıs 2026</div>
           </div>
         </div>
@@ -846,18 +917,32 @@
           <span class="number">6</span>
           <span class="label">Gece<br>Konaklama</span>
         </div>
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-secondary);">
+          <strong style="color: var(--accent-sakura);">Neden Ikebukuro?</strong><br>
+          ✓ Shinjuku'dan %20-30 ucuz<br>
+          ✓ JR Yamanote hattı üzerinde<br>
+          ✓ Her yere kolay ulaşım<br>
+          ✓ Bic Camera, Sunshine City
+        </div>
       </div>
       <div class="hotel-card osaka">
         <div class="hotel-header">
           <div class="hotel-icon">🏯</div>
           <div>
-            <div class="hotel-city">Osaka Oteli</div>
+            <div class="hotel-city">Osaka - Namba</div>
             <div class="hotel-dates">20 - 26 Mayıs 2026</div>
           </div>
         </div>
         <div class="hotel-nights">
           <span class="number">6</span>
           <span class="label">Gece<br>Konaklama</span>
+        </div>
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-secondary);">
+          <strong style="color: var(--accent-sunset);">Neden Namba?</strong><br>
+          ✓ Dotonbori'ye yürüme mesafesi<br>
+          ✓ Metro/tren hub'ı<br>
+          ✓ USJ, Kyoto, Nara'ya kolay<br>
+          ✓ Nankai ile KIX'e direkt
         </div>
       </div>
     </div>
@@ -901,21 +986,28 @@
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">21:00</div>
-                <div class="timeline-title">Otele Transfer</div>
-                <div class="timeline-desc">Haneda'dan şehir merkezine monorail veya Keikyu Line ile ulaşabilirsiniz. Suica/Pasmo kart almayı unutmayın!</div>
+                <div class="timeline-title">Otele Transfer - Ikebukuro</div>
+                <div class="timeline-desc">
+                  <strong>Rota:</strong> Haneda T3 → <strong>Keikyu Line</strong> → Shinagawa (15 dk) → <strong>JR Yamanote</strong> → Ikebukuro (25 dk)<br>
+                  <strong>Toplam:</strong> ~45-50 dakika, ~600¥<br>
+                  <strong>Suica/Pasmo:</strong> Keikyu istasyonunda otomattan al!
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">22:00</div>
-                <div class="timeline-title">Check-in & Dinlenme</div>
-                <div class="timeline-desc">Jet lag nedeniyle erken yatmanız önerilir. Otel yakınında bir konbini'den (7-Eleven, FamilyMart) hafif atıştırmalık alabilirsiniz.</div>
+                <div class="timeline-title">Check-in & Dinlenme - Ikebukuro</div>
+                <div class="timeline-desc">Jet lag nedeniyle erken yatmanız önerilir. Ikebukuro istasyonu çevresinde <strong>7-Eleven</strong>, <strong>FamilyMart</strong>, <strong>Lawson</strong> her yerde! Gece atıştırmalık ve içecek için ideal. <strong>Sunshine City</strong> alışveriş merkezi de yakında (sabah için not al!).</div>
               </div>
             </div>
             <div class="highlight-card">
-              <h4>💡 İlk Gün İpuçları</h4>
-              <p>• <strong>Suica/Pasmo kart</strong> havalimanında alın - tüm toplu taşıma ve otomatlarda kullanılır<br>
-              • <strong>Pocket WiFi</strong> veya eSIM önceden rezerve edin<br>
-              • <strong>JR Pass</strong> değişimi yapın (eğer aldıysanız)</p>
+              <h4>💡 İlk Gün Yapılacaklar</h4>
+              <p>
+                <strong style="color: var(--accent-sky);">1. eSIM'i Aktifleştir</strong> - Uçakta veya inmeden QR ile kur (Ubigi/Airalo)<br>
+                <strong style="color: var(--accent-sky);">2. Suica/Pasmo Al</strong> - Keikyu istasyonunda otomattan (2000-3000¥)<br>
+                <strong style="color: var(--accent-sky);">3. Keikyu Line → Shinagawa</strong> - ~15 dk, ~300¥<br>
+                <strong style="color: var(--accent-sky);">4. JR Yamanote → Ikebukuro</strong> - ~25 dk, otele!
+              </p>
             </div>
           </div>
         </div>
@@ -972,10 +1064,17 @@
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">16:00 - 20:00</div>
-                <div class="timeline-title">Akihabara - Elektrik Şehri</div>
-                <div class="timeline-desc">Anime, manga, video oyunları ve elektronik cenneti! <strong>Yodobashi Camera</strong> (dev elektronik mağazası), <strong>Mandarake</strong> (retro manga/anime), <strong>Super Potato</strong> (retro oyunlar) ve <strong>Gachapon</strong> salonlarını keşfedin.</div>
+                <div class="timeline-title">Akihabara - Elektrik Şehri & Kamera Alışverişi 📷</div>
+                <div class="timeline-desc">Anime, manga, video oyunları ve elektronik cenneti! <strong>Mandarake</strong> (retro manga/anime), <strong>Super Potato</strong> (retro oyunlar) ve <strong>Gachapon</strong> salonlarını keşfedin.</div>
                 <div class="timeline-tips">
-                  <p>🎮 <strong>Deneyimler:</strong> Maid Cafe, Arcade salonları (Taito Station, SEGA), Retro oyun koleksiyonları</p>
+                  <p>📷 <strong>KAMERA ALIŞVERİŞİ - Yodobashi Camera Akiba:</strong><br>
+                  • 9 katlı dev elektronik mağazası - Japonya'nın en büyüğü!<br>
+                  • Canon, Sony, Nikon, Fujifilm - tüm markalar<br>
+                  • Vergisiz alışveriş (Tax-Free) - pasaport yanında olsun<br>
+                  • Fiyat karşılaştır: <strong>kakaku.com</strong> sitesinden kontrol et</p>
+                </div>
+                <div class="timeline-tips" style="margin-top: 8px; border-left-color: var(--accent-sakura);">
+                  <p>🎮 <strong>Diğer Deneyimler:</strong> Maid Cafe, Arcade salonları (Taito Station, SEGA), Retro oyun koleksiyonları</p>
                 </div>
               </div>
               <div class="timeline-item">
@@ -1192,6 +1291,25 @@
                 <div class="timeline-time">12:00 - 14:00</div>
                 <div class="timeline-title">Öğle Yemeği & Alışveriş</div>
                 <div class="timeline-desc"><strong>Omoide Yokocho</strong> (Piss Alley) - Nostaljik dar sokaklarda yakitori ve ramen. Ardından Shinjuku'nun dev mağazalarını keşfedin: <strong>Don Quijote</strong>, <strong>Bic Camera</strong>.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">14:00 - 16:00</div>
+                <div class="timeline-title">📷 İkinci El Kamera Cenneti - Shinjuku</div>
+                <div class="timeline-desc">Japonya'nın en iyi ikinci el kamera mağazaları Shinjuku'da!</div>
+                <div class="timeline-tips">
+                  <p>📷 <strong>MAP CAMERA</strong> (Shinjuku Nishiguchi) 🏆<br>
+                  • Japonya'nın EN BÜYÜK ikinci el kamera mağazası<br>
+                  • 4 katlı, binlerce lens ve body<br>
+                  • Durumlar: A (mükemmel) → C (kullanılmış) derecelendirmesi<br>
+                  • Online fiyat: <strong>mapcamera.com</strong> - önceden bak!</p>
+                </div>
+                <div class="timeline-tips" style="margin-top: 8px; border-left-color: var(--accent-gold);">
+                  <p>📷 <strong>Diğer İkinci El Mağazalar:</strong><br>
+                  • <strong>Camera no Naniwa</strong> - Shinjuku, kaliteli seçenekler<br>
+                  • <strong>Fujiya Camera</strong> - Nakano (vintage/retro kameralar)<br>
+                  • <strong>Kitamura Camera</strong> - Güvenilir zincir mağaza</p>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -1601,6 +1719,13 @@
                   <strong>Kuromon Market</strong> - "Osaka'nın Mutfağı", taze deniz ürünleri, meyve, yerel lezzetler. Yerinde yiyebileceğiniz taze sashimi ve deniz ürünleri!<br><br>
                   <strong>Don Quijote</strong> - Son dakika hediyelik eşya, snack, kozmetik (vergisiz alışveriş için pasaport yanınızda olsun!)
                 </div>
+                <div class="timeline-tips">
+                  <p>📷 <strong>KAMERA: Kitamura Camera - Namba</strong><br>
+                  • Adres: Namba Parks veya Shinsaibashi şubesi<br>
+                  • Yeni + ikinci el kamera ve lens<br>
+                  • Tokyo'da kaçırdıysan son şans!<br>
+                  • Tax-Free mevcut (5000¥ üzeri)</p>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -1702,7 +1827,7 @@
         </div>
       </div>
 
-      <div class="hotel-summary">
+      <div class="hotel-summary" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
         <div class="hotel-card" style="border-color: rgba(124, 106, 239, 0.3);">
           <div class="hotel-header">
             <div class="hotel-icon" style="background: var(--gradient-night);">🎫</div>
@@ -1717,7 +1842,7 @@
             ✓ USJ bileti + Express Pass<br>
             ✓ Shibuya Sky bileti<br>
             ✓ JR Pass (opsiyonel)<br>
-            ✓ Pocket WiFi / eSIM
+            ✓ eSIM (Ubigi/Airalo)
           </div>
         </div>
         <div class="hotel-card" style="border-color: rgba(255, 213, 79, 0.3);">
@@ -1734,6 +1859,25 @@
             ✓ Kredi kartı (Visa/Master)<br>
             ✓ 7-Eleven ATM'leri<br>
             ✓ Google Maps offline harita
+          </div>
+        </div>
+        <div class="hotel-card" style="border-color: rgba(255, 143, 171, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: var(--gradient-sakura);">📷</div>
+            <div>
+              <div class="hotel-city">Kamera Alışverişi</div>
+              <div class="hotel-dates">Tokyo & Osaka</div>
+            </div>
+          </div>
+          <div style="padding: 16px 0; font-size: 14px; color: var(--text-secondary);">
+            <strong style="color: var(--accent-sakura);">Tokyo - Yeni:</strong><br>
+            ✓ Yodobashi Camera (Akihabara)<br>
+            ✓ Bic Camera (Ikebukuro)<br>
+            <strong style="color: var(--accent-sakura); margin-top: 8px; display: block;">Tokyo - İkinci El:</strong>
+            ✓ Map Camera (Shinjuku) 🏆<br>
+            ✓ Camera no Naniwa<br>
+            <strong style="color: var(--accent-sunset); margin-top: 8px; display: block;">Osaka:</strong>
+            ✓ Kitamura Camera (Namba)
           </div>
         </div>
         <div class="hotel-card" style="border-color: rgba(129, 199, 132, 0.3);">
