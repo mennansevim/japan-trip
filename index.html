@@ -762,6 +762,332 @@
       body { background: white; color: black; }
       .day-content { max-height: none !important; }
     }
+
+    /* Shopping List Checkbox Styles */
+    .shopping-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .shop-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .shop-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .shop-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .shop-item input[type="checkbox"]:checked {
+      background: var(--accent-matcha);
+      border-color: var(--accent-matcha);
+    }
+
+    .shop-item input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .shop-item:has(input:checked) {
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+
+    .shop-item:has(input:checked) strong {
+      text-decoration: line-through;
+    }
+
+    /* Shopping progress bar */
+    .shopping-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-sakura);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-sakura);
+      min-width: 80px;
+      text-align: right;
+    }
+
+    .clear-btn {
+      padding: 8px 16px;
+      background: rgba(255, 112, 67, 0.15);
+      border: 1px solid rgba(255, 112, 67, 0.3);
+      border-radius: 8px;
+      color: var(--accent-sunset);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .clear-btn:hover {
+      background: rgba(255, 112, 67, 0.25);
+    }
+
+    /* Product Image Thumbnails */
+    .shop-item {
+      position: relative;
+    }
+
+    .product-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      margin-right: 4px;
+      flex-shrink: 0;
+    }
+
+    .product-img:hover {
+      transform: scale(1.1);
+      border-color: var(--accent-sakura);
+      box-shadow: 0 0 12px rgba(255, 143, 171, 0.4);
+    }
+
+    /* Image Modal/Lightbox */
+    .image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .image-modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border-radius: 20px;
+      max-width: 450px;
+      width: 90%;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      animation: modalSlideIn 0.3s ease;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal-image-container {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal-spinner {
+      position: absolute;
+      font-size: 28px;
+      animation: spin 1.5s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal-image.loaded {
+      opacity: 1;
+    }
+
+    .modal-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .modal-title {
+      color: var(--text-primary);
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .modal-subtitle {
+      color: var(--text-secondary);
+      font-size: 12px;
+      margin: 0 0 16px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: var(--accent-sakura);
+      transform: rotate(90deg);
+    }
+
+    .modal-search-btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--gradient-sakura);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .modal-search-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(255, 143, 171, 0.4);
+    }
+
+    /* Search icon button on items */
+    .search-img-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: none;
+      background: rgba(255, 143, 171, 0.15);
+      color: var(--accent-sakura);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .search-img-btn:hover {
+      background: var(--accent-sakura);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Turkey Price Tag */
+    .price-tr {
+      font-size: 11px;
+      padding: 2px 8px;
+      background: rgba(255, 112, 67, 0.15);
+      color: var(--accent-sunset);
+      border-radius: 100px;
+      font-weight: 600;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
+
+    .price-jp {
+      font-size: 11px;
+      padding: 2px 8px;
+      background: rgba(129, 199, 132, 0.15);
+      color: var(--accent-matcha);
+      border-radius: 100px;
+      font-weight: 600;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
+
+    .savings {
+      font-size: 10px;
+      padding: 2px 6px;
+      background: rgba(255, 213, 79, 0.2);
+      color: var(--accent-gold);
+      border-radius: 100px;
+      font-weight: 700;
+      margin-left: 4px;
+    }
   </style>
 </head>
 <body>
@@ -1026,7 +1352,7 @@
           </div>
           <div class="day-tags">
             <span class="tag culture">⛩️ Senso-ji</span>
-            <span class="tag food">🍜 Sokak Lezzetleri</span>
+            <span class="tag must">🗼 Skytree</span>
             <span class="tag fun">🎮 Akihabara</span>
           </div>
           <div class="day-expand">▼</div>
@@ -1042,11 +1368,20 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">09:00 - 13:00</div>
+                <div class="timeline-time">09:00 - 12:00</div>
                 <div class="timeline-title">Asakusa & Senso-ji Tapınağı</div>
                 <div class="timeline-desc">Tokyo'nun en eski ve en ünlü Budist tapınağı. <strong>Kaminarimon</strong> (Şimşek Kapısı) ile fotoğraf çekin, <strong>Nakamise-dori</strong> sokağında geleneksel hediyelik eşyalar ve atıştırmalıklar bulun.</div>
                 <div class="timeline-tips">
                   <p>🍡 <strong>Denemeniz Gerekenler:</strong> Ningyo-yaki (mini kekler), Melon-pan (tatlı ekmek), Age-manju (kızarmış tatlı), Senbei (pirinç krakeri)</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">12:30 - 14:00</div>
+                <div class="timeline-title">Tokyo Skytree 🗼</div>
+                <div class="timeline-desc">Asakusa'dan yürüme mesafesinde! <strong>634 metre</strong> - Japonya'nın en yüksek kulesi. Gözlem katından Tokyo panoraması. <strong>Solamachi</strong> alışveriş merkezinde öğle yemeği ve alışveriş.</div>
+                <div class="timeline-tips">
+                  <p>🎫 <strong>İpucu:</strong> Online bilet al, kuyruk atlarsın! Tembo Deck (350m) yeterli, Tembo Galleria (450m) ekstra ücret.</p>
                 </div>
               </div>
               <div class="timeline-item">
@@ -1101,7 +1436,7 @@
           </div>
           <div class="day-tags">
             <span class="tag must">📸 Shibuya</span>
-            <span class="tag culture">🎌 Meiji Jingu</span>
+            <span class="tag must">🗼 Tokyo Tower</span>
             <span class="tag fun">👗 Harajuku</span>
           </div>
           <div class="day-expand">▼</div>
@@ -1126,15 +1461,37 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">14:30 - 18:00</div>
-                <div class="timeline-title">Shibuya Keşfi</div>
-                <div class="timeline-desc"><strong>Shibuya Crossing</strong> - dünyanın en kalabalık yaya geçidi! <strong>Hachiko heykeli</strong> ile fotoğraf, <strong>Shibuya Sky</strong> gözlem katından muhteşem Tokyo manzarası (bilet önceden alın!), <strong>Shibuya 109</strong> alışveriş.</div>
+                <div class="timeline-time">14:30 - 16:30</div>
+                <div class="timeline-title">Daikanyama - Tokyo'nun Brooklyn'i</div>
+                <div class="timeline-desc">Shibuya'dan 1 durak! Şık butikler, kafeler ve sakin atmosfer.</div>
+                <div class="timeline-tips">
+                  <p>📚 <strong>Kaçırma:</strong><br>
+                  • <strong>Tsutaya Books (T-Site)</strong> - Dünyanın en güzel kitapçılarından, 3 bina, kafe içinde<br>
+                  • <strong>Okura</strong> - Vintage Japon eşyaları<br>
+                  • <strong>Log Road Daikanyama</strong> - Eski tren yolu üzerinde kafeler ve butikler<br>
+                  • Sokak aralarında bağımsız tasarımcı mağazaları</p>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">18:30 - 21:00</div>
-                <div class="timeline-title">Akşam - Shibuya Nightlife</div>
-                <div class="timeline-desc"><strong>Nonbei Yokocho</strong> (Drunkard's Alley) dar sokaklarında izakaya deneyimi. Ya da <strong>Shibuya Center-gai</strong>'de genç ve enerjik atmosfer.</div>
+                <div class="timeline-time">17:00 - 19:00</div>
+                <div class="timeline-title">Shibuya Keşfi</div>
+                <div class="timeline-desc"><strong>Shibuya Crossing</strong> - dünyanın en kalabalık yaya geçidi! <strong>Hachiko heykeli</strong> ile fotoğraf, <strong>Shibuya Sky</strong> gözlem katından muhteşem Tokyo manzarası (bilet önceden alın!), <strong>Shibuya 109</strong> alışveriş, <strong>ABC Mart</strong> (ayakkabı).</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">18:30 - 20:00</div>
+                <div class="timeline-title">Tokyo Tower 🗼 (Gece Manzarası)</div>
+                <div class="timeline-desc">Shibuya'dan 15 dk metro! <strong>333 metre</strong> - ikonik kırmızı kule. Gece ışıklandırması muhteşem. Main Deck (150m) ve Top Deck (250m) gözlem katları.</div>
+                <div class="timeline-tips">
+                  <p>📸 <strong>Fotoğraf:</strong> Aşağıdan çekilen açılar daha ikonik! Shiba Park'tan harika görünüm.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">20:30 - 22:00</div>
+                <div class="timeline-title">Akşam Yemeği - Roppongi/Azabu</div>
+                <div class="timeline-desc">Tokyo Tower yakınında şık restoranlar. Ya da <strong>Shibuya</strong>'ya dönüp <strong>Nonbei Yokocho</strong>'da izakaya deneyimi.</div>
               </div>
             </div>
           </div>
@@ -1153,6 +1510,7 @@
             <div class="day-theme">🎨 teamLab & Odaiba</div>
           </div>
           <div class="day-tags">
+            <span class="tag fun">🛍️ Ginza</span>
             <span class="tag must">🎨 teamLab</span>
             <span class="tag fun">🌉 Odaiba</span>
           </div>
@@ -1163,7 +1521,13 @@
             <div class="timeline">
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">10:00 - 13:00</div>
+                <div class="timeline-time">09:00 - 11:00</div>
+                <div class="timeline-title">Ginza 🛍️ (Opsiyonel Sabah Turu)</div>
+                <div class="timeline-desc">Tokyo'nun lüks alışveriş caddesi. <strong>Ginza Six</strong>, <strong>Mitsukoshi</strong> department store, <strong>Uniqlo 12 katlı flagship</strong>, Apple Store. Kahve için <strong>Ginza Renoir</strong> veya lüks kafeler.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">11:30 - 14:00</div>
                 <div class="timeline-title">teamLab Planets / Borderless</div>
                 <div class="timeline-desc">Dünyanın en etkileyici dijital sanat müzesi! <strong>teamLab Planets</strong> (Toyosu) - suyla interaktif deneyim veya <strong>teamLab Borderless</strong> (Azabudai Hills) - sınırsız sanat alanı. Biletleri mutlaka önceden online alın!</div>
                 <div class="timeline-tips">
@@ -1272,6 +1636,7 @@
           </div>
           <div class="day-tags">
             <span class="tag must">🌃 Shinjuku</span>
+            <span class="tag food">🍜 Fuunji Ramen</span>
             <span class="tag food">🍺 Golden Gai</span>
             <span class="tag fun">🎮 Kabukicho</span>
           </div>
@@ -1291,6 +1656,20 @@
                 <div class="timeline-time">12:00 - 14:00</div>
                 <div class="timeline-title">Öğle Yemeği & Alışveriş</div>
                 <div class="timeline-desc"><strong>Omoide Yokocho</strong> (Piss Alley) - Nostaljik dar sokaklarda yakitori ve ramen. Ardından Shinjuku'nun dev mağazalarını keşfedin: <strong>Don Quijote</strong>, <strong>Bic Camera</strong>.</div>
+                <div class="timeline-tips" style="border-left-color: var(--accent-sunset);">
+                  <p>🍜 <strong>FUUNJI (風雲児) - Paitan Ramen</strong><br>
+                  • <strong>"Yeldeğirmeni" ramen</strong> - Shinjuku'nun efsanesi!<br>
+                  • <strong>Paitan</strong> = Kremalı tavuk suyu, yoğun umami<br>
+                  • Tsukemen (dipping ramen) için ünlü<br>
+                  • Adres: Shinjuku Station güney çıkışı, 5 dk yürüme<br>
+                  • ⏰ Kuyruk olabilir - öğle öncesi git!</p>
+                </div>
+                <div class="timeline-tips" style="border-left-color: var(--accent-gold);">
+                  <p>👔 <strong>ERKEK MODASI - Shinjuku:</strong><br>
+                  • <strong>OIOI MEN (Marui Men)</strong> - Shinjuku Marui Annex, genç/trendy stil<br>
+                  • <strong>Isetan MEN</strong> - Lüks erkek modası, 8 katlı, Japon tasarımcılar<br>
+                  • İkisi de Shinjuku Station doğu çıkışında, yürüme mesafesinde</p>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -1391,6 +1770,7 @@
           </div>
           <div class="day-tags">
             <span class="tag transport">🚄 Shinkansen</span>
+            <span class="tag must">🐋 Kaiyukan</span>
             <span class="tag food">🐙 Dotonbori</span>
           </div>
           <div class="day-expand">▼</div>
@@ -1418,7 +1798,16 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">15:00 - 22:00</div>
+                <div class="timeline-time">14:30 - 17:30</div>
+                <div class="timeline-title">Kaiyukan Akvaryumu 🐋</div>
+                <div class="timeline-desc"><strong>Dünyanın en büyük akvaryumlarından biri!</strong> Balina köpekbalığı, penguenler, denizanası pavilyonu. Osaka Bay bölgesinde, <strong>Tempozan Ferris Wheel</strong> (dönme dolap) ve alışveriş merkezi de var.</div>
+                <div class="timeline-tips">
+                  <p>🚃 <strong>Ulaşım:</strong> Namba → Chuo Line → Osakako Station (~30 dk)</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">18:30 - 22:00</div>
                 <div class="timeline-title">Dotonbori & Namba Keşfi</div>
                 <div class="timeline-desc">
                   Osaka'nın kalbine hoş geldiniz! <strong>Glico Running Man</strong> tabelası ile fotoğraf, <strong>Shinsaibashi</strong> alışveriş caddesi, kanal boyunca yürüyüş.<br><br>
@@ -1523,6 +1912,7 @@
             <span class="tag must">⛩️ Fushimi Inari</span>
             <span class="tag culture">🎋 Gion</span>
             <span class="tag nature">🎍 Arashiyama</span>
+            <span class="tag food">☕ Panel Kafe</span>
           </div>
           <div class="day-expand">▼</div>
         </div>
@@ -1554,6 +1944,12 @@
                 <div class="timeline-time">11:30 - 13:00</div>
                 <div class="timeline-title">Gion Bölgesi & Öğle Yemeği</div>
                 <div class="timeline-desc">Kyoto'nun geleneksel geyşa bölgesi. <strong>Hanami-koji</strong> sokağında tarihi ahşap evler, çay evleri. Şanslıysanız Maiko (çırak geyşa) görebilirsiniz. Öğle için <strong>Nishiki Market</strong> (Kyoto'nun mutfağı) önerilir.</div>
+                <div class="timeline-tips" style="border-left-color: var(--accent-sakura);">
+                  <p>☕ <strong>PANEL KAFE - Kyoto</strong><br>
+                  • Manga/Anime temalı özel kafe deneyimi<br>
+                  • Gion veya Higashiyama bölgesinde ara<br>
+                  • Rezervasyon önerilir (popüler!)</p>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -1650,8 +2046,8 @@
           </div>
           <div class="day-tags">
             <span class="tag culture">🏯 Osaka Kalesi</span>
-            <span class="tag food">🍖 Shinsekai</span>
-            <span class="tag fun">🛒 Alışveriş</span>
+            <span class="tag must">🏙️ Harukas</span>
+            <span class="tag must">🌆 Umeda Sky</span>
           </div>
           <div class="day-expand">▼</div>
         </div>
@@ -1676,13 +2072,22 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">15:30 - 18:00</div>
-                <div class="timeline-title">Amerikamura & Shinsaibashi</div>
-                <div class="timeline-desc"><strong>Amerikamura</strong> (Amerika Köyü) - gençlik kültürü, vintage mağazalar, street art. <strong>Shinsaibashi-suji</strong> - uzun kapalı alışveriş caddesi.</div>
+                <div class="timeline-time">15:00 - 17:00</div>
+                <div class="timeline-title">Abeno Harukas 🏙️</div>
+                <div class="timeline-desc"><strong>Japonya'nın en yüksek binası!</strong> (300m) Tennoji'de. <strong>Harukas 300</strong> gözlem katından Osaka panoraması. Altta <strong>Kintetsu Department Store</strong> ve <strong>Abeno Q's Mall</strong>.</div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">18:30 - 21:00</div>
+                <div class="timeline-time">17:30 - 19:30</div>
+                <div class="timeline-title">Umeda Sky Building 🌆 (Günbatımı)</div>
+                <div class="timeline-desc"><strong>Floating Garden Observatory</strong> - İki kulenin tepesinde bağlantılı gözlem platformu. Günbatımı için mükemmel zamanlama! Mimari açıdan çok etkileyici.</div>
+                <div class="timeline-tips">
+                  <p>📍 <strong>Rota:</strong> Tennoji → JR Loop → Osaka/Umeda Station (~20 dk)</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">20:00 - 22:00</div>
                 <div class="timeline-title">Son Dotonbori Akşamı</div>
                 <div class="timeline-desc">Son kez Dotonbori ışıklarını izleyin, kaçırdığınız sokak yemeklerini deneyin. <strong>Don Quijote</strong>'de son dakika alışverişi!</div>
               </div>
@@ -1803,7 +2208,7 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">14:40</div>
                 <div class="timeline-title">Kalkış ✈️</div>
-                <div class="timeline-desc">Korean Air ile İstanbul'a dönüş. 21 saat 35 dakikalık yolculuk (1 aktarma). <strong>さようなら日本！また会いましょう！</strong> (Hoşçakal Japonya! Tekrar görüşürüz!)</div>
+                <div class="timeline-desc">China Southern ile İstanbul'a dönüş. 21 saat 35 dakikalık yolculuk (1 aktarma). <strong>さようなら日本！また会いましょう！</strong> (Hoşçakal Japonya! Tekrar görüşürüz!)</div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -1814,6 +2219,175 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Shopping List -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, #ff6b9d, #ffd54f);">🛒</div>
+        <div>
+          <h2 class="section-title">Alışveriş Listesi</h2>
+          <p class="section-subtitle">Japonya'dan mutlaka alınacaklar • Tıkla işaretle, otomatik kaydedilir!</p>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="shopping-progress">
+        <span style="font-size: 20px;">🛍️</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        <span class="progress-text" id="progressText">0 / 0</span>
+        <button class="clear-btn" onclick="clearAllItems()">🗑️ Sıfırla</button>
+      </div>
+
+      <div class="hotel-summary" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <!-- Kozmetik & Cilt Bakımı -->
+        <div class="hotel-card" style="border-color: rgba(255, 143, 171, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: var(--gradient-sakura);">💄</div>
+            <div>
+              <div class="hotel-city">Kozmetik & Cilt Bakımı</div>
+              <div class="hotel-dates">Don Quijote, Matsumoto Kiyoshi</div>
+            </div>
+          </div>
+          <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
+            <label class="shop-item"><input type="checkbox" data-item="biore-uv-aqua"> <strong style="color: var(--accent-sakura);">Biore UV Aqua Rich</strong> <span class="price-tr">🇹🇷 ~450₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Biore UV Aqua Rich SPF50', 'Biore UV Aqua Rich SPF50')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="biore-uv-mist"> <strong style="color: var(--accent-sakura);">Biore UV Mist SPF50</strong> <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Biore UV Mist SPF50', 'Biore UV Mist SPF50')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="pirinc-maske"> LuLuLun yüz maskesi <span class="price-tr">🇹🇷 ~350₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('LuLuLun Yüz Maskesi', 'LuLuLun face mask japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="honey-sampuan"> <strong style="color: var(--accent-sakura);">&Honey şampuan</strong> <span class="price-tr">🇹🇷 ~600₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('&Honey Şampuan', '&Honey shampoo japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="hada-labo"> Hada Labo Gokujyun <span class="price-tr">🇹🇷 ~550₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Hada Labo Gokujyun Lotion', 'Hada Labo Gokujyun Lotion')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="melano-cc"> Melano CC serum <span class="price-tr">🇹🇷 ~700₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Melano CC Vitamin C Serum', 'Melano CC vitamin C serum')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="dhc-lip"> DHC Lip Cream <span class="price-tr">🇹🇷 ~350₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('DHC Lip Cream', 'DHC Lip Cream japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="rohto-eye"> Rohto göz damlaları <span class="price-tr">🇹🇷 ~300₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Rohto Göz Damlası', 'Rohto eye drops japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="canmake"> Canmake makyaj <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Canmake Makyaj', 'Canmake makeup japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="tsubaki"> Tsubaki saç bakım <span class="price-tr">🇹🇷 ~500₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Shiseido Tsubaki', 'Shiseido Tsubaki shampoo')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="fino"> <strong style="color: var(--accent-sakura);">Fino Premium Touch</strong> <span class="price-tr">🇹🇷 ~1000₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fino Premium Touch Saç Maskesi', 'Fino Premium Touch hair mask')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="tsubaki-mask"> Tsubaki Repair Mask <span class="price-tr">🇹🇷 ~650₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Tsubaki Premium Repair Mask', 'Tsubaki Premium Repair Mask')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="lux-shine"> Lux Super Rich Shine <span class="price-tr">🇹🇷 ~450₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Lux Super Rich Shine', 'Lux Super Rich Shine japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="essential-beauty"> Essential Hair Mask <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Essential The Beauty Hair Mask', 'Essential The Beauty Hair Mask')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="vt-pdrn-eye"> <strong style="color: var(--accent-sakura);">VT PDRN Eye Cream</strong> <span class="price-tr">🇹🇷 ~800₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('VT PDRN Eye Cream', 'VT PDRN Eye Cream')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="mediheal-pdrn"> Mediheal PDRN Eye <span class="price-tr">🇹🇷 ~500₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Mediheal PDRN Eye Patch', 'Mediheal PDRN Eye Patch')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="fraijour-pdrn"> Fraijour PDRN Eye <span class="price-tr">🇹🇷 ~600₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fraijour Pro-Moisture PDRN', 'Fraijour Pro-Moisture PDRN')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="pdrn-ampul"> PDRN Ampul/Serum <span class="price-tr">🇹🇷 ~750₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('PDRN Ampul/Serum', 'PDRN ampoule korea')">📷</button></label>
+          </div>
+        </div>
+
+        <!-- Giyim & Ayakkabı -->
+        <div class="hotel-card" style="border-color: rgba(124, 106, 239, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: var(--gradient-night);">👟</div>
+            <div>
+              <div class="hotel-city">Giyim & Ayakkabı</div>
+              <div class="hotel-dates">Shibuya, Harajuku, Uniqlo</div>
+            </div>
+          </div>
+          <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
+            <label class="shop-item"><input type="checkbox" data-item="abc-mart"> <strong style="color: var(--accent-fuji);">ABC Mart</strong> (ayakkabı zinciri) <span class="price-tr">🇹🇷 YOK</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('ABC Mart Japan', 'ABC Mart Japan shoes')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="nike"> <strong style="color: var(--accent-fuji);">Nike ayakkabı</strong> <span class="price-tr">🇹🇷 ~4000₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Nike Japan Exclusive', 'Nike Japan exclusive')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="adidas"> <strong style="color: var(--accent-fuji);">Adidas ayakkabı</strong> <span class="price-tr">🇹🇷 ~3500₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Adidas Japan Exclusive', 'Adidas Japan exclusive')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="tshirt"> <strong style="color: var(--accent-fuji);">Uniqlo T-shirt</strong> <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Uniqlo UT T-Shirt', 'Uniqlo UT japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="heattech"> <strong style="color: var(--accent-fuji);">Uniqlo HEATTECH</strong> <span class="price-tr">🇹🇷 ~600₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Uniqlo HEATTECH', 'Uniqlo HEATTECH')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="uniqlo-japan"> Uniqlo Japonya özel <span class="price-tr">🇹🇷 YOK</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Uniqlo Japan Limited', 'Uniqlo Japan limited')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="gu"> GU marka <span class="price-tr">🇹🇷 YOK</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('GU Brand Japan', 'GU brand japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="oioi-isetan"> OIOI MEN / Isetan <span class="price-tr">🇹🇷 YOK</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Isetan MEN Tokyo', 'Isetan mens tokyo')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="valiz"> <strong style="color: var(--accent-fuji);">Ucuz valiz</strong> <span class="price-tr">🇹🇷 ~2000₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Don Quijote Valiz', 'Don Quijote suitcase japan')">📷</button></label>
+          </div>
+        </div>
+
+        <!-- Mutfak & Ev -->
+        <div class="hotel-card" style="border-color: rgba(255, 112, 67, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: var(--gradient-sunset);">🔪</div>
+            <div>
+              <div class="hotel-city">Mutfak & Ev</div>
+              <div class="hotel-dates">Kappabashi, Don Quijote</div>
+            </div>
+          </div>
+          <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
+            <label class="shop-item"><input type="checkbox" data-item="bicak"> <strong style="color: var(--accent-sunset);">Japon bıçağı</strong> <span class="price-tr">🇹🇷 ~3000₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Mutfak Bıçağı', 'Japanese kitchen knife Kappabashi')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="tirnak-makasi"> <strong style="color: var(--accent-sunset);">Tırnak makası Seki</strong> <span class="price-tr">🇹🇷 ~800₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Seki Edge Tırnak Makası', 'Seki Edge nail clipper japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="bento"> Bento kutusu <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Bento Kutusu', 'Japanese bento box')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="chopsticks"> Chopsticks hediye <span class="price-tr">🇹🇷 ~250₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Chopsticks Hediye Seti', 'Japanese chopsticks gift set')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="furoshiki"> Furoshiki <span class="price-tr">🇹🇷 ~350₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Furoshiki Bohça', 'Furoshiki wrapping cloth japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="cay-seti"> Japon çay seti <span class="price-tr">🇹🇷 ~1500₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Çay Seti', 'Japanese tea set')">📷</button></label>
+          </div>
+        </div>
+
+        <!-- Hediyelik & Yiyecek -->
+        <div class="hotel-card" style="border-color: rgba(255, 213, 79, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: linear-gradient(135deg, var(--accent-gold), #ffb300);">🎁</div>
+            <div>
+              <div class="hotel-city">Hediyelik & Yiyecek</div>
+              <div class="hotel-dates">Havalimanı, Don Quijote, Depachika</div>
+            </div>
+          </div>
+          <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
+            <label class="shop-item"><input type="checkbox" data-item="tokyo-banana"> <strong style="color: var(--accent-gold);">Tokyo Banana</strong> <span class="price-tr">🇹🇷 YOK</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Tokyo Banana', 'Tokyo Banana souvenir')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="kitkat"> <strong style="color: var(--accent-gold);">KitKat özel</strong> <span class="price-tr">🇹🇷 ~150₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('KitKat Japan Matcha', 'KitKat Japan flavors matcha')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="royce"> Royce çikolata <span class="price-tr">🇹🇷 ~600₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Royce Çikolata', 'Royce chocolate japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="shiroi-koibito"> Shiroi Koibito <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Shiroi Koibito', 'Shiroi Koibito white chocolate')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="pocky"> Pocky özel tatlar <span class="price-tr">🇹🇷 ~100₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Pocky Japan Limited', 'Pocky Japan limited flavors')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="hi-chew"> Hi-Chew <span class="price-tr">🇹🇷 ~80₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Hi-Chew', 'Hi-Chew Japan flavors')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="matcha"> Matcha çayı <span class="price-tr">🇹🇷 ~500₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Matcha Çayı', 'Japanese matcha green tea')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="ramen"> Ichiran ramen <span class="price-tr">🇹🇷 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Ichiran Instant Ramen', 'Ichiran instant ramen')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="furikake"> Furikake <span class="price-tr">🇹🇷 ~150₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Furikake Baharat', 'Japanese Furikake rice seasoning')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="viski"> Japon viski <span class="price-tr">🇹🇷 ~2000₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Viski', 'Japanese whisky miniatures')">📷</button></label>
+          </div>
+        </div>
+
+        <!-- İlaç & Sağlık -->
+        <div class="hotel-card" style="border-color: rgba(129, 199, 132, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: linear-gradient(135deg, var(--accent-matcha), #4caf50);">💊</div>
+            <div>
+              <div class="hotel-city">İlaç & Sağlık</div>
+              <div class="hotel-dates">Matsumoto Kiyoshi, Daikoku Drug</div>
+            </div>
+          </div>
+          <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
+            <label class="shop-item"><input type="checkbox" data-item="salonpas"> Salonpas <span class="price-tr">🇹🇷 ~250₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Salonpas Ağrı Bandı', 'Salonpas pain relief patch japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="ryukakusan"> Ryukakusan <span class="price-tr">🇹🇷 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Ryukakusan Boğaz Pastili', 'Ryukakusan throat lozenges')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="eve-loxonin"> Eve / Loxonin <span class="price-tr">🇹🇷 ~350₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Eve Ağrı Kesici', 'Eve pain relief japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="wakamoto"> Wakamoto <span class="price-tr">🇹🇷 ~500₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Wakamoto Sindirim', 'Wakamoto digestive supplement')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="isitma-pedi"> Kobayashi ısıtma <span class="price-tr">🇹🇷 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Kobayashi Isıtma Pedi', 'Kobayashi heat pad japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="goz-maskesi"> Buhar göz maskesi <span class="price-tr">🇹🇷 ~300₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Buhar Göz Maskesi', 'Steam eye mask japan')">📷</button></label>
+          </div>
+        </div>
+
+        <!-- Kırtasiye & Diğer -->
+        <div class="hotel-card" style="border-color: rgba(100, 181, 246, 0.3);">
+          <div class="hotel-header">
+            <div class="hotel-icon" style="background: linear-gradient(135deg, var(--accent-sky), #42a5f5);">✏️</div>
+            <div>
+              <div class="hotel-city">Kırtasiye & Elektronik</div>
+              <div class="hotel-dates">Muji, Loft, Tokyu Hands</div>
+            </div>
+          </div>
+          <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
+            <label class="shop-item"><input type="checkbox" data-item="muji"> Muji kırtasiye <span class="price-tr">🇹🇷 ~300₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('MUJI Kırtasiye', 'MUJI stationery japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="pilot-uniball"> Pilot/Uni-ball <span class="price-tr">🇹🇷 ~150₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Pilot Kalem', 'Pilot pen Japan limited')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="hobonichi"> Hobonichi Techo <span class="price-tr">🇹🇷 ~1200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Hobonichi Techo Ajanda', 'Hobonichi Techo planner')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="midori"> Midori Traveler's <span class="price-tr">🇹🇷 ~1500₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Midori Travelers Notebook', 'Midori Travelers Notebook')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="gacha"> Gacha oyuncakları <span class="price-tr">🇹🇷 YOK</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Gachapon Kapsül Oyuncak', 'Gachapon capsule toys japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="el-fani"> Japon el fanı <span class="price-tr">🇹🇷 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon El Fanı', 'Japanese handheld fan USB')">📷</button></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card" style="margin-top: 24px; background: rgba(255, 213, 79, 0.1); border-color: rgba(255, 213, 79, 0.3);">
+        <h4 style="color: var(--accent-gold);">💰 Tax-Free Alışveriş İpuçları</h4>
+        <p>
+          • <strong>5,000¥ üzeri</strong> alışverişlerde %10 vergi iadesi<br>
+          • <strong>Pasaport</strong> yanında olsun (tax-free için şart!)<br>
+          • <strong>Paketleri açma</strong> - gümrükte kontrol edilebilir<br>
+          • <strong>Don Quijote</strong> - En geniş ürün yelpazesi, gece geç saate kadar açık<br>
+          • <strong>Matsumoto Kiyoshi</strong> - En ucuz kozmetik ve ilaç<br>
+          • <strong>ABC Mart</strong> - Japonya'nın en büyük ayakkabı zinciri (Nike, Adidas, NB...)<br>
+          • <strong>Havalimanı</strong> - Son dakika hediyelik (Tokyo Banana, Royce)
+        </p>
       </div>
     </section>
 
@@ -1901,6 +2475,24 @@
     </section>
   </main>
 
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal(event)">✕</button>
+      <div class="modal-image-container">
+        <img class="modal-image" id="modalImage" src="" alt="" onload="this.classList.add('loaded')">
+        <div class="modal-spinner">⏳</div>
+      </div>
+      <div class="modal-info">
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-subtitle">Örnek ürün görseli (Unsplash)</p>
+        <button class="modal-search-btn" id="modalSearchBtn" onclick="searchGoogle()">
+          🔍 Google'da Gerçek Ürünü Ara
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-emoji">🗾 🌸 ⛩️ 🍣 🚄</div>
@@ -1934,6 +2526,171 @@
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
       createSakura();
+      initShoppingList();
+    });
+
+    // Shopping List with localStorage
+    function initShoppingList() {
+      const checkboxes = document.querySelectorAll('.shop-item input[type="checkbox"]');
+      const savedItems = JSON.parse(localStorage.getItem('japanShoppingList') || '{}');
+      
+      // Load saved state
+      checkboxes.forEach(checkbox => {
+        const itemId = checkbox.dataset.item;
+        if (savedItems[itemId]) {
+          checkbox.checked = true;
+        }
+        
+        // Add event listener
+        checkbox.addEventListener('change', () => {
+          saveShoppingList();
+          updateProgress();
+        });
+      });
+      
+      updateProgress();
+    }
+
+    function saveShoppingList() {
+      const checkboxes = document.querySelectorAll('.shop-item input[type="checkbox"]');
+      const items = {};
+      
+      checkboxes.forEach(checkbox => {
+        const itemId = checkbox.dataset.item;
+        if (checkbox.checked) {
+          items[itemId] = true;
+        }
+      });
+      
+      localStorage.setItem('japanShoppingList', JSON.stringify(items));
+    }
+
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.shop-item input[type="checkbox"]');
+      const total = checkboxes.length;
+      const checked = document.querySelectorAll('.shop-item input[type="checkbox"]:checked').length;
+      const percentage = total > 0 ? (checked / total) * 100 : 0;
+      
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      
+      if (progressFill) progressFill.style.width = percentage + '%';
+      if (progressText) progressText.textContent = `${checked} / ${total}`;
+    }
+
+    function clearAllItems() {
+      if (confirm('Tüm işaretleri kaldırmak istediğinize emin misiniz?')) {
+        const checkboxes = document.querySelectorAll('.shop-item input[type="checkbox"]');
+        checkboxes.forEach(checkbox => checkbox.checked = false);
+        localStorage.removeItem('japanShoppingList');
+        updateProgress();
+      }
+    }
+
+    // Product Image Modal
+    let currentProduct = '';
+    let currentSearchQuery = '';
+    
+    const productImages = {
+      // Kozmetik
+      'Biore UV Aqua Rich SPF50': 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600',
+      'Biore UV Mist SPF50': 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600',
+      'LuLuLun face mask japan': 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600',
+      '&Honey shampoo japan': 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600',
+      'Hada Labo Gokujyun Lotion': 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=600',
+      'Melano CC vitamin C serum': 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600',
+      'DHC Lip Cream japan': 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600',
+      'Rohto eye drops japan': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600',
+      'Canmake makeup japan': 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600',
+      'Shiseido Tsubaki shampoo': 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600',
+      'Fino Premium Touch hair mask': 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600',
+      'VT PDRN Eye Cream': 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=600',
+      // Giyim
+      'Nike Japan exclusive': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600',
+      'Adidas Japan exclusive': 'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=600',
+      'Uniqlo UT japan': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600',
+      'Uniqlo HEATTECH': 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600',
+      // Mutfak
+      'Japanese kitchen knife Kappabashi': 'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=600',
+      'Seki Edge nail clipper japan': 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600',
+      'Japanese bento box': 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600',
+      // Yiyecek
+      'Tokyo Banana souvenir': 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=600',
+      'KitKat Japan flavors matcha': 'https://images.unsplash.com/photo-1582176604856-e824b4736522?w=600',
+      'Royce chocolate japan': 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600',
+      'Japanese matcha green tea': 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=600',
+      'Ichiran instant ramen': 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600',
+      'Japanese whisky miniatures': 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=600',
+      // İlaç
+      'Salonpas pain relief patch japan': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600',
+      // Kırtasiye
+      'MUJI stationery japan': 'https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=600',
+      'Hobonichi Techo planner': 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600',
+      'Gachapon capsule toys japan': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600',
+      // Default kategoriler
+      'default-cosmetic': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600',
+      'default-fashion': 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600',
+      'default-food': 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600',
+      'default-kitchen': 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600',
+      'default': 'https://images.unsplash.com/photo-1480796927426-f609979314bd?w=600'
+    };
+
+    function showProductImage(productName, searchQuery) {
+      currentProduct = productName;
+      currentSearchQuery = searchQuery;
+      
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      
+      modalTitle.textContent = productName;
+      
+      // Loading durumunu göster
+      modalImage.classList.remove('loaded');
+      
+      // Görsel bul veya default kullan
+      let imageUrl = productImages[searchQuery];
+      if (!imageUrl) {
+        // Kategoriye göre default görsel
+        if (searchQuery.includes('makeup') || searchQuery.includes('cream') || searchQuery.includes('serum') || searchQuery.includes('shampoo') || searchQuery.includes('mask') || searchQuery.includes('Lip') || searchQuery.includes('UV') || searchQuery.includes('Labo') || searchQuery.includes('Lotion')) {
+          imageUrl = productImages['default-cosmetic'];
+        } else if (searchQuery.includes('shoe') || searchQuery.includes('shirt') || searchQuery.includes('HEATTECH') || searchQuery.includes('Nike') || searchQuery.includes('Adidas') || searchQuery.includes('Uniqlo') || searchQuery.includes('GU')) {
+          imageUrl = productImages['default-fashion'];
+        } else if (searchQuery.includes('knife') || searchQuery.includes('bento') || searchQuery.includes('chopstick') || searchQuery.includes('tea set') || searchQuery.includes('nail') || searchQuery.includes('Furoshiki')) {
+          imageUrl = productImages['default-kitchen'];
+        } else if (searchQuery.includes('chocolate') || searchQuery.includes('ramen') || searchQuery.includes('tea') || searchQuery.includes('Banana') || searchQuery.includes('KitKat') || searchQuery.includes('Pocky') || searchQuery.includes('whisky') || searchQuery.includes('Furikake')) {
+          imageUrl = productImages['default-food'];
+        } else {
+          imageUrl = productImages['default'];
+        }
+      }
+      
+      modalImage.src = imageUrl;
+      modalImage.alt = productName;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (event.target.classList.contains('image-modal') || event.target.classList.contains('modal-close')) {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function searchGoogle() {
+      const searchQuery = encodeURIComponent(currentSearchQuery || currentProduct);
+      window.open(`https://www.google.com/search?tbm=isch&q=${searchQuery}`, '_blank');
+    }
+
+    // ESC tuşu ile modal kapat
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
     });
 
     // Smooth scroll for anchor links
