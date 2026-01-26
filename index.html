@@ -767,21 +767,19 @@
     .shopping-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      overflow-x: auto;
+      gap: 2px;
     }
 
     .shop-item {
-      display: flex;
+      display: grid;
+      grid-template-columns: 18px 1fr auto auto auto;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 10px;
-      padding: 8px 12px;
-      border-radius: 8px;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s ease;
-      white-space: nowrap;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .shop-item:hover {
@@ -791,10 +789,10 @@
     .shop-item input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       border: 2px solid var(--text-muted);
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
       position: relative;
       transition: all 0.2s ease;
@@ -813,13 +811,12 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: white;
-      font-size: 14px;
+      font-size: 11px;
       font-weight: bold;
     }
 
     .shop-item:has(input:checked) {
       opacity: 0.5;
-      text-decoration: line-through;
     }
 
     .shop-item:has(input:checked) strong {
@@ -1078,37 +1075,33 @@
     /* Japan Price Tag (in TL) */
     .price-jp {
       font-size: 11px;
-      padding: 2px 8px;
-      background: rgba(129, 199, 132, 0.15);
+      padding: 2px 6px;
+      background: rgba(129, 199, 132, 0.2);
       color: var(--accent-matcha);
-      border-radius: 100px;
+      border-radius: 4px;
       font-weight: 600;
-      margin-left: 4px;
       white-space: nowrap;
     }
 
     /* Discount Badge */
     .discount-badge {
       font-size: 10px;
-      padding: 2px 6px;
-      background: linear-gradient(135deg, #ff5722, #ff9800);
+      padding: 2px 5px;
+      background: #ff5722;
       color: white;
-      border-radius: 100px;
+      border-radius: 4px;
       font-weight: 700;
-      margin-left: 4px;
       white-space: nowrap;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-      animation: pulse-discount 2s ease-in-out infinite;
     }
 
     .discount-badge::before {
       content: "↓";
-      margin-right: 2px;
+      margin-right: 1px;
     }
 
-    @keyframes pulse-discount {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.05); }
+    /* Hide image button in electronics - too cluttered */
+    .electronics-list .search-img-btn {
+      display: none;
     }
   </style>
 </head>
@@ -2310,24 +2303,24 @@
             </div>
           </div>
           <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-            <label class="shop-item"><input type="checkbox" data-item="biore-uv-aqua"> <strong style="color: var(--accent-sakura);">Biore UV Aqua Rich</strong> <span class="price-jp">🇯🇵 ~220₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Biore UV Aqua Rich SPF50', 'Biore UV Aqua Rich SPF50')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="biore-uv-mist"> <strong style="color: var(--accent-sakura);">Biore UV Mist SPF50</strong> <span class="price-jp">🇯🇵 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Biore UV Mist SPF50', 'Biore UV Mist SPF50')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="pirinc-maske"> LuLuLun yüz maskesi (7'li) <span class="price-jp">🇯🇵 ~135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('LuLuLun Yüz Maskesi', 'LuLuLun face mask japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="honey-sampuan"> <strong style="color: var(--accent-sakura);">&Honey şampuan</strong> <span class="price-jp">🇯🇵 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('&Honey Şampuan', '&Honey shampoo japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="hada-labo"> Hada Labo Gokujyun <span class="price-jp">🇯🇵 ~190₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Hada Labo Gokujyun Lotion', 'Hada Labo Gokujyun Lotion')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="melano-cc"> Melano CC serum <span class="price-jp">🇯🇵 ~270₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Melano CC Vitamin C Serum', 'Melano CC vitamin C serum')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="dhc-lip"> DHC Lip Cream <span class="price-jp">🇯🇵 ~190₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('DHC Lip Cream', 'DHC Lip Cream japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="rohto-eye"> Rohto göz damlaları <span class="price-jp">🇯🇵 ~135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Rohto Göz Damlası', 'Rohto eye drops japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="canmake"> Canmake makyaj <span class="price-jp">🇯🇵 ~170₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Canmake Makyaj', 'Canmake makeup japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="tsubaki"> Tsubaki saç bakım <span class="price-jp">🇯🇵 ~220₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Shiseido Tsubaki', 'Shiseido Tsubaki shampoo')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="fino"> <strong style="color: var(--accent-sakura);">Fino Premium Touch</strong> <span class="price-jp">🇯🇵 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fino Premium Touch Saç Maskesi', 'Fino Premium Touch hair mask')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="tsubaki-mask"> Tsubaki Repair Mask <span class="price-jp">🇯🇵 ~315₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Tsubaki Premium Repair Mask', 'Tsubaki Premium Repair Mask')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="lux-shine"> Lux Super Rich Shine <span class="price-jp">🇯🇵 ~220₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Lux Super Rich Shine', 'Lux Super Rich Shine japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="essential-beauty"> Essential Hair Mask <span class="price-jp">🇯🇵 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Essential The Beauty Hair Mask', 'Essential The Beauty Hair Mask')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="vt-pdrn-eye"> <strong style="color: var(--accent-sakura);">VT PDRN Eye Cream</strong> <span class="price-jp">🇯🇵 ~540₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('VT PDRN Eye Cream', 'VT PDRN Eye Cream')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="mediheal-pdrn"> Mediheal PDRN Eye <span class="price-jp">🇯🇵 ~340₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Mediheal PDRN Eye Patch', 'Mediheal PDRN Eye Patch')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="fraijour-pdrn"> Fraijour PDRN Eye <span class="price-jp">🇯🇵 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fraijour Pro-Moisture PDRN', 'Fraijour Pro-Moisture PDRN')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="pdrn-ampul"> PDRN Ampul/Serum <span class="price-jp">🇯🇵 ~450₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('PDRN Ampul/Serum', 'PDRN ampoule korea')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="biore-uv-aqua"> <strong style="color: var(--accent-sakura);">Biore UV Aqua Rich</strong> <span class="price-jp">🇯🇵 ~220₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="biore-uv-mist"> <strong style="color: var(--accent-sakura);">Biore UV Mist SPF50</strong> <span class="price-jp">🇯🇵 ~200₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="pirinc-maske"> LuLuLun yüz maskesi (7'li) <span class="price-jp">🇯🇵 ~135₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="honey-sampuan"> <strong style="color: var(--accent-sakura);">&Honey şampuan</strong> <span class="price-jp">🇯🇵 ~400₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="hada-labo"> Hada Labo Gokujyun <span class="price-jp">🇯🇵 ~190₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="melano-cc"> Melano CC serum <span class="price-jp">🇯🇵 ~270₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="dhc-lip"> DHC Lip Cream <span class="price-jp">🇯🇵 ~190₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="rohto-eye"> Rohto göz damlaları <span class="price-jp">🇯🇵 ~135₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="canmake"> Canmake makyaj <span class="price-jp">🇯🇵 ~170₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="tsubaki"> Tsubaki saç bakım <span class="price-jp">🇯🇵 ~220₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="fino"> <strong style="color: var(--accent-sakura);">Fino Premium Touch</strong> <span class="price-jp">🇯🇵 ~400₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="tsubaki-mask"> Tsubaki Repair Mask <span class="price-jp">🇯🇵 ~315₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="lux-shine"> Lux Super Rich Shine <span class="price-jp">🇯🇵 ~220₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="essential-beauty"> Essential Hair Mask <span class="price-jp">🇯🇵 ~200₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="vt-pdrn-eye"> <strong style="color: var(--accent-sakura);">VT PDRN Eye Cream</strong> <span class="price-jp">🇯🇵 ~540₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="mediheal-pdrn"> Mediheal PDRN Eye <span class="price-jp">🇯🇵 ~340₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="fraijour-pdrn"> Fraijour PDRN Eye <span class="price-jp">🇯🇵 ~400₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="pdrn-ampul"> PDRN Ampul/Serum <span class="price-jp">🇯🇵 ~450₺</span> </label>
           </div>
         </div>
 
@@ -2341,15 +2334,15 @@
             </div>
           </div>
           <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-            <label class="shop-item"><input type="checkbox" data-item="abc-mart"> <strong style="color: var(--accent-fuji);">ABC Mart</strong> (ayakkabı zinciri) <span class="price-jp">🇯🇵 mağaza</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('ABC Mart Japan', 'ABC Mart Japan shoes')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="nike"> <strong style="color: var(--accent-fuji);">Nike ayakkabı</strong> <span class="price-jp">🇯🇵 ~2700₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Nike Japan Exclusive', 'Nike Japan exclusive')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="adidas"> <strong style="color: var(--accent-fuji);">Adidas ayakkabı</strong> <span class="price-jp">🇯🇵 ~2500₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Adidas Japan Exclusive', 'Adidas Japan exclusive')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="tshirt"> <strong style="color: var(--accent-fuji);">Uniqlo T-shirt</strong> <span class="price-jp">🇯🇵 ~135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Uniqlo UT T-Shirt', 'Uniqlo UT japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="heattech"> <strong style="color: var(--accent-fuji);">Uniqlo HEATTECH</strong> <span class="price-jp">🇯🇵 ~270₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Uniqlo HEATTECH', 'Uniqlo HEATTECH')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="uniqlo-japan"> Uniqlo Japonya özel <span class="price-jp">🇯🇵 ~220₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Uniqlo Japan Limited', 'Uniqlo Japan limited')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="gu"> GU marka <span class="price-jp">🇯🇵 ~110₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('GU Brand Japan', 'GU brand japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="oioi-isetan"> OIOI MEN / Isetan <span class="price-jp">🇯🇵 değişken</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Isetan MEN Tokyo', 'Isetan mens tokyo')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="valiz"> <strong style="color: var(--accent-fuji);">Ucuz valiz</strong> <span class="price-jp">🇯🇵 ~810₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Don Quijote Valiz', 'Don Quijote suitcase japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="abc-mart"> <strong style="color: var(--accent-fuji);">ABC Mart</strong> (ayakkabı zinciri) <span class="price-jp">🇯🇵 mağaza</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="nike"> <strong style="color: var(--accent-fuji);">Nike ayakkabı</strong> <span class="price-jp">🇯🇵 ~2700₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="adidas"> <strong style="color: var(--accent-fuji);">Adidas ayakkabı</strong> <span class="price-jp">🇯🇵 ~2500₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="tshirt"> <strong style="color: var(--accent-fuji);">Uniqlo T-shirt</strong> <span class="price-jp">🇯🇵 ~135₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="heattech"> <strong style="color: var(--accent-fuji);">Uniqlo HEATTECH</strong> <span class="price-jp">🇯🇵 ~270₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="uniqlo-japan"> Uniqlo Japonya özel <span class="price-jp">🇯🇵 ~220₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="gu"> GU marka <span class="price-jp">🇯🇵 ~110₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="oioi-isetan"> OIOI MEN / Isetan <span class="price-jp">🇯🇵 değişken</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="valiz"> <strong style="color: var(--accent-fuji);">Ucuz valiz</strong> <span class="price-jp">🇯🇵 ~810₺</span> </label>
           </div>
         </div>
 
@@ -2363,12 +2356,12 @@
             </div>
           </div>
           <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-            <label class="shop-item"><input type="checkbox" data-item="bicak"> <strong style="color: var(--accent-sunset);">Japon bıçağı</strong> <span class="price-jp">🇯🇵 ~1350₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Mutfak Bıçağı', 'Japanese kitchen knife Kappabashi')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="tirnak-makasi"> <strong style="color: var(--accent-sunset);">Tırnak makası Seki</strong> <span class="price-jp">🇯🇵 ~400₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Seki Edge Tırnak Makası', 'Seki Edge nail clipper japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="bento"> Bento kutusu <span class="price-jp">🇯🇵 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Bento Kutusu', 'Japanese bento box')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="chopsticks"> Chopsticks hediye <span class="price-jp">🇯🇵 ~135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Chopsticks Hediye Seti', 'Japanese chopsticks gift set')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="furoshiki"> Furoshiki <span class="price-jp">🇯🇵 ~270₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Furoshiki Bohça', 'Furoshiki wrapping cloth japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="cay-seti"> Japon çay seti <span class="price-jp">🇯🇵 ~675₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Çay Seti', 'Japanese tea set')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="bicak"> <strong style="color: var(--accent-sunset);">Japon bıçağı</strong> <span class="price-jp">🇯🇵 ~1350₺+</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="tirnak-makasi"> <strong style="color: var(--accent-sunset);">Tırnak makası Seki</strong> <span class="price-jp">🇯🇵 ~400₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="bento"> Bento kutusu <span class="price-jp">🇯🇵 ~200₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="chopsticks"> Chopsticks hediye <span class="price-jp">🇯🇵 ~135₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="furoshiki"> Furoshiki <span class="price-jp">🇯🇵 ~270₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="cay-seti"> Japon çay seti <span class="price-jp">🇯🇵 ~675₺+</span> </label>
           </div>
         </div>
 
@@ -2382,16 +2375,16 @@
             </div>
           </div>
           <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-            <label class="shop-item"><input type="checkbox" data-item="tokyo-banana"> <strong style="color: var(--accent-gold);">Tokyo Banana</strong> (8'li) <span class="price-jp">🇯🇵 ~325₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Tokyo Banana', 'Tokyo Banana souvenir')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="kitkat"> <strong style="color: var(--accent-gold);">KitKat özel</strong> (kutu) <span class="price-jp">🇯🇵 ~220₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('KitKat Japan Matcha', 'KitKat Japan flavors matcha')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="royce"> Royce çikolata <span class="price-jp">🇯🇵 ~220₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Royce Çikolata', 'Royce chocolate japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="shiroi-koibito"> Shiroi Koibito (12'li) <span class="price-jp">🇯🇵 ~270₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Shiroi Koibito', 'Shiroi Koibito white chocolate')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="pocky"> Pocky özel tatlar <span class="price-jp">🇯🇵 ~55₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Pocky Japan Limited', 'Pocky Japan limited flavors')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="hi-chew"> Hi-Chew <span class="price-jp">🇯🇵 ~35₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Hi-Chew', 'Hi-Chew Japan flavors')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="matcha"> Matcha çayı (30g) <span class="price-jp">🇯🇵 ~270₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Matcha Çayı', 'Japanese matcha green tea')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="ramen"> Ichiran ramen (5'li) <span class="price-jp">🇯🇵 ~540₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Ichiran Instant Ramen', 'Ichiran instant ramen')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="furikake"> Furikake <span class="price-jp">🇯🇵 ~70₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Furikake Baharat', 'Japanese Furikake rice seasoning')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="viski"> Japon viski (mini) <span class="price-jp">🇯🇵 ~810₺+</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon Viski', 'Japanese whisky miniatures')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="tokyo-banana"> <strong style="color: var(--accent-gold);">Tokyo Banana</strong> (8'li) <span class="price-jp">🇯🇵 ~325₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="kitkat"> <strong style="color: var(--accent-gold);">KitKat özel</strong> (kutu) <span class="price-jp">🇯🇵 ~220₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="royce"> Royce çikolata <span class="price-jp">🇯🇵 ~220₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="shiroi-koibito"> Shiroi Koibito (12'li) <span class="price-jp">🇯🇵 ~270₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="pocky"> Pocky özel tatlar <span class="price-jp">🇯🇵 ~55₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="hi-chew"> Hi-Chew <span class="price-jp">🇯🇵 ~35₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="matcha"> Matcha çayı (30g) <span class="price-jp">🇯🇵 ~270₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="ramen"> Ichiran ramen (5'li) <span class="price-jp">🇯🇵 ~540₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="furikake"> Furikake <span class="price-jp">🇯🇵 ~70₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="viski"> Japon viski (mini) <span class="price-jp">🇯🇵 ~810₺+</span> </label>
           </div>
         </div>
 
@@ -2405,12 +2398,12 @@
             </div>
           </div>
           <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-            <label class="shop-item"><input type="checkbox" data-item="salonpas"> Salonpas (40'lı) <span class="price-jp">🇯🇵 ~135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Salonpas Ağrı Bandı', 'Salonpas pain relief patch japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="ryukakusan"> Ryukakusan <span class="price-jp">🇯🇵 ~200₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Ryukakusan Boğaz Pastili', 'Ryukakusan throat lozenges')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="eve-loxonin"> Eve / Loxonin <span class="price-jp">🇯🇵 ~170₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Eve Ağrı Kesici', 'Eve pain relief japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="wakamoto"> Wakamoto (1000 tablet) <span class="price-jp">🇯🇵 ~540₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Wakamoto Sindirim', 'Wakamoto digestive supplement')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="isitma-pedi"> Kobayashi ısıtma (10'lu) <span class="price-jp">🇯🇵 ~110₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Kobayashi Isıtma Pedi', 'Kobayashi heat pad japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="goz-maskesi"> Buhar göz maskesi (5'li) <span class="price-jp">🇯🇵 ~135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Buhar Göz Maskesi', 'Steam eye mask japan')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="salonpas"> Salonpas (40'lı) <span class="price-jp">🇯🇵 ~135₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="ryukakusan"> Ryukakusan <span class="price-jp">🇯🇵 ~200₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="eve-loxonin"> Eve / Loxonin <span class="price-jp">🇯🇵 ~170₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="wakamoto"> Wakamoto (1000 tablet) <span class="price-jp">🇯🇵 ~540₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="isitma-pedi"> Kobayashi ısıtma (10'lu) <span class="price-jp">🇯🇵 ~110₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="goz-maskesi"> Buhar göz maskesi (5'li) <span class="price-jp">🇯🇵 ~135₺</span> </label>
           </div>
         </div>
 
@@ -2424,12 +2417,12 @@
             </div>
           </div>
           <div class="shopping-list" style="padding: 16px 0; font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-            <label class="shop-item"><input type="checkbox" data-item="muji"> Muji kırtasiye seti <span class="price-jp">🇯🇵 ~110₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('MUJI Kırtasiye', 'MUJI stationery japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="pilot-uniball"> Pilot/Uni-ball kalem <span class="price-jp">🇯🇵 ~55₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Pilot Kalem', 'Pilot pen Japan limited')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="hobonichi"> Hobonichi Techo <span class="price-jp">🇯🇵 ~675₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Hobonichi Techo Ajanda', 'Hobonichi Techo planner')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="midori"> Midori Traveler's <span class="price-jp">🇯🇵 ~945₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Midori Travelers Notebook', 'Midori Travelers Notebook')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="gacha"> Gacha oyuncakları <span class="price-jp">🇯🇵 ~55-135₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Gachapon Kapsül Oyuncak', 'Gachapon capsule toys japan')">📷</button></label>
-            <label class="shop-item"><input type="checkbox" data-item="el-fani"> Japon el fanı <span class="price-jp">🇯🇵 ~110₺</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Japon El Fanı', 'Japanese handheld fan USB')">📷</button></label>
+            <label class="shop-item"><input type="checkbox" data-item="muji"> Muji kırtasiye seti <span class="price-jp">🇯🇵 ~110₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="pilot-uniball"> Pilot/Uni-ball kalem <span class="price-jp">🇯🇵 ~55₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="hobonichi"> Hobonichi Techo <span class="price-jp">🇯🇵 ~675₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="midori"> Midori Traveler's <span class="price-jp">🇯🇵 ~945₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="gacha"> Gacha oyuncakları <span class="price-jp">🇯🇵 ~55-135₺</span> </label>
+            <label class="shop-item"><input type="checkbox" data-item="el-fani"> Japon el fanı <span class="price-jp">🇯🇵 ~110₺</span> </label>
           </div>
         </div>
 
@@ -2448,50 +2441,50 @@
           
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
             <!-- Apple Ürünleri -->
-            <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px;">
-              <h5 style="color: var(--text-primary); margin: 0 0 12px; font-size: 14px;">🍎 Apple Ürünleri</h5>
-              <div class="shopping-list" style="font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-                <label class="shop-item"><input type="checkbox" data-item="macbook-air-m3"> <strong style="color: var(--accent-sakura);">MacBook Air M3 13"</strong> <span class="price-jp">🇯🇵 ~40,050₺</span> <span class="discount-badge">38%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('MacBook Air M3', 'MacBook Air M3 2024')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="macbook-air-15"> MacBook Air M3 15" <span class="price-jp">🇯🇵 ~48,065₺</span> <span class="discount-badge">36%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('MacBook Air 15', 'MacBook Air 15 inch M3')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="macbook-pro-14"> MacBook Pro 14" M3 <span class="price-jp">🇯🇵 ~60,700₺</span> <span class="discount-badge">36%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('MacBook Pro 14', 'MacBook Pro 14 M3')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="ipad-air"> <strong style="color: var(--accent-sakura);">iPad Air 11" M2</strong> <span class="price-jp">🇯🇵 ~22,890₺</span> <span class="discount-badge">40%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('iPad Air M2', 'iPad Air M2 2024')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="ipad-pro"> iPad Pro 11" M4 <span class="price-jp">🇯🇵 ~36,390₺</span> <span class="discount-badge">34%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('iPad Pro M4', 'iPad Pro M4 2024')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="apple-watch-ultra"> <strong style="color: var(--accent-gold);">Apple Watch Ultra 2</strong> <span class="price-jp">🇯🇵 ~33,485₺</span> <span class="discount-badge">36%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Apple Watch Ultra 2', 'Apple Watch Ultra 2')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="apple-watch-10"> Apple Watch Series 10 <span class="price-jp">🇯🇵 ~15,930₺</span> <span class="discount-badge">35%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Apple Watch 10', 'Apple Watch Series 10')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="airpods-pro"> AirPods Pro 2 <span class="price-jp">🇯🇵 ~9,670₺</span> <span class="discount-badge">31%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('AirPods Pro 2', 'AirPods Pro 2 Apple')">📷</button></label>
+            <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 12px;">
+              <h5 style="color: var(--text-primary); margin: 0 0 8px; font-size: 13px;">🍎 Apple Ürünleri</h5>
+              <div class="shopping-list electronics-list">
+                <label class="shop-item"><input type="checkbox" data-item="macbook-air-m3"> <strong style="color: var(--accent-sakura);">MacBook Air M3 13"</strong> <span class="price-jp">🇯🇵 ~40,050₺</span> <span class="discount-badge">38%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="macbook-air-15"> MacBook Air M3 15" <span class="price-jp">🇯🇵 ~48,065₺</span> <span class="discount-badge">36%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="macbook-pro-14"> MacBook Pro 14" M3 <span class="price-jp">🇯🇵 ~60,700₺</span> <span class="discount-badge">36%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="ipad-air"> <strong style="color: var(--accent-sakura);">iPad Air 11" M2</strong> <span class="price-jp">🇯🇵 ~22,890₺</span> <span class="discount-badge">40%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="ipad-pro"> iPad Pro 11" M4 <span class="price-jp">🇯🇵 ~36,390₺</span> <span class="discount-badge">34%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="apple-watch-ultra"> <strong style="color: var(--accent-gold);">Apple Watch Ultra 2</strong> <span class="price-jp">🇯🇵 ~33,485₺</span> <span class="discount-badge">36%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="apple-watch-10"> Apple Watch Series 10 <span class="price-jp">🇯🇵 ~15,930₺</span> <span class="discount-badge">35%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="airpods-pro"> AirPods Pro 2 <span class="price-jp">🇯🇵 ~9,670₺</span> <span class="discount-badge">31%</span> </label>
               </div>
             </div>
             
             <!-- Kameralar -->
-            <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px;">
-              <h5 style="color: var(--text-primary); margin: 0 0 12px; font-size: 14px;">📷 Kameralar (Yeni)</h5>
-              <div class="shopping-list" style="font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-                <label class="shop-item"><input type="checkbox" data-item="sony-a7iv"> <strong style="color: var(--accent-sakura);">Sony A7 IV Body</strong> <span class="price-jp">🇯🇵 ~75,060₺</span> <span class="discount-badge">35%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Sony A7 IV', 'Sony A7 IV camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="sony-a7c2"> Sony A7C II Body <span class="price-jp">🇯🇵 ~64,260₺</span> <span class="discount-badge">36%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Sony A7C II', 'Sony A7C II camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="sony-zve10"> <strong style="color: var(--accent-gold);">Sony ZV-E10 II Kit</strong> <span class="price-jp">🇯🇵 ~29,160₺</span> <span class="discount-badge">35%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Sony ZV-E10 II', 'Sony ZV-E10 II vlog camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="sony-fx30"> Sony FX30 Body <span class="price-jp">🇯🇵 ~53,460₺</span> <span class="discount-badge">37%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Sony FX30', 'Sony FX30 cinema camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="canon-r6ii"> Canon R6 Mark II <span class="price-jp">🇯🇵 ~80,460₺</span> <span class="discount-badge">36%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Canon R6 II', 'Canon EOS R6 Mark II')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="canon-r8"> Canon R8 Body <span class="price-jp">🇯🇵 ~53,460₺</span> <span class="discount-badge">33%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Canon R8', 'Canon EOS R8')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="fuji-xt5"> <strong style="color: var(--accent-sakura);">Fujifilm X-T5 Body</strong> <span class="price-jp">🇯🇵 ~53,460₺</span> <span class="discount-badge">37%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fujifilm X-T5', 'Fujifilm X-T5 camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="fuji-xh2s"> <strong style="color: var(--accent-gold);">Fujifilm X-H2S Body</strong> <span class="price-jp">🇯🇵 ~80,460₺</span> <span class="discount-badge">38%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fujifilm X-H2S', 'Fujifilm X-H2S camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="fuji-x100vi"> Fujifilm X100VI <span class="price-jp">🇯🇵 ~69,660₺</span> <span class="discount-badge">37%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Fujifilm X100VI', 'Fujifilm X100VI camera')">📷</button></label>
+            <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 12px;">
+              <h5 style="color: var(--text-primary); margin: 0 0 8px; font-size: 13px;">📷 Kameralar (Yeni)</h5>
+              <div class="shopping-list electronics-list">
+                <label class="shop-item"><input type="checkbox" data-item="sony-a7iv"> <strong style="color: var(--accent-sakura);">Sony A7 IV Body</strong> <span class="price-jp">🇯🇵 ~75,060₺</span> <span class="discount-badge">35%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="sony-a7c2"> Sony A7C II Body <span class="price-jp">🇯🇵 ~64,260₺</span> <span class="discount-badge">36%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="sony-zve10"> <strong style="color: var(--accent-gold);">Sony ZV-E10 II Kit</strong> <span class="price-jp">🇯🇵 ~29,160₺</span> <span class="discount-badge">35%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="sony-fx30"> Sony FX30 Body <span class="price-jp">🇯🇵 ~53,460₺</span> <span class="discount-badge">37%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="canon-r6ii"> Canon R6 Mark II <span class="price-jp">🇯🇵 ~80,460₺</span> <span class="discount-badge">36%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="canon-r8"> Canon R8 Body <span class="price-jp">🇯🇵 ~53,460₺</span> <span class="discount-badge">33%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="fuji-xt5"> <strong style="color: var(--accent-sakura);">Fujifilm X-T5 Body</strong> <span class="price-jp">🇯🇵 ~53,460₺</span> <span class="discount-badge">37%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="fuji-xh2s"> <strong style="color: var(--accent-gold);">Fujifilm X-H2S Body</strong> <span class="price-jp">🇯🇵 ~80,460₺</span> <span class="discount-badge">38%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="fuji-x100vi"> Fujifilm X100VI <span class="price-jp">🇯🇵 ~69,660₺</span> <span class="discount-badge">37%</span> </label>
               </div>
             </div>
             
             <!-- Diğer Elektronik -->
-            <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px;">
-              <h5 style="color: var(--text-primary); margin: 0 0 12px; font-size: 14px;">🎮 Diğer Elektronik</h5>
-              <div class="shopping-list" style="font-size: 14px; color: var(--text-secondary); line-height: 2.4;">
-                <label class="shop-item"><input type="checkbox" data-item="switch-oled"> <strong style="color: var(--accent-gold);">Nintendo Switch OLED</strong> <span class="price-jp">🇯🇵 ~10,255₺</span> <span class="discount-badge">43%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Nintendo Switch OLED', 'Nintendo Switch OLED')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="sony-xm5"> Sony WH-1000XM5 <span class="price-jp">🇯🇵 ~11,880₺</span> <span class="discount-badge">34%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Sony WH-1000XM5', 'Sony WH-1000XM5 headphones')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="bose-qc"> Bose QC Ultra <span class="price-jp">🇯🇵 ~12,960₺</span> <span class="discount-badge">35%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Bose QC Ultra', 'Bose QuietComfort Ultra')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="jbl-flip6"> <strong style="color: var(--accent-sakura);">JBL Flip 6</strong> <span class="price-jp">🇯🇵 ~3,780₺</span> <span class="discount-badge">31%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('JBL Flip 6', 'JBL Flip 6 bluetooth speaker')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="jbl-charge5"> JBL Charge 5 <span class="price-jp">🇯🇵 ~5,400₺</span> <span class="discount-badge">32%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('JBL Charge 5', 'JBL Charge 5 bluetooth speaker')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="sony-srs-xb100"> <strong style="color: var(--accent-gold);">Sony SRS-XB100</strong> <span class="price-jp">🇯🇵 ~1,620₺</span> <span class="discount-badge">35%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Sony SRS-XB100', 'Sony SRS-XB100 portable speaker')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="dji-mini3"> <strong style="color: var(--accent-sakura);">DJI Mini 3</strong> <span class="price-jp">🇯🇵 ~18,630₺</span> <span class="discount-badge">38%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('DJI Mini 3', 'DJI Mini 3 drone')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="dji-osmo-pocket3"> <strong style="color: var(--accent-gold);">DJI Osmo Pocket 3</strong> <span class="price-jp">🇯🇵 ~18,630₺</span> <span class="discount-badge">33%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('DJI Osmo Pocket 3', 'DJI Osmo Pocket 3 gimbal camera')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="ps5-slim"> PlayStation 5 Slim <span class="price-jp">🇯🇵 ~16,200₺</span> <span class="discount-badge">30%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('PlayStation 5 Slim', 'PS5 Slim console')">📷</button></label>
-                <label class="shop-item"><input type="checkbox" data-item="kindle"> Kindle Paperwhite <span class="price-jp">🇯🇵 ~5,400₺</span> <span class="discount-badge">25%</span> <button class="search-img-btn" onclick="event.preventDefault(); showProductImage('Kindle Paperwhite', 'Kindle Paperwhite 2024')">📷</button></label>
+            <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 12px;">
+              <h5 style="color: var(--text-primary); margin: 0 0 8px; font-size: 13px;">🎮 Diğer Elektronik</h5>
+              <div class="shopping-list electronics-list">
+                <label class="shop-item"><input type="checkbox" data-item="switch-oled"> <strong style="color: var(--accent-gold);">Nintendo Switch OLED</strong> <span class="price-jp">🇯🇵 ~10,255₺</span> <span class="discount-badge">43%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="sony-xm5"> Sony WH-1000XM5 <span class="price-jp">🇯🇵 ~11,880₺</span> <span class="discount-badge">34%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="bose-qc"> Bose QC Ultra <span class="price-jp">🇯🇵 ~12,960₺</span> <span class="discount-badge">35%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="jbl-flip6"> <strong style="color: var(--accent-sakura);">JBL Flip 6</strong> <span class="price-jp">🇯🇵 ~3,780₺</span> <span class="discount-badge">31%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="jbl-charge5"> JBL Charge 5 <span class="price-jp">🇯🇵 ~5,400₺</span> <span class="discount-badge">32%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="sony-srs-xb100"> <strong style="color: var(--accent-gold);">Sony SRS-XB100</strong> <span class="price-jp">🇯🇵 ~1,620₺</span> <span class="discount-badge">35%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="dji-mini3"> <strong style="color: var(--accent-sakura);">DJI Mini 3</strong> <span class="price-jp">🇯🇵 ~18,630₺</span> <span class="discount-badge">38%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="dji-osmo-pocket3"> <strong style="color: var(--accent-gold);">DJI Osmo Pocket 3</strong> <span class="price-jp">🇯🇵 ~18,630₺</span> <span class="discount-badge">33%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="ps5-slim"> PlayStation 5 Slim <span class="price-jp">🇯🇵 ~16,200₺</span> <span class="discount-badge">30%</span> </label>
+                <label class="shop-item"><input type="checkbox" data-item="kindle"> Kindle Paperwhite <span class="price-jp">🇯🇵 ~5,400₺</span> <span class="discount-badge">25%</span> </label>
               </div>
             </div>
           </div>
