@@ -767,17 +767,21 @@
     .shopping-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
+      overflow-x: auto;
     }
 
     .shop-item {
       display: flex;
       align-items: center;
+      flex-wrap: nowrap;
       gap: 10px;
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s ease;
+      white-space: nowrap;
+      font-size: 14px;
     }
 
     .shop-item:hover {
