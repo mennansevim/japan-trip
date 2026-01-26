@@ -872,6 +872,21 @@
       background: rgba(255, 112, 67, 0.25);
     }
 
+    .copy-link-btn {
+      padding: 8px 16px;
+      background: rgba(129, 199, 132, 0.15);
+      border: 1px solid rgba(129, 199, 132, 0.3);
+      border-radius: 8px;
+      color: var(--accent-matcha);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-link-btn:hover {
+      background: rgba(129, 199, 132, 0.25);
+    }
+
     /* Product Image Thumbnails */
     .shop-item {
       position: relative;
@@ -2218,6 +2233,7 @@
           <div class="progress-fill" id="progressFill" style="width: 0%"></div>
         </div>
         <span class="progress-text" id="progressText">0 / 0</span>
+        <button class="copy-link-btn" onclick="copyListLink()">🔗 Link Kopyala</button>
         <button class="clear-btn" onclick="clearAllItems()">🗑️ Sıfırla</button>
       </div>
 
@@ -2508,10 +2524,12 @@
       initShoppingList();
     });
 
-    // Shopping List with localStorage
+    // Shopping List with URL Hash (works across browsers!)
     function initShoppingList() {
       const checkboxes = document.querySelectorAll('.shop-item input[type="checkbox"]');
-      const savedItems = JSON.parse(localStorage.getItem('japanShoppingList') || '{}');
+      
+      // Load from URL hash first, then localStorage as fallback
+      const savedItems = loadCheckedFromURL() || JSON.parse(localStorage.getItem('japanShoppingList') || '{}');
       
       // Load saved state
       checkboxes.forEach(checkbox => {
@@ -2542,6 +2560,41 @@
       });
       
       localStorage.setItem('japanShoppingList', JSON.stringify(items));
+      saveCheckedToURL(items);
+    }
+
+    // URL Hash functions for cross-browser sync
+    function saveCheckedToURL(items) {
+      const checkedIds = Object.keys(items).filter(id => items[id]);
+      if (checkedIds.length > 0) {
+        const encoded = btoa(JSON.stringify(checkedIds));
+        history.replaceState(null, '', '#list=' + encoded);
+      } else {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    }
+
+    function loadCheckedFromURL() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#list=')) {
+        try {
+          const encoded = hash.substring(6);
+          const checkedIds = JSON.parse(atob(encoded));
+          const items = {};
+          checkedIds.forEach(id => items[id] = true);
+          return items;
+        } catch (e) {
+          return null;
+        }
+      }
+      return null;
+    }
+
+    // Copy link button
+    function copyListLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Link kopyalandı! 📋\nBu linki başka tarayıcıda açarak aynı listeye erişebilirsin.');
+      });
     }
 
     function updateProgress() {
@@ -2562,6 +2615,7 @@
         const checkboxes = document.querySelectorAll('.shop-item input[type="checkbox"]');
         checkboxes.forEach(checkbox => checkbox.checked = false);
         localStorage.removeItem('japanShoppingList');
+        history.replaceState(null, '', window.location.pathname);
         updateProgress();
       }
     }
