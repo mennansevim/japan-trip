@@ -1059,6 +1059,144 @@
       text-decoration: line-through;
     }
 
+    /* Shopping Tabs */
+    .shopping-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 4px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .shopping-tab {
+      flex: 1;
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .shopping-tab:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .shopping-tab.active {
+      background: var(--gradient-sakura);
+      color: white;
+    }
+
+    .shopping-tab.amazon.active {
+      background: linear-gradient(135deg, #ff9900, #ffb84d);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Amazon Products Grid */
+    .amazon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .amazon-product {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      transition: all 0.3s ease;
+      display: flex;
+      gap: 14px;
+    }
+
+    .amazon-product:hover {
+      border-color: rgba(255, 153, 0, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 153, 0, 0.1);
+    }
+
+    .amazon-product-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: white;
+      padding: 8px;
+      flex-shrink: 0;
+    }
+
+    .amazon-product-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .amazon-product-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .amazon-product-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ff9900;
+      margin-bottom: 4px;
+    }
+
+    .amazon-product-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(255, 153, 0, 0.15);
+      color: #ff9900;
+    }
+
+    .amazon-product-badge.bestseller {
+      background: rgba(255, 215, 0, 0.2);
+      color: #ffd700;
+    }
+
+    .amazon-category-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 24px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .amazon-category-title:first-child {
+      margin-top: 0;
+    }
+
     /* Shopping progress bar */
     .shopping-progress {
       display: flex;
@@ -1362,8 +1500,8 @@
         <span class="top-cd-value" id="topSeconds">--</span><span class="top-cd-unit">sn</span>
       </div>
       <div class="top-countdown-tickets">
-        <span class="ticket-badge disney" title="Disney bileti: 1 Mayıs'a kadar">🏰 <span id="topDisney">--</span></span>
-        <span class="ticket-badge usj" title="USJ bileti: 1 Mayıs'a kadar">🎢 <span id="topUsj">--</span></span>
+        <span class="ticket-badge disney" title="Disneyland bileti 7 Mart'ta açılıyor → Hatırlatma: 6 Mart">🏰 <span id="topDisney">--</span></span>
+        <span class="ticket-badge usj" title="USJ bileti 1 Nisan'da açılıyor → Hatırlatma: 31 Mart">🎢 <span id="topUsj">--</span></span>
         <span class="ticket-badge shinkansen" title="Shinkansen: 20 Nisan'a kadar">🚄 <span id="topShinkansen">--</span></span>
       </div>
     </div>
@@ -2648,12 +2786,24 @@
         <div class="section-icon" style="background: linear-gradient(135deg, #ff6b9d, #ffd54f);">🛒</div>
         <div>
           <h2 class="section-title">Alışveriş Listesi</h2>
-          <p class="section-subtitle">Japonya'dan mutlaka alınacaklar • Tıkla işaretle, otomatik kaydedilir!</p>
+          <p class="section-subtitle">Japonya'dan mutlaka alınacaklar</p>
         </div>
       </div>
 
-      <!-- Progress Bar -->
-      <div class="shopping-progress">
+      <!-- Shopping Tabs -->
+      <div class="shopping-tabs">
+        <button class="shopping-tab active" onclick="switchShoppingTab('checklist')">
+          📝 Alışveriş Listesi
+        </button>
+        <button class="shopping-tab amazon" onclick="switchShoppingTab('amazon')">
+          🛒 Amazon JP Fiyatları
+        </button>
+      </div>
+
+      <!-- Tab 1: Checklist -->
+      <div id="checklistTab" class="tab-content active">
+        <!-- Progress Bar -->
+        <div class="shopping-progress">
         <span style="font-size: 20px;">🛍️</span>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill" style="width: 0%"></div>
@@ -2885,6 +3035,238 @@
           • <strong>Havalimanı</strong> - Son dakika hediyelik (Tokyo Banana, Royce)
         </p>
       </div>
+      </div><!-- End Checklist Tab -->
+
+      <!-- Tab 2: Amazon JP Prices -->
+      <div id="amazonTab" class="tab-content">
+        <div style="background: linear-gradient(135deg, rgba(255, 153, 0, 0.1), rgba(255, 184, 77, 0.05)); border: 1px solid rgba(255, 153, 0, 0.2); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span style="font-size: 24px;">🛒</span>
+            <strong style="color: #ff9900; font-size: 16px;">Amazon Japan Fiyatları</strong>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+            Aşağıdaki fiyatlar Amazon.co.jp'den alınmıştır. Japonya'da mağazadan alınan ürünlerle karşılaştırma yapabilirsiniz.
+          </p>
+        </div>
+
+        <!-- Elektronik -->
+        <div class="amazon-category-title">📱 Elektronik & Ses</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51K3AQdSFGL._AC_SL1500_.jpg" alt="Sennheiser MOMENTUM 4" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Sennheiser MOMENTUM 4 Wireless ANC Headphones</div>
+              <div class="amazon-product-price">¥40,000</div>
+              <span class="amazon-product-badge">60 Saat Pil</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61ltVu5eIjL._AC_SL1500_.jpg" alt="DJI Osmo Pocket 3" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">DJI Osmo Pocket 3 Creator Combo Vlog Camera</div>
+              <div class="amazon-product-price">¥79,000</div>
+              <span class="amazon-product-badge bestseller">#1 Best Seller</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61nqNUECWPL._AC_SL1500_.jpg" alt="G-SHOCK" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">G-SHOCK Full Metal Solar GM-B2100D-1AJF</div>
+              <div class="amazon-product-price">¥61,600</div>
+              <span class="amazon-product-badge">Bluetooth</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61F3LD7xb-L._AC_SL1500_.jpg" alt="DJI Osmo Mobile 7P" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">DJI Osmo Mobile 7P Gimbal Stabilizer</div>
+              <div class="amazon-product-price">¥15,620</div>
+              <span class="amazon-product-badge">3-Axis Gimbal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gaming -->
+        <div class="amazon-category-title">🎮 Gaming</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51mWHXY8hyL._SL1500_.jpg" alt="DualSense White" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">DualSense Wireless Controller (White)</div>
+              <div class="amazon-product-price">¥9,807</div>
+              <span class="amazon-product-badge bestseller">#1 Best Seller</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61khEIGBj6L._SL1500_.jpg" alt="DualSense Ghost of Yotei" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">DualSense Ghost of Yōtei Gold Limited Edition</div>
+              <div class="amazon-product-price">¥10,590</div>
+              <span class="amazon-product-badge bestseller">Limited Edition</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mutfak & Ev -->
+        <div class="amazon-category-title">🔪 Mutfak & Ev</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/31x9gI7NNJL._AC_SL1000_.jpg" alt="Kai Santoku Knife" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Kai Seki Magoroku Santoku Knife 165mm</div>
+              <div class="amazon-product-price">¥2,827</div>
+              <span class="amazon-product-badge bestseller">#1 Best Seller</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51sR0tDv4GL._AC_SL1001_.jpg" alt="Kai Nail Clipper" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Kai Seki Magoroku Nail Clipper Type 101</div>
+              <div class="amazon-product-price">¥1,101</div>
+              <span class="amazon-product-badge">Made in Japan</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/71GVqUv-jML._AC_SL1500_.jpg" alt="Nail Clippers Set" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Stainless Steel Nail Clippers Set (Japan)</div>
+              <div class="amazon-product-price">¥2,499</div>
+              <span class="amazon-product-badge">Made in Japan</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/71q1tRwj4WL._AC_SL1500_.jpg" alt="Imabari Towel" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Bloom Imabari Face Towel Set (3 pcs)</div>
+              <div class="amazon-product-price">¥2,280</div>
+              <span class="amazon-product-badge">Imabari Certified</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/71bLBmGdyuL._AC_SL1500_.jpg" alt="WORKPRO Utility Knife" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">WORKPRO Folding Utility Knife Wood Handle</div>
+              <div class="amazon-product-price">¥1,980</div>
+              <span class="amazon-product-badge">10 Blades</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51wWZKbDYdL._AC_SL1500_.jpg" alt="Amazon Basic Utility Knife" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Amazon Basic Utility Knife Pink</div>
+              <div class="amazon-product-price">¥970</div>
+              <span class="amazon-product-badge bestseller">#1 Best Seller</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kozmetik & Cilt Bakımı -->
+        <div class="amazon-category-title">💄 Kozmetik & Cilt Bakımı</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51lPd14Ey+L._AC_SL1100_.jpg" alt="Biore UV" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Bioré UV Aquarich Aqua Protect Lotion 70ml</div>
+              <div class="amazon-product-price">¥750</div>
+              <span class="amazon-product-badge">SPF50+</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51VqYy7TOML._AC_SL1100_.jpg" alt="Melano CC" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Melano CC Premium Vitamin C Serum 20ml</div>
+              <div class="amazon-product-price">¥1,358</div>
+              <span class="amazon-product-badge">Medical Device</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/41M6HLsz4BL._AC_SL1100_.jpg" alt="Canmake" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Canmake Cream Cheek Blush</div>
+              <div class="amazon-product-price">¥638</div>
+              <span class="amazon-product-badge">Sweet Apricot</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/51jNfm4RzjL._AC_SL1100_.jpg" alt="Keana Rice Mask" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Keana Nadeshiko Rice Mask (10 Sheets)</div>
+              <div class="amazon-product-price">¥715</div>
+              <span class="amazon-product-badge">Pore Care</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61F5LTpJ1dL._AC_SL1100_.jpg" alt="Foot Sheet" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Far-Infrared Foot Sheet Asi Megu (20 pcs)</div>
+              <div class="amazon-product-price">¥2,980</div>
+              <span class="amazon-product-badge">Made in Japan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saç Bakımı -->
+        <div class="amazon-category-title">💇 Saç Bakımı</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61bJxQaLDYL._AC_SL1100_.jpg" alt="&honey" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">&honey Deep Moist Shampoo & Treatment Set</div>
+              <div class="amazon-product-price">¥3,080</div>
+              <span class="amazon-product-badge">Gift Set</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/61dQ4uYS8RL._AC_SL1100_.jpg" alt="Fino" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Fino Premium Touch Hair Mask 230g</div>
+              <div class="amazon-product-price">¥749</div>
+              <span class="amazon-product-badge">Best Seller</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yiyecek & İçecek -->
+        <div class="amazon-category-title">🍵 Yiyecek & İçecek</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/71AW1xA7yRL._AC_SL1500_.jpg" alt="Itoen Matcha" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Itoen Oi Ocha Premium Matcha Tea Bags (50)</div>
+              <div class="amazon-product-price">¥816</div>
+              <span class="amazon-product-badge bestseller">#1 Best Seller</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ayakkabı -->
+        <div class="amazon-category-title">👟 Ayakkabı</div>
+        <div class="amazon-grid">
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/81QpkIctqPL._AC_SL1500_.jpg" alt="Salomon" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">Salomon XA Pro 3D Trail Running Shoes</div>
+              <div class="amazon-product-price">¥18,150</div>
+              <span class="amazon-product-badge">Trail Running</span>
+            </div>
+          </div>
+          <div class="amazon-product">
+            <img src="https://m.media-amazon.com/images/I/71itkDwwGzL._AC_SL1500_.jpg" alt="ASICS" class="amazon-product-img">
+            <div class="amazon-product-info">
+              <div class="amazon-product-name">ASICS JOLT 5 Running Shoes</div>
+              <div class="amazon-product-price">¥4,980</div>
+              <span class="amazon-product-badge">4E Wide</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 24px; text-align: center;">
+          <p style="font-size: 12px; color: var(--text-muted); margin: 0;">
+            💡 Fiyatlar Amazon.co.jp'den alınmıştır ve değişkenlik gösterebilir. Japonya'da mağazadan alırken Tax-Free (%10 indirim) avantajını unutmayın!
+          </p>
+        </div>
+      </div><!-- End Amazon Tab -->
+
     </section>
 
     <!-- Quick Reference -->
@@ -3316,10 +3698,32 @@
       });
     });
 
+    // Shopping Tab Switcher
+    function switchShoppingTab(tabName) {
+      // Update tab buttons
+      document.querySelectorAll('.shopping-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Update tab content
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+
+      if (tabName === 'checklist') {
+        document.getElementById('checklistTab').classList.add('active');
+      } else if (tabName === 'amazon') {
+        document.getElementById('amazonTab').classList.add('active');
+      }
+    }
+
     // Countdown Timer Functions
     const tripDate = new Date('2026-05-13T16:00:00+03:00'); // Uçuş saati
-    const disneyTicketDeadline = new Date('2026-04-30T23:59:59+03:00'); // Disney bileti - 1 gün önce hatırlatma (1 Mayıs için)
-    const usjTicketDeadline = new Date('2026-04-30T23:59:59+03:00'); // USJ bileti - 1 gün önce hatırlatma
+    // Takvim: Disneyland biletleri 7 Mart 2026'dan itibaren → 1 gün önce hatırlatma: 6 Mart
+    const disneyTicketDeadline = new Date('2026-03-06T23:59:59+03:00');
+    // Takvim: USJ Nisan açık, bilet alım 1 Nisan 2026 → 1 gün önce hatırlatma: 31 Mart
+    const usjTicketDeadline = new Date('2026-03-31T23:59:59+03:00');
     const shinkansenDeadline = new Date('2026-04-19T23:59:59+03:00'); // Shinkansen - 1 gün önce hatırlatma (20 Nisan için)
 
     function updateTopCountdown() {
