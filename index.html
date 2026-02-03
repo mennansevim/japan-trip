@@ -186,6 +186,175 @@
       font-size: 18px;
     }
 
+    /* Countdown Dashboard */
+    .countdown-dashboard {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+    }
+
+    .countdown-main {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(124, 106, 239, 0.08) 0%, rgba(255, 143, 171, 0.06) 100%);
+      border-color: rgba(124, 106, 239, 0.2);
+    }
+
+    .countdown-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-fuji);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .countdown-timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
+
+    .countdown-value {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      font-family: 'Outfit', monospace;
+    }
+
+    .countdown-text {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .countdown-separator {
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .ticket-reminders {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .reminder-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .reminder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .reminder-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .reminder-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .reminder-card.disney { border-left: 3px solid var(--accent-sakura); }
+    .reminder-card.usj { border-left: 3px solid var(--accent-sunset); }
+    .reminder-card.shinkansen { border-left: 3px solid var(--accent-sky); }
+
+    .reminder-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .reminder-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .reminder-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reminder-date {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .reminder-countdown {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-top: 4px;
+    }
+
+    .reminder-countdown.urgent {
+      color: var(--accent-sakura);
+      animation: pulse 1.5s infinite;
+    }
+
+    .reminder-countdown.done {
+      color: var(--accent-matcha);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @media (max-width: 600px) {
+      .countdown-value {
+        font-size: 28px;
+      }
+      .countdown-unit {
+        min-width: 50px;
+      }
+      .reminder-grid {
+        grid-template-columns: 1fr;
+      }
+      .reminder-card {
+        padding: 10px 12px;
+      }
+    }
+
     /* Stats Bar */
     .stats-bar {
       position: relative;
@@ -692,6 +861,117 @@
       color: var(--text-secondary);
     }
 
+    /* Travel Notes Section */
+    .notes-section {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 60px auto 0;
+      padding: 0 24px 40px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .notes-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffd54f, #ffb300);
+      border-radius: 10px;
+      font-size: 20px;
+    }
+
+    .notes-title {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .note-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .note-card:hover {
+      border-color: rgba(255, 213, 79, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .note-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .note-card-icon {
+      font-size: 20px;
+    }
+
+    .note-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    .note-card-content {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .note-card-content strong {
+      color: var(--text-primary);
+    }
+
+    .note-card-content .highlight {
+      display: inline-block;
+      background: rgba(255, 213, 79, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    .note-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      border-left: 2px solid var(--accent-gold);
+    }
+
+    .note-tip-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .note-tip-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     /* Footer */
     .footer {
       text-align: center;
@@ -1147,6 +1427,63 @@
     </div>
   </header>
 
+  <!-- Countdown Dashboard -->
+  <div class="countdown-dashboard">
+    <div class="countdown-main">
+      <div class="countdown-label">Tatile Kalan Süre</div>
+      <div class="countdown-timer" id="mainCountdown">
+        <div class="countdown-unit">
+          <span class="countdown-value" id="days">--</span>
+          <span class="countdown-text">Gün</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-value" id="hours">--</span>
+          <span class="countdown-text">Saat</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-value" id="minutes">--</span>
+          <span class="countdown-text">Dakika</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-value" id="seconds">--</span>
+          <span class="countdown-text">Saniye</span>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-reminders">
+      <div class="reminder-title">Bilet Hatırlatıcıları</div>
+      <div class="reminder-grid">
+        <div class="reminder-card disney">
+          <div class="reminder-icon">🏰</div>
+          <div class="reminder-info">
+            <div class="reminder-name">Disney Bileti</div>
+            <div class="reminder-date">Al: 1 Mayıs'a kadar</div>
+            <div class="reminder-countdown" id="disneyCountdown">--</div>
+          </div>
+        </div>
+        <div class="reminder-card usj">
+          <div class="reminder-icon">🎢</div>
+          <div class="reminder-info">
+            <div class="reminder-name">USJ Bileti</div>
+            <div class="reminder-date">Al: 1 Mayıs'a kadar</div>
+            <div class="reminder-countdown" id="usjCountdown">--</div>
+          </div>
+        </div>
+        <div class="reminder-card shinkansen">
+          <div class="reminder-icon">🚄</div>
+          <div class="reminder-info">
+            <div class="reminder-name">Shinkansen</div>
+            <div class="reminder-date">Al: 20 Nisan'a kadar</div>
+            <div class="reminder-countdown" id="shinkansenCountdown">--</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Stats -->
   <div class="stats-bar">
     <div class="stat-card">
@@ -1250,8 +1587,8 @@
         <div class="hotel-header">
           <div class="hotel-icon">🗼</div>
           <div>
-            <div class="hotel-city">Tokyo - Ikebukuro</div>
-            <div class="hotel-dates">14 - 20 Mayıs 2026</div>
+            <div class="hotel-city">Hotel Grand City</div>
+            <div class="hotel-dates">14 - 20 Mayıs 2026 • Ikebukuro</div>
           </div>
         </div>
         <div class="hotel-nights">
@@ -1259,11 +1596,11 @@
           <span class="label">Gece<br>Konaklama</span>
         </div>
         <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-secondary);">
-          <strong style="color: var(--accent-sakura);">Neden Ikebukuro?</strong><br>
-          ✓ Shinjuku'dan %20-30 ucuz<br>
-          ✓ JR Yamanote hattı üzerinde<br>
-          ✓ Her yere kolay ulaşım<br>
-          ✓ Bic Camera, Sunshine City
+          <strong style="color: var(--accent-sakura);">📍 Yol Tarifi (Ikebukuro Station)</strong><br>
+          ✓ East Exit (North) veya Exit 32'den çık<br>
+          ✓ HSBC ve UFJ Bank (kırmızı tabela) arası sokağa gir<br>
+          ✓ 300m yürü, bowling salonu görünce sola dön<br>
+          ✓ 50m ileride sağda otel!
         </div>
       </div>
       <div class="hotel-card osaka">
@@ -1327,18 +1664,21 @@
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">21:00</div>
-                <div class="timeline-title">Otele Transfer - Ikebukuro</div>
+                <div class="timeline-title">Hotel Grand City'ye Transfer</div>
                 <div class="timeline-desc">
                   <strong>Rota:</strong> Haneda T3 → <strong>Keikyu Line</strong> → Shinagawa (15 dk) → <strong>JR Yamanote</strong> → Ikebukuro (25 dk)<br>
-                  <strong>Toplam:</strong> ~45-50 dakika, ~600¥<br>
-                  <strong>Suica/Pasmo:</strong> Keikyu istasyonunda otomattan al!
+                  <strong>Toplam:</strong> ~45-50 dakika, <strong>~600¥/kişi</strong><br>
+                  <strong>Suica/Pasmo:</strong> Keikyu istasyonunda otomattan al (2000-3000¥ yükleyin)
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">22:00</div>
-                <div class="timeline-title">Check-in & Dinlenme - Ikebukuro</div>
-                <div class="timeline-desc">Jet lag nedeniyle erken yatmanız önerilir. Ikebukuro istasyonu çevresinde <strong>7-Eleven</strong>, <strong>FamilyMart</strong>, <strong>Lawson</strong> her yerde! Gece atıştırmalık ve içecek için ideal. <strong>Sunshine City</strong> alışveriş merkezi de yakında (sabah için not al!).</div>
+                <div class="timeline-title">Hotel Grand City Check-in</div>
+                <div class="timeline-desc">
+                  <strong>İstasyondan Otele:</strong> East Exit (North) veya Exit 32'den çık → HSBC ve UFJ Bank (kırmızı tabela) arası sokağa gir → 300m yürü → Bowling salonu görünce sola dön → 50m ileride sağda otel!<br><br>
+                  Jet lag nedeniyle erken yatmanız önerilir. Ikebukuro istasyonu çevresinde <strong>7-Eleven</strong>, <strong>FamilyMart</strong>, <strong>Lawson</strong> her yerde! <strong>Sunshine City</strong> alışveriş merkezi de yakında.
+                </div>
               </div>
             </div>
             <div class="highlight-card">
@@ -1347,7 +1687,8 @@
                 <strong style="color: var(--accent-sky);">1. eSIM'i Aktifleştir</strong> - Uçakta veya inmeden QR ile kur (Ubigi/Airalo)<br>
                 <strong style="color: var(--accent-sky);">2. Suica/Pasmo Al</strong> - Keikyu istasyonunda otomattan (2000-3000¥)<br>
                 <strong style="color: var(--accent-sky);">3. Keikyu Line → Shinagawa</strong> - ~15 dk, ~300¥<br>
-                <strong style="color: var(--accent-sky);">4. JR Yamanote → Ikebukuro</strong> - ~25 dk, otele!
+                <strong style="color: var(--accent-sky);">4. JR Yamanote → Ikebukuro</strong> - ~25 dk<br>
+                <strong style="color: var(--accent-sky);">5. Hotel Grand City</strong> - East Exit (North) / Exit 32 → HSBC-UFJ arası → 300m → Bowling salonu → Sol → 50m
               </p>
             </div>
           </div>
@@ -1386,37 +1727,49 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">09:00 - 12:00</div>
                 <div class="timeline-title">Asakusa & Senso-ji Tapınağı</div>
-                <div class="timeline-desc">Tokyo'nun en eski ve en ünlü Budist tapınağı. <strong>Kaminarimon</strong> (Şimşek Kapısı) ile fotoğraf çekin, <strong>Nakamise-dori</strong> sokağında geleneksel hediyelik eşyalar ve atıştırmalıklar bulun.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Ikebukuro → Asakusa: <strong>JR Yamanote + Tokyo Metro Ginza</strong> | 30 dk | ~250¥/kişi</span><br>
+                  Tokyo'nun en eski ve en ünlü Budist tapınağı. <strong>Kaminarimon</strong> (Şimşek Kapısı) ile fotoğraf çekin, <strong>Nakamise-dori</strong> sokağında geleneksel hediyelik eşyalar ve atıştırmalıklar bulun.
+                </div>
                 <div class="timeline-tips">
                   <p>🍡 <strong>Denemeniz Gerekenler:</strong> Ningyo-yaki (mini kekler), Melon-pan (tatlı ekmek), Age-manju (kızarmış tatlı), Senbei (pirinç krakeri)</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">12:30 - 14:00</div>
+                <div class="timeline-time">12:00 - 13:00</div>
+                <div class="timeline-title">Öğle Yemeği - Asakusa Sokak Yemekleri</div>
+                <div class="timeline-desc">Hoppy Street'te izakaya tarzı yemek veya yerel ramen dükkanı deneyin. <strong>Gyukatsu</strong> (dana şnitzel) için sıra beklemeye değer!</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">13:00 - 15:00</div>
                 <div class="timeline-title">Tokyo Skytree 🗼</div>
-                <div class="timeline-desc">Asakusa'dan yürüme mesafesinde! <strong>634 metre</strong> - Japonya'nın en yüksek kulesi. Gözlem katından Tokyo panoraması. <strong>Solamachi</strong> alışveriş merkezinde öğle yemeği ve alışveriş.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Asakusa → Skytree: <strong>Yürüme</strong> | 15 dk | Ücretsiz</span><br>
+                  <strong>634 metre</strong> - Japonya'nın en yüksek kulesi. Gözlem katından Tokyo panoraması. <strong>Solamachi</strong> alışveriş merkezinde alışveriş yapabilirsiniz.
+                </div>
                 <div class="timeline-tips">
                   <p>🎫 <strong>İpucu:</strong> Online bilet al, kuyruk atlarsın! Tembo Deck (350m) yeterli, Tembo Galleria (450m) ekstra ücret.</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">13:00 - 14:00</div>
-                <div class="timeline-title">Öğle Yemeği - Asakusa Sokak Yemekleri</div>
-                <div class="timeline-desc">Hoppy Street'te izakaya tarzı yemek veya yerel ramen dükkanı deneyin. <strong>Gyukatsu</strong> (dana şnitzel) için sıra beklemeye değer!</div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-time">14:30 - 15:30</div>
-                <div class="timeline-title">Ueno Parkı (Opsiyonel Geçiş)</div>
-                <div class="timeline-desc">Asakusa'dan Akihabara'ya giderken Ueno'da mola verebilirsiniz. Parkta yürüyüş veya Ameyoko pazarına göz atın.</div>
+                <div class="timeline-time">15:00 - 16:00</div>
+                <div class="timeline-title">Ueno Parkı & Ameyoko</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Skytree → Ueno: <strong>Tokyo Metro</strong> (Oshiage → Ueno) | 15 dk | ~200¥/kişi</span><br>
+                  Parkta yürüyüş veya <strong>Ameyoko pazarı</strong>na göz atın - sokak yemekleri ve ucuz alışveriş!
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">16:00 - 20:00</div>
                 <div class="timeline-title">Akihabara - Elektrik Şehri & Kamera Alışverişi 📷</div>
-                <div class="timeline-desc">Anime, manga, video oyunları ve elektronik cenneti! <strong>Mandarake</strong> (retro manga/anime), <strong>Super Potato</strong> (retro oyunlar) ve <strong>Gachapon</strong> salonlarını keşfedin.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Ueno → Akihabara: <strong>Yürüme</strong> | 12 dk | Ücretsiz <em>veya</em> 🚃 JR 3 dk</span><br>
+                  Anime, manga, video oyunları ve elektronik cenneti! <strong>Mandarake</strong> (retro manga/anime), <strong>Super Potato</strong> (retro oyunlar) ve <strong>Gachapon</strong> salonlarını keşfedin.
+                </div>
                 <div class="timeline-tips">
                   <p>📷 <strong>KAMERA ALIŞVERİŞİ - Yodobashi & BIC Camera Akiba:</strong><br>
                   • <strong>Yodobashi Camera:</strong> 9 katlı dev mağaza - Japonya'nın en büyüğü!<br>
@@ -1432,8 +1785,11 @@
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">20:00</div>
-                <div class="timeline-title">Akşam Yemeği</div>
-                <div class="timeline-desc">Akihabara'da ramen veya curry house. <strong>Kanda Matsuya</strong> (soba) veya <strong>CoCo Ichibanya</strong> (Japon karesi) önerilir.</div>
+                <div class="timeline-title">Akşam Yemeği & Otele Dönüş</div>
+                <div class="timeline-desc">
+                  Akihabara'da ramen veya curry house. <strong>Kanda Matsuya</strong> (soba) veya <strong>CoCo Ichibanya</strong> (Japon karesi) önerilir.<br>
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-top: 8px;">🚃 Akihabara → Ikebukuro: <strong>JR Yamanote</strong> | 25 dk | ~210¥/kişi</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1465,50 +1821,76 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">09:00 - 11:00</div>
                 <div class="timeline-title">Meiji Jingu Tapınağı</div>
-                <div class="timeline-desc">Yoyogi Parkı içindeki bu Shinto tapınağı, şehrin ortasında huzurlu bir orman sunuyor. Geleneksel Japon düğünü görme şansınız olabilir!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Ikebukuro → Harajuku: <strong>JR Yamanote</strong> | 20 dk | ~180¥/kişi</span><br>
+                  Yoyogi Parkı içindeki bu Shinto tapınağı, şehrin ortasında huzurlu bir orman sunuyor. Geleneksel Japon düğünü görme şansınız olabilir!
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">11:00 - 14:00</div>
                 <div class="timeline-title">Harajuku & Takeshita Street</div>
-                <div class="timeline-desc">Japonya'nın gençlik ve moda merkezi! <strong>Takeshita Dori</strong>'de renkli mağazalar, <strong>krepler</strong>, <strong>pamuk şeker</strong> ve benzersiz kıyafetler bulun. <strong>Omotesando</strong>'da lüks marka mağazaları. <strong>Uniqlo Harajuku</strong> - UT (t-shirt) koleksiyonları için ideal!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Meiji Jingu → Harajuku: <strong>Yürüme</strong> | 5 dk | Ücretsiz (çıkış kapısından)</span><br>
+                  Japonya'nın gençlik ve moda merkezi! <strong>Takeshita Dori</strong>'de renkli mağazalar, <strong>krepler</strong>, <strong>pamuk şeker</strong> ve benzersiz kıyafetler bulun. <strong>Omotesando</strong>'da lüks marka mağazaları. <strong>Uniqlo Harajuku</strong> - UT (t-shirt) koleksiyonları için ideal!
+                </div>
                 <div class="timeline-tips">
                   <p>🍦 <strong>Kaçırmayın:</strong> Marion Crepes, Totti Candy Factory (dev pamuk şeker), kawaii mağazaları</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">14:30 - 16:30</div>
-                <div class="timeline-title">Daikanyama - Tokyo'nun Brooklyn'i</div>
-                <div class="timeline-desc">Shibuya'dan 1 durak! Şık butikler, kafeler ve sakin atmosfer.</div>
-                <div class="timeline-tips">
-                  <p>📚 <strong>Kaçırma:</strong><br>
-                  • <strong>Tsutaya Books (T-Site)</strong> - Dünyanın en güzel kitapçılarından, 3 bina, kafe içinde<br>
-                  • <strong>Okura</strong> - Vintage Japon eşyaları<br>
-                  • <strong>Log Road Daikanyama</strong> - Eski tren yolu üzerinde kafeler ve butikler<br>
-                  • Sokak aralarında bağımsız tasarımcı mağazaları</p>
+                <div class="timeline-time">14:00 - 16:00</div>
+                <div class="timeline-title">Shibuya Keşfi</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Harajuku → Shibuya: <strong>Yürüme</strong> (Omotesando üzerinden) | 15 dk | Ücretsiz</span><br>
+                  <strong>Shibuya Crossing</strong> - dünyanın en kalabalık yaya geçidi! <strong>Hachiko heykeli</strong> ile fotoğraf, <strong>Shibuya 109</strong> alışveriş, <strong>ABC Mart</strong> (ayakkabı).
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">17:00 - 19:00</div>
-                <div class="timeline-title">Shibuya Keşfi</div>
-                <div class="timeline-desc"><strong>Shibuya Crossing</strong> - dünyanın en kalabalık yaya geçidi! <strong>Hachiko heykeli</strong> ile fotoğraf, <strong>Shibuya Sky</strong> gözlem katından muhteşem Tokyo manzarası (bilet önceden alın!), <strong>Shibuya 109</strong> alışveriş, <strong>ABC Mart</strong> (ayakkabı).</div>
+                <div class="timeline-time">16:00 - 17:30</div>
+                <div class="timeline-title">Shibuya Sky 🌆</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Shibuya içi: <strong>Yürüme</strong> | 5 dk | Ücretsiz (Scramble Square binasında)</span><br>
+                  Shibuya Scramble Square'in tepesinde 230m yükseklikte açık hava gözlem katı. Günbatımı için mükemmel! <strong>Bilet önceden online alın.</strong>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">18:30 - 20:00</div>
+                <div class="timeline-time">17:30 - 19:00</div>
+                <div class="timeline-title">Daikanyama - Tokyo'nun Brooklyn'i</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Shibuya → Daikanyama: <strong>Tokyu Toyoko</strong> | 3 dk | ~130¥/kişi <em>veya</em> 🚶 Yürüme 12 dk</span><br>
+                  Şık butikler, kafeler ve sakin atmosfer.
+                </div>
+                <div class="timeline-tips">
+                  <p>📚 <strong>Kaçırma:</strong><br>
+                  • <strong>Tsutaya Books (T-Site)</strong> - Dünyanın en güzel kitapçılarından, 3 bina, kafe içinde<br>
+                  • <strong>Okura</strong> - Vintage Japon eşyaları<br>
+                  • <strong>Log Road Daikanyama</strong> - Eski tren yolu üzerinde kafeler ve butikler</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">19:30 - 21:00</div>
                 <div class="timeline-title">Tokyo Tower 🗼 (Gece Manzarası)</div>
-                <div class="timeline-desc">Shibuya'dan 15 dk metro! <strong>333 metre</strong> - ikonik kırmızı kule. Gece ışıklandırması muhteşem. Main Deck (150m) ve Top Deck (250m) gözlem katları.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Daikanyama → Kamiyacho (Tokyo Tower): <strong>Tokyu + Hibiya Line</strong> | 20 dk | ~280¥/kişi</span><br>
+                  <strong>333 metre</strong> - ikonik kırmızı kule. Gece ışıklandırması muhteşem. Main Deck (150m) ve Top Deck (250m) gözlem katları.
+                </div>
                 <div class="timeline-tips">
                   <p>📸 <strong>Fotoğraf:</strong> Aşağıdan çekilen açılar daha ikonik! Shiba Park'tan harika görünüm.</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">20:30 - 22:00</div>
-                <div class="timeline-title">Akşam Yemeği - Roppongi/Azabu</div>
-                <div class="timeline-desc">Tokyo Tower yakınında şık restoranlar. Ya da <strong>Shibuya</strong>'ya dönüp <strong>Nonbei Yokocho</strong>'da izakaya deneyimi.</div>
+                <div class="timeline-time">21:00</div>
+                <div class="timeline-title">Akşam Yemeği & Dönüş</div>
+                <div class="timeline-desc">
+                  Tokyo Tower yakınında Azabu-Juban'da şık restoranlar veya izakaya deneyin.<br>
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-top: 8px;">🚃 Kamiyacho → Ikebukuro: <strong>Hibiya + Marunouchi</strong> | 25 dk | ~200¥/kişi</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1539,35 +1921,50 @@
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">09:00 - 11:00</div>
-                <div class="timeline-title">Ginza 🛍️ (Opsiyonel Sabah Turu)</div>
-                <div class="timeline-desc">Tokyo'nun lüks alışveriş caddesi. <strong>Ginza Six</strong>, <strong>Mitsukoshi</strong> department store, <strong>Uniqlo 12 katlı flagship</strong>, Apple Store. Kahve için <strong>Ginza Renoir</strong> veya lüks kafeler.</div>
+                <div class="timeline-title">Ginza 🛍️</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Ikebukuro → Ginza: <strong>Tokyo Metro Marunouchi</strong> | 25 dk | ~200¥/kişi</span><br>
+                  Tokyo'nun lüks alışveriş caddesi. <strong>Ginza Six</strong>, <strong>Mitsukoshi</strong> department store, <strong>Uniqlo 12 katlı flagship</strong>, Apple Store. Kahve için <strong>Ginza Renoir</strong> veya lüks kafeler.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">11:30 - 14:00</div>
-                <div class="timeline-title">teamLab Planets / Borderless</div>
-                <div class="timeline-desc">Dünyanın en etkileyici dijital sanat müzesi! <strong>teamLab Planets</strong> (Toyosu) - suyla interaktif deneyim veya <strong>teamLab Borderless</strong> (Azabudai Hills) - sınırsız sanat alanı. Biletleri mutlaka önceden online alın!</div>
+                <div class="timeline-title">teamLab Planets 🎨</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Ginza → Toyosu: <strong>Yurikamome Line</strong> (Shimbashi aktarma) | 20 dk | ~380¥/kişi</span><br>
+                  Dünyanın en etkileyici dijital sanat müzesi! <strong>teamLab Planets</strong> (Toyosu) - suyla interaktif deneyim. Biletleri mutlaka önceden online alın!
+                </div>
                 <div class="timeline-tips">
                   <p>👖 <strong>Önemli:</strong> Kısa şort veya etek giyin (su odaları var), dikkatli yürüyün (karanlık alanlar). En az 2-3 saat ayırın!</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">13:30 - 14:30</div>
-                <div class="timeline-title">Öğle Yemeği</div>
-                <div class="timeline-desc">Toyosu Market yakınında taze sushi veya LaLaport Toyosu'da çeşitli restoran seçenekleri.</div>
+                <div class="timeline-time">14:00 - 15:00</div>
+                <div class="timeline-title">Öğle Yemeği - Toyosu</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 teamLab → LaLaport Toyosu: <strong>Yürüme</strong> | 8 dk | Ücretsiz</span><br>
+                  Toyosu Market yakınında taze sushi veya <strong>LaLaport Toyosu</strong>'da çeşitli restoran seçenekleri.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">15:00 - 19:00</div>
-                <div class="timeline-title">Odaiba Keşfi</div>
-                <div class="timeline-desc"><strong>Özgürlük Heykeli replikası</strong> ve <strong>Rainbow Bridge</strong> manzarası, <strong>DiverCity</strong> (dev Gundam heykeli!), <strong>VenusFort</strong> alışveriş, <strong>Oedo Onsen</strong> termal kaplıcaları (opsiyonel).</div>
+                <div class="timeline-time">15:30 - 19:00</div>
+                <div class="timeline-title">Odaiba Keşfi 🌉</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Toyosu → Odaiba: <strong>Yurikamome Line</strong> | 15 dk | ~320¥/kişi</span><br>
+                  <strong>Özgürlük Heykeli replikası</strong> ve <strong>Rainbow Bridge</strong> manzarası, <strong>DiverCity</strong> (dev Gundam heykeli!), <strong>Aqua City</strong> alışveriş.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">19:00</div>
                 <div class="timeline-title">Günbatımı & Akşam Yemeği</div>
-                <div class="timeline-desc">Odaiba sahilinden günbatımını izleyin, ardından Aqua City veya DiverCity'de akşam yemeği.</div>
+                <div class="timeline-desc">
+                  Odaiba sahilinden günbatımını izleyin, ardından Aqua City veya DiverCity'de akşam yemeği.<br>
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-top: 8px;">🚃 Odaiba → Ikebukuro: <strong>Rinkai + JR Saikyo</strong> | 40 dk | ~520¥/kişi</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1598,7 +1995,10 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">07:30</div>
                 <div class="timeline-title">Erken Kalkış & Hareket</div>
-                <div class="timeline-desc">JR Keiyo/Musashino Line ile <strong>Maihama İstasyonu</strong>'na gidin. Park açılışından önce orada olun!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Ikebukuro → Maihama: <strong>JR Marunouchi + Keiyo Line</strong> (Tokyo St. aktarma) | 50-60 dk | ~650¥/kişi</span><br>
+                  JR Keiyo/Musashino Line ile <strong>Maihama İstasyonu</strong>'na gidin. Park açılışından önce orada olun!
+                </div>
                 <div class="timeline-tips">
                   <p>🎫 <strong>Bilet:</strong> Mutlaka önceden online alın! Hafta içi olduğu için daha az kalabalık olacak ama yine de erken gidin.</p>
                 </div>
@@ -1668,13 +2068,19 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">10:00 - 12:00</div>
                 <div class="timeline-title">Shinjuku Gyoen Bahçesi</div>
-                <div class="timeline-desc">Tokyo'nun en güzel bahçelerinden biri. Japon, Fransız ve İngiliz tarzı bahçeler bir arada. Sakin bir sabah için ideal.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Ikebukuro → Shinjuku: <strong>JR Yamanote</strong> | 8 dk | ~170¥/kişi (çok yakın!)</span><br>
+                  Tokyo'nun en güzel bahçelerinden biri. Japon, Fransız ve İngiliz tarzı bahçeler bir arada. Sakin bir sabah için ideal.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">12:00 - 14:00</div>
                 <div class="timeline-title">Öğle Yemeği & Alışveriş</div>
-                <div class="timeline-desc"><strong>Omoide Yokocho</strong> (Piss Alley) - Nostaljik dar sokaklarda yakitori ve ramen. Ardından Shinjuku'nun dev mağazalarını keşfedin: <strong>Don Quijote</strong>, <strong>Bic Camera</strong>, <strong>Uniqlo</strong> (Shinjuku Flags, 6 kat), <strong>ABC Mart Grand Stage</strong> (ayakkabı cenneti!).</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Shinjuku Gyoen → Shinjuku St.: <strong>Yürüme</strong> | 10 dk | Ücretsiz</span><br>
+                  <strong>Omoide Yokocho</strong> (Piss Alley) - Nostaljik dar sokaklarda yakitori ve ramen. Ardından Shinjuku'nun dev mağazalarını keşfedin: <strong>Don Quijote</strong>, <strong>Bic Camera</strong>, <strong>Uniqlo</strong> (Shinjuku Flags, 6 kat), <strong>ABC Mart Grand Stage</strong> (ayakkabı cenneti!).
+                </div>
                 <div class="timeline-tips" style="border-left-color: var(--accent-sunset);">
                   <p>🍜 <strong>FUUNJI (風雲児) - Paitan Ramen</strong><br>
                   • <strong>"Yeldeğirmeni" ramen</strong> - Shinjuku'nun efsanesi!<br>
@@ -1694,7 +2100,10 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">14:00 - 16:00</div>
                 <div class="timeline-title">📷 İkinci El Kamera Cenneti - Shinjuku</div>
-                <div class="timeline-desc">Japonya'nın en iyi ikinci el kamera mağazaları Shinjuku'da!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Shinjuku içi: Tüm mağazalar <strong>Yürüme</strong> | 5-10 dk | Ücretsiz (istasyonun batı çıkışı)</span><br>
+                  Japonya'nın en iyi ikinci el kamera mağazaları Shinjuku'da!
+                </div>
                 <div class="timeline-tips">
                   <p>📷 <strong>MAP CAMERA</strong> (Shinjuku Nishiguchi) 🏆<br>
                   • Japonya'nın EN BÜYÜK ikinci el kamera mağazası<br>
@@ -1711,21 +2120,31 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">14:30 - 16:00</div>
+                <div class="timeline-time">16:00 - 17:30</div>
                 <div class="timeline-title">Tokyo Metropolitan Government Building</div>
-                <div class="timeline-desc"><strong>Ücretsiz</strong> gözlem katı! 202 metre yükseklikte Tokyo panoraması. Güneşli havalarda Fuji Dağı bile görülebilir.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 MAP Camera → Tocho: <strong>Yürüme</strong> | 8 dk | Ücretsiz</span><br>
+                  <strong>Ücretsiz</strong> gözlem katı! 202 metre yükseklikte Tokyo panoraması. Güneşli havalarda Fuji Dağı bile görülebilir.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">16:30 - 19:00</div>
+                <div class="timeline-time">17:30 - 19:00</div>
                 <div class="timeline-title">Kabukicho Keşfi</div>
-                <div class="timeline-desc">Tokyo'nun eğlence bölgesi! <strong>Godzilla Head</strong> (Toho Cinema), robot restaurant bölgesi, arcade salonları ve renkli neon ışıkları.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Tocho → Kabukicho: <strong>Yürüme</strong> | 12 dk | Ücretsiz (doğu tarafına)</span><br>
+                  Tokyo'nun eğlence bölgesi! <strong>Godzilla Head</strong> (Toho Cinema), robot restaurant bölgesi, arcade salonları ve renkli neon ışıkları.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">19:00 - 22:00</div>
                 <div class="timeline-title">Golden Gai Akşamı</div>
-                <div class="timeline-desc">6 dar sokakta 200'den fazla minik bar! Her biri farklı tema ve atmosfere sahip. <strong>Kapı ücreti</strong> olabilir, menüyü kontrol edin. Tokyo'ya veda akşamı için mükemmel!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Kabukicho → Golden Gai: <strong>Yürüme</strong> | 3 dk | Ücretsiz (yan yana!)</span><br>
+                  6 dar sokakta 200'den fazla minik bar! Her biri farklı tema ve atmosfere sahip. <strong>Kapı ücreti</strong> olabilir, menüyü kontrol edin. Tokyo'ya veda akşamı için mükemmel!<br>
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-top: 8px;">🚃 Shinjuku → Ikebukuro: <strong>JR Yamanote</strong> | 8 dk | ~170¥/kişi</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1803,7 +2222,7 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">09:00</div>
                 <div class="timeline-title">Tokyo'dan Hareket</div>
-                <div class="timeline-desc">Otelden çıkış yapın, bagajlarla Tokyo Station'a gidin. Ekiben (tren bento) almayı unutmayın!</div>
+                <div class="timeline-desc">Hotel Grand City'den check-out yapın, bagajlarla Tokyo Station'a gidin. Ekiben (tren bento) almayı unutmayın!</div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -1821,9 +2240,9 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">14:30 - 17:30</div>
                 <div class="timeline-title">Kaiyukan Akvaryumu 🐋</div>
-                <div class="timeline-desc"><strong>Dünyanın en büyük akvaryumlarından biri!</strong> Balina köpekbalığı, penguenler, denizanası pavilyonu. Osaka Bay bölgesinde, <strong>Tempozan Ferris Wheel</strong> (dönme dolap) ve alışveriş merkezi de var.</div>
-                <div class="timeline-tips">
-                  <p>🚃 <strong>Ulaşım:</strong> Namba → Chuo Line → Osakako Station (~30 dk)</p>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Namba → Osakako: <strong>Midosuji + Chuo Line</strong> | 30 dk | ~280¥/kişi</span><br>
+                  <strong>Dünyanın en büyük akvaryumlarından biri!</strong> Balina köpekbalığı, penguenler, denizanası pavilyonu. Osaka Bay bölgesinde, <strong>Tempozan Ferris Wheel</strong> (dönme dolap) ve alışveriş merkezi de var.
                 </div>
               </div>
               <div class="timeline-item">
@@ -1831,8 +2250,9 @@
                 <div class="timeline-time">18:30 - 22:00</div>
                 <div class="timeline-title">Dotonbori & Namba Keşfi</div>
                 <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Osakako → Namba: <strong>Chuo + Midosuji Line</strong> | 25 dk | ~280¥/kişi</span><br>
                   Osaka'nın kalbine hoş geldiniz! <strong>Glico Running Man</strong> tabelası ile fotoğraf, <strong>Shinsaibashi</strong> alışveriş caddesi, kanal boyunca yürüyüş.<br><br>
-                  <strong>🛍️ Alışveriş Noktaları:</strong><br>
+                  <strong>🛍️ Alışveriş Noktaları (hepsi yürüme mesafesinde):</strong><br>
                   • <strong>Uniqlo Shinsaibashi</strong> - Dev flagship store, 4 kat<br>
                   • <strong>ABC Mart</strong> - Shinsaibashi-suji üzerinde birçok şube<br>
                   • <strong>Don Quijote</strong> - Gece geç saate kadar açık!<br><br>
@@ -1877,7 +2297,10 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">07:00</div>
                 <div class="timeline-title">Erken Kalkış!</div>
-                <div class="timeline-desc">JR Yumesaki Line ile <strong>Universal City İstasyonu</strong>'na gidin. Park açılışından en az 1 saat önce orada olun!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Namba → Universal City: <strong>JR Namba + Yumesaki Line</strong> | 35-40 dk | ~370¥/kişi</span><br>
+                  JR Yumesaki Line ile <strong>Universal City İstasyonu</strong>'na gidin. Park açılışından en az 1 saat önce orada olun!
+                </div>
                 <div class="timeline-tips">
                   <p>🎫 <strong>Bilet & Express Pass:</strong> Mutlaka önceden online alın! <strong>Express Pass 4/7</strong> popüler oyuncaklar için bekleme süresini ciddi azaltır.</p>
                 </div>
@@ -1949,14 +2372,17 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">07:00</div>
                 <div class="timeline-title">Erken Hareket!</div>
-                <div class="timeline-desc">JR veya Keihan Line ile Fushimi Inari'ye. <strong>Kalabalıktan kaçmak için erken gidin!</strong> Osaka'dan ~45 dakika.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Namba → Fushimi Inari: <strong>Keihan Line</strong> (Yodoyabashi aktarma) | 45 dk | ~420¥/kişi</span><br>
+                  <strong>Kalabalıktan kaçmak için erken gidin!</strong>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">08:00 - 11:00</div>
+                <div class="timeline-time">08:00 - 10:30</div>
                 <div class="timeline-title">Fushimi Inari Taisha ⛩️</div>
                 <div class="timeline-desc">
-                  <strong>10.000 kırmızı torii kapısı!</strong> Japonya'nın en ikonik manzaralarından biri. Dağ yürüyüşü ~2-3 saat (tam tur), en güzel fotoğraflar sabah erken saatlerde çıkıyor.<br><br>
+                  <strong>10.000 kırmızı torii kapısı!</strong> Japonya'nın en ikonik manzaralarından biri.<br><br>
                   • Ana tapınak ve ilk torii tüneli: 30 dakika<br>
                   • Yotsutsuji kavşağına kadar: 1-1.5 saat (muhteşem şehir manzarası)<br>
                   • Tam zirve turu: 2-3 saat
@@ -1967,27 +2393,36 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">11:30 - 13:00</div>
+                <div class="timeline-time">11:00 - 13:00</div>
+                <div class="timeline-title">Kiyomizu-dera ⛩️</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Fushimi Inari → Kiyomizu: <strong>Keihan + Bus/Yürüme</strong> | 25 dk | ~300¥/kişi (Fushimi'ye en yakın!)</span><br>
+                  <strong>UNESCO Dünya Mirası!</strong> Kyoto'nun en ünlü tapınağı. 13 metre yüksekliğindeki ahşap platform "Kiyomizu Sahnesi"nden muhteşem şehir manzarası.<br><br>
+                  • <strong>Otowa Şelalesi</strong> - 3 akış: uzun ömür, başarılı kariyer, aşk (sadece birini iç!)<br>
+                  • <strong>Sannenzaka & Ninenzaka</strong> - Tarihi taş merdivenler, geleneksel dükkanlar
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">13:00 - 14:30</div>
                 <div class="timeline-title">Gion Bölgesi & Öğle Yemeği</div>
-                <div class="timeline-desc">Kyoto'nun geleneksel geyşa bölgesi. <strong>Hanami-koji</strong> sokağında tarihi ahşap evler, çay evleri. Şanslıysanız Maiko (çırak geyşa) görebilirsiniz. Öğle için <strong>Nishiki Market</strong> (Kyoto'nun mutfağı) önerilir.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Kiyomizu → Gion: <strong>Yürüme</strong> (Ninenzaka üzerinden) | 15 dk | Ücretsiz</span><br>
+                  Kyoto'nun geleneksel geyşa bölgesi. <strong>Hanami-koji</strong> sokağında tarihi ahşap evler, çay evleri. Şanslıysanız Maiko (çırak geyşa) görebilirsiniz.
+                </div>
                 <div class="timeline-tips" style="border-left-color: var(--accent-sakura);">
                   <p>☕ <strong>PANEL KAFE - Kyoto</strong><br>
                   • Manga/Anime temalı özel kafe deneyimi<br>
                   • Gion veya Higashiyama bölgesinde ara<br>
                   • Rezervasyon önerilir (popüler!)</p>
                 </div>
-                <div class="timeline-tips" style="border-left-color: var(--accent-matcha);">
-                  <p>🌸 <strong>PHILOSOPHER'S PATH</strong> (Opsiyonel)<br>
-                  • Ginkaku-ji'den Nanzen-ji'ye 2 km'lik kanal yolu<br>
-                  • Kiraz ağaçları altında romantik yürüyüş<br>
-                  • Vaktin varsa Gion sonrası ekle (~30 dk yürüyüş)</p>
-                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">14:00 - 17:00</div>
+                <div class="timeline-time">15:00 - 17:30</div>
                 <div class="timeline-title">Arashiyama Bambu Ormanı 🎋</div>
                 <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Gion → Arashiyama: <strong>Bus veya Hankyu Line</strong> | 40-45 dk | ~230¥/kişi (en uzak nokta)</span><br>
                   Büyüleyici bambu koruluğu! <strong>Tenryu-ji Tapınağı</strong> ve bahçesi (UNESCO), <strong>Togetsukyo Köprüsü</strong>, <strong>Iwatayama Maymun Parkı</strong> (opsiyonel - şehir manzarası).
                 </div>
                 <div class="timeline-tips" style="border-left-color: var(--accent-gold);">
@@ -1999,23 +2434,12 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">15:30 - 17:30</div>
-                <div class="timeline-title">Kiyomizu-dera ⛩️ (Mutlaka Git!)</div>
-                <div class="timeline-desc">
-                  <strong>UNESCO Dünya Mirası!</strong> Kyoto'nun en ünlü tapınağı. 13 metre yüksekliğindeki ahşap platform "Kiyomizu Sahnesi"nden muhteşem şehir manzarası. Çivlenmemiş yapı tekniği harika!<br><br>
-                  • <strong>Otowa Şelalesi</strong> - 3 akış: uzun ömür, başarılı kariyer, aşk (sadece birini iç!)<br>
-                  • <strong>Jishu Shrine</strong> - Aşk tanrısı, iki taş arasında gözleri kapalı yürü!<br>
-                  • <strong>Sannenzaka & Ninenzaka</strong> - Tarihi taş merdivenler, geleneksel dükkanlar
-                </div>
-                <div class="timeline-tips" style="border-left-color: var(--accent-gold);">
-                  <p>💡 <strong>İPUCU:</strong> Günbatımında git - tapınak ışıklandırılıyor, kalabalık azalıyor!</p>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
                 <div class="timeline-time">18:00</div>
                 <div class="timeline-title">Osaka'ya Dönüş</div>
-                <div class="timeline-desc">JR veya Hankyu Line ile ~45-60 dakikada Osaka'ya dönün. Akşam yemeği için Dotonbori!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Arashiyama → Namba: <strong>Hankyu + Midosuji</strong> (Umeda aktarma) | 50-60 dk | ~400¥/kişi</span><br>
+                  Akşam yemeği için Dotonbori!
+                </div>
               </div>
             </div>
           </div>
@@ -2047,13 +2471,16 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">09:00</div>
                 <div class="timeline-title">Nara'ya Hareket</div>
-                <div class="timeline-desc">JR veya Kintetsu Line ile ~45 dakika. Kintetsu Nara İstasyonu merkeze daha yakın.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Namba → Kintetsu Nara: <strong>Kintetsu Line</strong> | 45 dk | ~570¥/kişi (merkeze daha yakın!)</span>
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">10:00 - 12:30</div>
                 <div class="timeline-title">Nara Parkı & Todai-ji Tapınağı</div>
                 <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Kintetsu Nara → Nara Park: <strong>Yürüme</strong> | 10 dk | Ücretsiz (düz yol)</span><br>
                   <strong>1000+ serbest gezen geyik!</strong> Shika senbei (geyik bisküvisi) alıp besleyebilirsiniz - eğilip selamlıyorlar!<br><br>
                   <strong>Todai-ji</strong> - Dünyanın en büyük ahşap yapısı ve devasa bronz Buda heykeli (15 metre!). UNESCO Dünya Mirası.
                 </div>
@@ -2065,19 +2492,28 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">12:30 - 14:00</div>
                 <div class="timeline-title">Öğle Yemeği & Naramachi</div>
-                <div class="timeline-desc">Geleneksel <strong>Naramachi</strong> bölgesinde eski tüccar evleri arasında yürüyüş. <strong>Kakinoha-zushi</strong> (hurma yaprağında sushi) yerel lezzet!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Todai-ji → Naramachi: <strong>Yürüme</strong> | 15 dk | Ücretsiz</span><br>
+                  Geleneksel <strong>Naramachi</strong> bölgesinde eski tüccar evleri arasında yürüyüş. <strong>Kakinoha-zushi</strong> (hurma yaprağında sushi) yerel lezzet!
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">14:30 - 16:00</div>
-                <div class="timeline-title">Kasuga Taisha & İkinci Tapınaklar</div>
-                <div class="timeline-desc"><strong>Kasuga Taisha</strong> - Binlerce taş ve bronz fener ile ünlü Shinto tapınağı. Orman yolunda huzurlu yürüyüş. İsteğe bağlı: <strong>Kofuku-ji</strong> beş katlı pagodası.</div>
+                <div class="timeline-title">Kasuga Taisha</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Naramachi → Kasuga Taisha: <strong>Yürüme</strong> (park içinden) | 20 dk | Ücretsiz</span><br>
+                  <strong>Kasuga Taisha</strong> - Binlerce taş ve bronz fener ile ünlü Shinto tapınağı. Orman yolunda huzurlu yürüyüş. Dönüşte <strong>Kofuku-ji</strong> beş katlı pagodası görülebilir.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">17:00</div>
                 <div class="timeline-title">Osaka'ya Dönüş</div>
-                <div class="timeline-desc">Akşam Osaka'da dinlenme veya son Dotonbori turu.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Kintetsu Nara → Namba: <strong>Kintetsu Line</strong> | 45 dk | ~570¥/kişi</span><br>
+                  Akşam Osaka'da dinlenme veya son Dotonbori turu.
+                </div>
               </div>
             </div>
           </div>
@@ -2108,8 +2544,9 @@
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">09:30 - 12:00</div>
-                <div class="timeline-title">Osaka Kalesi</div>
+                <div class="timeline-title">Osaka Kalesi 🏯</div>
                 <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Namba → Osakajokoen: <strong>Chuo Line</strong> | 15 dk | ~230¥/kişi</span><br>
                   Japonya'nın en ünlü kalelerinden biri! <strong>Tenshukaku</strong> (ana kule) - içinde müze var, en üst kattan şehir manzarası. <strong>Nishinomaru Bahçesi</strong> - kale etrafında güzel park alanı.
                 </div>
               </div>
@@ -2118,6 +2555,7 @@
                 <div class="timeline-time">12:30 - 15:00</div>
                 <div class="timeline-title">Shinsekai & Tsutenkaku</div>
                 <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Osakajokoen → Shin-Imamiya: <strong>JR Loop Line</strong> | 15 dk | ~200¥/kişi</span><br>
                   Retro Osaka atmosferi! <strong>Tsutenkaku Kulesi</strong> - Osaka'nın Eyfel Kulesi, <strong>Kushikatsu</strong> restoranlarının merkezi (Daruma önerilir), <strong>Billiken</strong> heykeli - şans getirdiğine inanılır.
                 </div>
               </div>
@@ -2125,22 +2563,28 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">15:00 - 17:00</div>
                 <div class="timeline-title">Abeno Harukas 🏙️</div>
-                <div class="timeline-desc"><strong>Japonya'nın en yüksek binası!</strong> (300m) Tennoji'de. <strong>Harukas 300</strong> gözlem katından Osaka panoraması. Altta <strong>Kintetsu Department Store</strong> ve <strong>Abeno Q's Mall</strong>.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Shinsekai → Tennoji (Harukas): <strong>Yürüme</strong> | 10 dk | Ücretsiz (yan yana!)</span><br>
+                  <strong>Japonya'nın en yüksek binası!</strong> (300m) Tennoji'de. <strong>Harukas 300</strong> gözlem katından Osaka panoraması. Altta <strong>Kintetsu Department Store</strong> ve <strong>Abeno Q's Mall</strong>.
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">17:30 - 19:30</div>
                 <div class="timeline-title">Umeda Sky Building 🌆 (Günbatımı)</div>
-                <div class="timeline-desc"><strong>Floating Garden Observatory</strong> - İki kulenin tepesinde bağlantılı gözlem platformu. Günbatımı için mükemmel zamanlama! Mimari açıdan çok etkileyici.</div>
-                <div class="timeline-tips">
-                  <p>📍 <strong>Rota:</strong> Tennoji → JR Loop → Osaka/Umeda Station (~20 dk)</p>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Tennoji → Umeda: <strong>JR Loop Line</strong> | 20 dk | ~200¥/kişi</span><br>
+                  <strong>Floating Garden Observatory</strong> - İki kulenin tepesinde bağlantılı gözlem platformu. Günbatımı için mükemmel zamanlama! Mimari açıdan çok etkileyici.
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">20:00 - 22:00</div>
                 <div class="timeline-title">Son Dotonbori Akşamı</div>
-                <div class="timeline-desc">Son kez Dotonbori ışıklarını izleyin, kaçırdığınız sokak yemeklerini deneyin. <strong>Don Quijote</strong>'de son dakika alışverişi!</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Umeda → Namba: <strong>Midosuji Line</strong> | 10 dk | ~240¥/kişi</span><br>
+                  Son kez Dotonbori ışıklarını izleyin, kaçırdığınız sokak yemeklerini deneyin. <strong>Don Quijote</strong>'de son dakika alışverişi!
+                </div>
               </div>
             </div>
           </div>
@@ -2172,7 +2616,9 @@
                 <div class="timeline-time">10:00 - 13:00</div>
                 <div class="timeline-title">Son Alışveriş Turu</div>
                 <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Namba → Kuromon Market: <strong>Yürüme</strong> | 10 dk | Ücretsiz</span><br>
                   <strong>Kuromon Market</strong> - "Osaka'nın Mutfağı", taze deniz ürünleri, meyve, yerel lezzetler. Yerinde yiyebileceğiniz taze sashimi ve deniz ürünleri!<br><br>
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Kuromon → Shinsaibashi/Don Quijote: <strong>Yürüme</strong> | 10 dk | Ücretsiz (hepsi yan yana!)</span><br>
                   <strong>Don Quijote</strong> - Son dakika hediyelik eşya, snack, kozmetik (vergisiz alışveriş için pasaport yanınızda olsun!)
                 </div>
                 <div class="timeline-tips">
@@ -2247,7 +2693,10 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">11:00</div>
                 <div class="timeline-title">Kansai Havalimanı'na (KIX) Hareket</div>
-                <div class="timeline-desc"><strong>Nankai Rapit</strong> (Namba'dan ~40 dk) veya <strong>JR Haruka</strong> (Shin-Osaka/Tennoji'den) ile KIX'e gidin. Uluslararası uçuşlar için 3 saat önce havalimanında olun.</div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Namba → KIX: <strong>Nankai Rapit (Limited Express)</strong> | 40 dk | ~1,450¥/kişi <em>veya</em> Normal Nankai ~920¥/kişi (50 dk)</span><br>
+                  Uluslararası uçuşlar için 3 saat önce havalimanında olun. Alternatif: <strong>JR Haruka</strong> (Shin-Osaka/Tennoji'den).
+                </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -2620,6 +3069,84 @@
     </div>
   </div>
 
+  <!-- Important Notes Section -->
+  <section class="notes-section">
+    <div class="notes-header">
+      <div class="notes-icon">📝</div>
+      <h2 class="notes-title">Önemli Notlar & İpuçları</h2>
+    </div>
+
+    <div class="notes-grid">
+      <!-- Döviz Bozdurma -->
+      <div class="note-card">
+        <div class="note-card-header">
+          <span class="note-card-icon">💴</span>
+          <span class="note-card-title">Döviz Bozdurma Adresleri</span>
+        </div>
+        <div class="note-card-content">
+          <strong>Osaka:</strong> <span class="highlight">Ticket Zone</span><br><br>
+          <strong>Tokyo (Shinjuku):</strong> <span class="highlight">Ninja Money Exchange</span><br>
+          <span style="font-size: 12px; color: var(--text-muted);">Shinjuku istasyonuna yakın konumda</span>
+          <div class="note-tip">
+            <span class="note-tip-icon">💡</span>
+            <span class="note-tip-text">Çevrede kıyas yapabileceğiniz farklı döviz ofisleri bulunmakta. Karşılaştırarak en iyi kuru bulabilirsiniz.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oteller -->
+      <div class="note-card">
+        <div class="note-card-header">
+          <span class="note-card-icon">🏨</span>
+          <span class="note-card-title">Otel Seçimi İpuçları</span>
+        </div>
+        <div class="note-card-content">
+          Japonya'daki otel odaları genelde oldukça <strong>küçük</strong>. Rezervasyon yaparken:<br><br>
+          • Oda ve yatak boyutlarına dikkat edin<br>
+          • 9-11 m² odalar valiz açmaya bile izin vermeyebilir<br>
+          • <strong>Metro istasyonlarına yakınlığı</strong> kontrol edin<br>
+          • Konaklayanların yorumlarını mutlaka okuyun
+          <div class="note-tip">
+            <span class="note-tip-icon">👨‍👩‍👧</span>
+            <span class="note-tip-text">Çocuklarla seyahat edenler için küçük mutfak barındıran evler/oteller iyi bir seçenek olabilir.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Genel İpuçları -->
+      <div class="note-card">
+        <div class="note-card-header">
+          <span class="note-card-icon">✨</span>
+          <span class="note-card-title">Pratik İpuçları</span>
+        </div>
+        <div class="note-card-content">
+          <strong>🪙 Bozuk Para:</strong> Çokça bozuk paranız olacak! Bir bozuk para cüzdanı alın.<br><br>
+          <strong>🏪 100 Yen Shop:</strong> <span class="highlight">Daiso</span> en meşhuru. Çok uygun fiyata birçok ihtiyacınıza ulaşabilirsiniz (bozuk para cüzdanı dahil!).<br><br>
+          <strong>🚶 Sıra & Yürüyüş:</strong> Sıra bekleme kültürüne alışmanız gerekecek. Çokça ayakta kalmaya ve uzun yürüyüşlere hazır olun!
+        </div>
+      </div>
+
+      <!-- Kış Dönemi -->
+      <div class="note-card">
+        <div class="note-card-header">
+          <span class="note-card-icon">🔥</span>
+          <span class="note-card-title">Isıtıcı Bant (Kış Dönemi İçin)</span>
+        </div>
+        <div class="note-card-content">
+          <span class="highlight">Kairo</span> veya <span class="highlight">Hokaron</span> isimleriyle arayın.<br><br>
+          <strong>Nereden alınır?</strong><br>
+          • 7-Eleven, Family Mart, Lawson<br>
+          • Drug Store'lar (her yerde var)<br><br>
+          <span style="font-size: 11px; color: var(--text-muted);">İçeriğindeki demir tozu havayla temas ettiğinde ısı açığa çıkaran tek kullanımlık bir ürün.</span>
+          <div class="note-tip">
+            <span class="note-tip-icon">🔍</span>
+            <span class="note-tip-text">Öncelikle web'de görsellerde aratmanız bulmanızı kolaylaştıracaktır.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-emoji">🗾 🌸 ⛩️ 🍣 🚄</div>
@@ -2868,6 +3395,77 @@
         }
       });
     });
+
+    // Countdown Timer Functions
+    const tripDate = new Date('2026-05-13T16:00:00+03:00'); // Uçuş saati
+    const disneyTicketDeadline = new Date('2026-04-30T23:59:59+03:00'); // Disney bileti - 1 gün önce hatırlatma (1 Mayıs için)
+    const usjTicketDeadline = new Date('2026-04-30T23:59:59+03:00'); // USJ bileti - 1 gün önce hatırlatma
+    const shinkansenDeadline = new Date('2026-04-19T23:59:59+03:00'); // Shinkansen - 1 gün önce hatırlatma (20 Nisan için)
+
+    function updateMainCountdown() {
+      const now = new Date();
+      const diff = tripDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        document.querySelector('.countdown-label').textContent = 'Tatil Başladı!';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    function updateTicketCountdown(deadline, elementId) {
+      const now = new Date();
+      const diff = deadline - now;
+      const element = document.getElementById(elementId);
+
+      if (diff <= 0) {
+        element.textContent = 'Süre doldu!';
+        element.classList.add('urgent');
+        element.classList.remove('done');
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      
+      if (days <= 7) {
+        element.classList.add('urgent');
+        element.classList.remove('done');
+      } else if (days <= 30) {
+        element.classList.remove('urgent', 'done');
+      }
+
+      if (days > 0) {
+        element.textContent = `${days} gün kaldı`;
+      } else {
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        element.textContent = `${hours} saat kaldı`;
+        element.classList.add('urgent');
+      }
+    }
+
+    function updateAllCountdowns() {
+      updateMainCountdown();
+      updateTicketCountdown(disneyTicketDeadline, 'disneyCountdown');
+      updateTicketCountdown(usjTicketDeadline, 'usjCountdown');
+      updateTicketCountdown(shinkansenDeadline, 'shinkansenCountdown');
+    }
+
+    // İlk güncelleme ve her saniye tekrar
+    updateAllCountdowns();
+    setInterval(updateAllCountdowns, 1000);
   </script>
 </body>
 </html>
