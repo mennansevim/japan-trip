@@ -116,7 +116,7 @@
     .header {
       position: relative;
       z-index: 10;
-      padding: 80px 24px 60px;
+      padding: 100px 24px 60px;
       text-align: center;
     }
 
@@ -186,153 +186,98 @@
       font-size: 18px;
     }
 
-    /* Countdown Dashboard */
-    .countdown-dashboard {
-      position: relative;
-      z-index: 10;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      padding: 0 24px;
+    /* Top Countdown Bar */
+    .top-countdown-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(135deg, rgba(124, 106, 239, 0.95) 0%, rgba(255, 143, 171, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
     }
 
-    .countdown-main {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px;
-      text-align: center;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(124, 106, 239, 0.08) 0%, rgba(255, 143, 171, 0.06) 100%);
-      border-color: rgba(124, 106, 239, 0.2);
-    }
-
-    .countdown-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent-fuji);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-
-    .countdown-timer {
+    .top-countdown-content {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .countdown-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 60px;
-    }
-
-    .countdown-value {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1;
-      font-family: 'Outfit', monospace;
-    }
-
-    .countdown-text {
-      font-size: 11px;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    .countdown-separator {
-      font-size: 28px;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .ticket-reminders {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .reminder-title {
-      font-size: 12px;
+    .top-countdown-label {
+      font-size: 14px;
       font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+      color: white;
+    }
+
+    .top-countdown-timer {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .top-cd-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      font-family: 'Outfit', monospace;
+      min-width: 24px;
       text-align: center;
     }
 
-    .reminder-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+    .top-cd-unit {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-right: 4px;
     }
 
-    .reminder-card {
+    .top-cd-sep {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0 2px;
+    }
+
+    .top-countdown-tickets {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ticket-badge {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-
-    .reminder-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .reminder-card.disney { border-left: 3px solid var(--accent-sakura); }
-    .reminder-card.usj { border-left: 3px solid var(--accent-sunset); }
-    .reminder-card.shinkansen { border-left: 3px solid var(--accent-sky); }
-
-    .reminder-icon {
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-
-    .reminder-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .reminder-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .reminder-date {
-      font-size: 10px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .reminder-countdown {
+      gap: 4px;
+      padding: 5px 10px;
+      border-radius: 6px;
       font-size: 12px;
       font-weight: 600;
-      color: var(--accent-gold);
-      margin-top: 4px;
+      color: white;
+      cursor: help;
+      transition: transform 0.2s;
     }
 
-    .reminder-countdown.urgent {
-      color: var(--accent-sakura);
+    .ticket-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .ticket-badge.disney { background: rgba(255, 143, 171, 0.3); }
+    .ticket-badge.usj { background: rgba(255, 112, 67, 0.3); }
+    .ticket-badge.shinkansen { background: rgba(100, 181, 246, 0.3); }
+
+    .ticket-badge span {
+      font-size: 11px;
+    }
+
+    .ticket-badge.urgent {
       animation: pulse 1.5s infinite;
-    }
-
-    .reminder-countdown.done {
-      color: var(--accent-matcha);
+      background: rgba(255, 82, 82, 0.4);
     }
 
     @keyframes pulse {
@@ -341,17 +286,28 @@
     }
 
     @media (max-width: 600px) {
-      .countdown-value {
-        font-size: 28px;
+      .top-countdown-bar {
+        padding: 8px 12px;
       }
-      .countdown-unit {
-        min-width: 50px;
+      .top-countdown-content {
+        gap: 10px;
       }
-      .reminder-grid {
-        grid-template-columns: 1fr;
+      .top-countdown-label {
+        font-size: 12px;
       }
-      .reminder-card {
-        padding: 10px 12px;
+      .top-cd-value {
+        font-size: 15px;
+        min-width: 20px;
+      }
+      .top-countdown-timer {
+        padding: 5px 10px;
+      }
+      .ticket-badge {
+        padding: 4px 8px;
+        font-size: 11px;
+      }
+      .ticket-badge span {
+        font-size: 10px;
       }
     }
 
@@ -1392,6 +1348,27 @@
   <!-- Sakura Petals -->
   <div class="sakura-container" id="sakuraContainer"></div>
 
+  <!-- Top Countdown Bar -->
+  <div class="top-countdown-bar">
+    <div class="top-countdown-content">
+      <span class="top-countdown-label">🇯🇵 Tatile</span>
+      <div class="top-countdown-timer">
+        <span class="top-cd-value" id="topDays">--</span><span class="top-cd-unit">g</span>
+        <span class="top-cd-sep">:</span>
+        <span class="top-cd-value" id="topHours">--</span><span class="top-cd-unit">s</span>
+        <span class="top-cd-sep">:</span>
+        <span class="top-cd-value" id="topMinutes">--</span><span class="top-cd-unit">d</span>
+        <span class="top-cd-sep">:</span>
+        <span class="top-cd-value" id="topSeconds">--</span><span class="top-cd-unit">sn</span>
+      </div>
+      <div class="top-countdown-tickets">
+        <span class="ticket-badge disney" title="Disney bileti: 1 Mayıs'a kadar">🏰 <span id="topDisney">--</span></span>
+        <span class="ticket-badge usj" title="USJ bileti: 1 Mayıs'a kadar">🎢 <span id="topUsj">--</span></span>
+        <span class="ticket-badge shinkansen" title="Shinkansen: 20 Nisan'a kadar">🚄 <span id="topShinkansen">--</span></span>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="header">
     <div class="header-badge">
@@ -1426,63 +1403,6 @@
       </div>
     </div>
   </header>
-
-  <!-- Countdown Dashboard -->
-  <div class="countdown-dashboard">
-    <div class="countdown-main">
-      <div class="countdown-label">Tatile Kalan Süre</div>
-      <div class="countdown-timer" id="mainCountdown">
-        <div class="countdown-unit">
-          <span class="countdown-value" id="days">--</span>
-          <span class="countdown-text">Gün</span>
-        </div>
-        <div class="countdown-separator">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-value" id="hours">--</span>
-          <span class="countdown-text">Saat</span>
-        </div>
-        <div class="countdown-separator">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-value" id="minutes">--</span>
-          <span class="countdown-text">Dakika</span>
-        </div>
-        <div class="countdown-separator">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-value" id="seconds">--</span>
-          <span class="countdown-text">Saniye</span>
-        </div>
-      </div>
-    </div>
-    <div class="ticket-reminders">
-      <div class="reminder-title">Bilet Hatırlatıcıları</div>
-      <div class="reminder-grid">
-        <div class="reminder-card disney">
-          <div class="reminder-icon">🏰</div>
-          <div class="reminder-info">
-            <div class="reminder-name">Disney Bileti</div>
-            <div class="reminder-date">Al: 1 Mayıs'a kadar</div>
-            <div class="reminder-countdown" id="disneyCountdown">--</div>
-          </div>
-        </div>
-        <div class="reminder-card usj">
-          <div class="reminder-icon">🎢</div>
-          <div class="reminder-info">
-            <div class="reminder-name">USJ Bileti</div>
-            <div class="reminder-date">Al: 1 Mayıs'a kadar</div>
-            <div class="reminder-countdown" id="usjCountdown">--</div>
-          </div>
-        </div>
-        <div class="reminder-card shinkansen">
-          <div class="reminder-icon">🚄</div>
-          <div class="reminder-info">
-            <div class="reminder-name">Shinkansen</div>
-            <div class="reminder-date">Al: 20 Nisan'a kadar</div>
-            <div class="reminder-countdown" id="shinkansenCountdown">--</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Stats -->
   <div class="stats-bar">
@@ -3402,16 +3322,16 @@
     const usjTicketDeadline = new Date('2026-04-30T23:59:59+03:00'); // USJ bileti - 1 gün önce hatırlatma
     const shinkansenDeadline = new Date('2026-04-19T23:59:59+03:00'); // Shinkansen - 1 gün önce hatırlatma (20 Nisan için)
 
-    function updateMainCountdown() {
+    function updateTopCountdown() {
       const now = new Date();
       const diff = tripDate - now;
 
       if (diff <= 0) {
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = '00';
-        document.querySelector('.countdown-label').textContent = 'Tatil Başladı!';
+        document.getElementById('topDays').textContent = '00';
+        document.getElementById('topHours').textContent = '00';
+        document.getElementById('topMinutes').textContent = '00';
+        document.getElementById('topSeconds').textContent = '00';
+        document.querySelector('.top-countdown-label').textContent = '🎉 Tatil Başladı!';
         return;
       }
 
@@ -3420,47 +3340,40 @@
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.getElementById('days').textContent = String(days).padStart(2, '0');
-      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      document.getElementById('topDays').textContent = String(days).padStart(2, '0');
+      document.getElementById('topHours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('topMinutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('topSeconds').textContent = String(seconds).padStart(2, '0');
     }
 
-    function updateTicketCountdown(deadline, elementId) {
+    function updateTicketBadge(deadline, elementId, badgeClass) {
       const now = new Date();
       const diff = deadline - now;
       const element = document.getElementById(elementId);
+      const badge = element.closest('.ticket-badge');
 
       if (diff <= 0) {
-        element.textContent = 'Süre doldu!';
-        element.classList.add('urgent');
-        element.classList.remove('done');
+        element.textContent = 'Acil!';
+        if (badge) badge.classList.add('urgent');
         return;
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       
       if (days <= 7) {
-        element.classList.add('urgent');
-        element.classList.remove('done');
-      } else if (days <= 30) {
-        element.classList.remove('urgent', 'done');
+        if (badge) badge.classList.add('urgent');
+      } else {
+        if (badge) badge.classList.remove('urgent');
       }
 
-      if (days > 0) {
-        element.textContent = `${days} gün kaldı`;
-      } else {
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        element.textContent = `${hours} saat kaldı`;
-        element.classList.add('urgent');
-      }
+      element.textContent = `${days}g`;
     }
 
     function updateAllCountdowns() {
-      updateMainCountdown();
-      updateTicketCountdown(disneyTicketDeadline, 'disneyCountdown');
-      updateTicketCountdown(usjTicketDeadline, 'usjCountdown');
-      updateTicketCountdown(shinkansenDeadline, 'shinkansenCountdown');
+      updateTopCountdown();
+      updateTicketBadge(disneyTicketDeadline, 'topDisney');
+      updateTicketBadge(usjTicketDeadline, 'topUsj');
+      updateTicketBadge(shinkansenDeadline, 'topShinkansen');
     }
 
     // İlk güncelleme ve her saniye tekrar
