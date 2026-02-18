@@ -1118,6 +1118,155 @@
       display: block;
     }
 
+    /* Restaurant Section */
+    .food-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .food-tab {
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .food-tab:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+    .food-tab.active { background: linear-gradient(135deg, #ff7043, #ff9a7a); color: #fff; border-color: transparent; }
+
+    .food-city-section { margin-bottom: 36px; }
+    .food-city-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .food-city-title .city-dot {
+      width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+    }
+
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .restaurant-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .restaurant-card:hover {
+      border-color: rgba(255, 112, 67, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(255, 112, 67, 0.1);
+    }
+    .restaurant-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .restaurant-body { padding: 16px; }
+    .restaurant-category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+    .restaurant-category.meat { background: rgba(244, 67, 54, 0.15); color: #ef5350; }
+    .restaurant-category.pizza { background: rgba(255, 152, 0, 0.15); color: #ffa726; }
+    .restaurant-category.local { background: rgba(129, 199, 132, 0.15); color: #81c784; }
+
+    .restaurant-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .restaurant-name a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .restaurant-name a:hover { color: var(--accent-sky); }
+    .restaurant-area {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .restaurant-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .restaurant-stars {
+      color: #ffd54f;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    .restaurant-score {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+    .restaurant-reviews {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .restaurant-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .restaurant-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .restaurant-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .restaurant-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 6px 14px;
+      background: rgba(100, 181, 246, 0.12);
+      border: 1px solid rgba(100, 181, 246, 0.25);
+      border-radius: 8px;
+      color: var(--accent-sky);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .restaurant-link:hover {
+      background: rgba(100, 181, 246, 0.2);
+      border-color: var(--accent-sky);
+    }
+
+    .food-tab-content { display: none; }
+    .food-tab-content.active { display: block; }
+
     /* Amazon Products Grid */
     .amazon-grid {
       display: grid;
@@ -3272,6 +3421,481 @@
 
     </section>
 
+    <!-- Restaurant Guide -->
+    <section class="section" id="food-guide">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, #ff7043, #ff9a7a);">🍽️</div>
+        <div>
+          <h2 class="section-title">Restoran Rehberi</h2>
+          <p class="section-subtitle">Google Maps yorumlarına göre en iyi restoranlar</p>
+        </div>
+      </div>
+
+      <div class="food-tabs">
+        <button class="food-tab active" onclick="switchFoodTab('all')">🍽️ Tümü</button>
+        <button class="food-tab" onclick="switchFoodTab('meat')">🥩 Et & Yakiniku</button>
+        <button class="food-tab" onclick="switchFoodTab('pizza')">🍕 Pizza</button>
+        <button class="food-tab" onclick="switchFoodTab('local')">🍜 Yöresel</button>
+      </div>
+
+      <!-- ALL -->
+      <div id="foodAll" class="food-tab-content active">
+
+        <!-- TOKYO -->
+        <div class="food-city-section">
+          <div class="food-city-title"><span class="city-dot" style="background: var(--accent-sakura);"></span> Tokyo 🗼</div>
+          <div class="restaurant-grid">
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=640&q=80" alt="Yoroniku">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Yakiniku</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Yoroniku+Minami+Aoyama+Tokyo" target="_blank" rel="noopener">Yoroniku</a></div>
+                <div class="restaurant-area">📍 Minami-Aoyama</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.5</span>
+                  <span class="restaurant-reviews">(1,200+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">A5 Kuroge Wagyu uzmanı. İmza "silk loin" – pirinçle sarılmış ince dilim et. Omakase menü zorunlu, önceden rezervasyon şart.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥15,000-20,000</span>
+                  <span>📅 Rezervasyon şart</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Yoroniku+Minami+Aoyama+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=640&q=80" alt="USHIGORO S. GINZA">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Yakiniku</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/USHIGORO+S+GINZA+Tokyo" target="_blank" rel="noopener">USHIGORO S. GINZA</a></div>
+                <div class="restaurant-area">📍 Ginza</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.6</span>
+                  <span class="restaurant-reviews">(800+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">11 özel odada kişisel şefle A5 wagyu deneyimi. Kalın dilim dil ve wagyu sukiyaki servisinin tadına bakılmalı.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥15,000-25,000</span>
+                  <span>📅 Rezervasyon şart</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/USHIGORO+S+GINZA+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1558030006-450675393462?w=640&q=80" alt="Ueno Wagyu USHIHACHI">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Yakiniku</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/USHIHACHI+Kiwami+Ueno+Tokyo" target="_blank" rel="noopener">USHIHACHI Kiwami Ueno</a></div>
+                <div class="restaurant-area">📍 Ueno</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.9</span>
+                  <span class="restaurant-reviews">(600+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Ueno'daki en yüksek puanlı yakiniku. Kaliteli wagyu, rahat atmosfer ve uygun fiyat. Müze sonrası ideal seçenek.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥5,000-8,000</span>
+                  <span>⏰ Akşam önerilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/USHIHACHI+Kiwami+Ueno+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="pizza">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=640&q=80" alt="Pizza Bar on 38th">
+              <div class="restaurant-body">
+                <span class="restaurant-category pizza">🍕 Pizza</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Pizza+Bar+on+38th+Mandarin+Oriental+Tokyo" target="_blank" rel="noopener">The Pizza Bar on 38th</a></div>
+                <div class="restaurant-area">📍 Nihonbashi (Mandarin Oriental 38. kat)</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.7</span>
+                  <span class="restaurant-reviews">(900+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Asya-Pasifik 1 numaralı pizzacı! 38. katta panoramik manzara, odun fırınında Napoliten pizza. Sadece 8 kişilik bar, 1-2 ay önceden rezervasyon gerekli.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥6,000-8,000</span>
+                  <span>📅 1-2 ay önce rezerve et</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Pizza+Bar+on+38th+Mandarin+Oriental+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="pizza">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=640&q=80" alt="Savoy">
+              <div class="restaurant-body">
+                <span class="restaurant-category pizza">🍕 Pizza</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Savoy+Pizzeria+Azabu+Juban+Tokyo" target="_blank" rel="noopener">Savoy Azabu-Juban</a></div>
+                <div class="restaurant-area">📍 Azabu-Juban</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.5</span>
+                  <span class="restaurant-reviews">(1,300+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Tokyo'nun efsanevi Napoliten pizzacısı. Sadece 2 çeşit pizza: Margherita ve Marinara. Sadelik ve mükemmellik. Tokyo Tower yakını!</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥1,500-2,500</span>
+                  <span>⏰ Sıra olabilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Savoy+Pizzeria+Azabu+Juban+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="pizza">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=640&q=80" alt="PST Pizza Studio Tamaki">
+              <div class="restaurant-body">
+                <span class="restaurant-category pizza">🍕 Pizza</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/PST+Pizza+Studio+Tamaki+Tokyo" target="_blank" rel="noopener">PST – Pizza Studio Tamaki</a></div>
+                <div class="restaurant-area">📍 Shibuya / Nakameguro</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.4</span>
+                  <span class="restaurant-reviews">(700+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">50 Top Pizza Asya sıralamasında üst sıralarda. Japon malzemeleriyle İtalyan pizza sanatı birleşimi. Şef Tamaki'nin imza pizzaları.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥3,000-5,000</span>
+                  <span>📅 Rezervasyon önerilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/PST+Pizza+Studio+Tamaki+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=640&q=80" alt="Fuunji Ramen">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🍜 Ramen</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Fuunji+Ramen+Shinjuku+Tokyo" target="_blank" rel="noopener">Fuunji (風雲児)</a></div>
+                <div class="restaurant-area">📍 Shinjuku</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.3</span>
+                  <span class="restaurant-reviews">(5,100+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Shinjuku'nun efsane tsukemen (dipping ramen) dükkanı. Kremalı tavuk-balık suyu, 8 saat kaynatılmış yoğun umami. Kuyruk olabilir ama değer!</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥1,000</span>
+                  <span>⏰ 11:00-15:00 / 17:00-21:00</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Fuunji+Ramen+Shinjuku+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=640&q=80" alt="Ichiran Ramen">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🍜 Ramen</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Ichiran+Ramen+Ikebukuro+Tokyo" target="_blank" rel="noopener">Ichiran Ikebukuro</a></div>
+                <div class="restaurant-area">📍 Ikebukuro (Otele yakın!)</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.2</span>
+                  <span class="restaurant-reviews">(4,800+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Tonkotsu ramen klasiği. Bireysel bölmeli konsepte, kendi lezzet tercihini seç. 7/24 açık – gece geç saatte ideal.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥1,000</span>
+                  <span>⏰ 7/24 açık</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Ichiran+Ramen+Ikebukuro+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=640&q=80" alt="Sushi Koshikawa">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🍣 Sushi</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Sushi+Koshikawa+Akasaka+Tokyo" target="_blank" rel="noopener">Sushi Koshikawa</a></div>
+                <div class="restaurant-area">📍 Akasaka</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.8</span>
+                  <span class="restaurant-reviews">(260+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">TripAdvisor'da 5.0 puan! Sakin atmosferde omakase sushi deneyimi. Taze balıklar, usta şef ve unutulmaz lezzetler.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥15,000-20,000</span>
+                  <span>📅 Rezervasyon şart</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Sushi+Koshikawa+Akasaka+Tokyo" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- OSAKA -->
+        <div class="food-city-section">
+          <div class="food-city-title"><span class="city-dot" style="background: var(--accent-sunset);"></span> Osaka 🏯</div>
+          <div class="restaurant-grid">
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=640&q=80" alt="Kitan-In">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Yakiniku</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Kitan-In+Yakiniku+Dotonbori+Osaka" target="_blank" rel="noopener">Kitan-In</a></div>
+                <div class="restaurant-area">📍 Dotonbori</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.7</span>
+                  <span class="restaurant-reviews">(500+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">World Best Steaks 2025 listesinde! Miyazaki wagyu uzmanı Şef Hiro. Dry-aged ribeye ve ichibo tataki eşsiz. Omakase menü.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥15,000-20,000</span>
+                  <span>📅 Rezervasyon şart</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Kitan-In+Yakiniku+Dotonbori+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=640&q=80" alt="Yakiniku Yoisho">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Yakiniku</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Yakiniku+Yoisho+Osaka" target="_blank" rel="noopener">Yakiniku Yoisho</a></div>
+                <div class="restaurant-area">📍 Namba yakını</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.3</span>
+                  <span class="restaurant-reviews">(1,500+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">20 yıllık efsane! Elle kesilmiş kırmızı et ve imza "Rib Eye Roll Steak". Uygun fiyatlı kaliteli wagyu. Sıra olabilir.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥5,000</span>
+                  <span>⏰ Akşam yemeği</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Yakiniku+Yoisho+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=640&q=80" alt="Kobe Aburi Bokujo">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Kobe Beef</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Kobe+Aburi+Bokujo+Umeda+Osaka" target="_blank" rel="noopener">Kobe Aburi Bokujo Umeda</a></div>
+                <div class="restaurant-area">📍 Umeda</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.2</span>
+                  <span class="restaurant-reviews">(2,000+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Et toptancısı tarafından işletilen Kobe Beef uzmanı. Doğrudan çiftlikten sofraya konsept. Uygun fiyatlı premium wagyu.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥5,000</span>
+                  <span>📅 Özel oda var</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Kobe+Aburi+Bokujo+Umeda+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="pizza">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=640&q=80" alt="Kuma Kafe">
+              <div class="restaurant-body">
+                <span class="restaurant-category pizza">🍕 Pizza</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Kuma+Kafe+Pizza+Osaka" target="_blank" rel="noopener">Kuma Kafe</a></div>
+                <div class="restaurant-area">📍 Osaka (Chuo)</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.8</span>
+                  <span class="restaurant-reviews">(714+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Osaka'nın en yüksek puanlı pizzacısı! Mükemmel servis, otantik lezzetler ve sıcak atmosfer. TripAdvisor'da zirve.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥2,000-3,000</span>
+                  <span>⏰ Öğle & akşam</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Kuma+Kafe+Pizza+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?w=640&q=80" alt="Okonomiyaki Kiji">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🥞 Okonomiyaki</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Okonomiyaki+Kiji+Umeda+Osaka" target="_blank" rel="noopener">Okonomiyaki Kiji</a></div>
+                <div class="restaurant-area">📍 Umeda (Shokudogai)</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.3</span>
+                  <span class="restaurant-reviews">(3,200+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Umeda'nın retro yemek sokağında efsanevi okonomiyaki. Hamurda shiso kullanımı ve bağımlılık yapan Modan-yaki (noodlelu).</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥1,000-1,500</span>
+                  <span>⏰ Sıra olabilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Okonomiyaki+Kiji+Umeda+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?w=640&q=80" alt="Dotonbori Kukuru">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🐙 Takoyaki</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Dotonbori+Kukuru+Honten+Osaka" target="_blank" rel="noopener">Dotonbori Kukuru</a></div>
+                <div class="restaurant-area">📍 Dotonbori</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.2</span>
+                  <span class="restaurant-reviews">(1,500+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Dotonbori'nin en ünlü takoyaki'si! Dışı çıtır içi kremalı, devasa ahtapot parçaları. 8'li set ~650¥. Hızlı servis.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥650</span>
+                  <span>⏰ Sokak yemeği</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Dotonbori+Kukuru+Honten+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=640&q=80" alt="Jibun Doki">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🥞 Okonomiyaki</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Jibun+Doki+Okonomiyaki+Hommachi+Osaka" target="_blank" rel="noopener">Jibun Doki</a></div>
+                <div class="restaurant-area">📍 Hommachi</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.5</span>
+                  <span class="restaurant-reviews">(800+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Tabelog'da Osaka'nın en yüksek puanlı okonomiyakisi (3.89). İmza "Buta-tama" efsanevi. Haftalarca önceden rezervasyon gerekebilir!</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥2,000-3,000</span>
+                  <span>📅 Rezervasyon şart</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Jibun+Doki+Okonomiyaki+Hommachi+Osaka" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- KYOTO -->
+        <div class="food-city-section">
+          <div class="food-city-title"><span class="city-dot" style="background: var(--accent-fuji);"></span> Kyoto ⛩️</div>
+          <div class="restaurant-grid">
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=640&q=80" alt="Hafuu">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Wagyu Steak</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Wagyu+Steak+Hafuu+Shogoin+Kyoto" target="_blank" rel="noopener">Wagyu Steak Hafuu Shogoin</a></div>
+                <div class="restaurant-area">📍 Shogoin</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★☆</span>
+                  <span class="restaurant-score">4.2</span>
+                  <span class="restaurant-reviews">(720+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Et toptancısının işlettiği wagyu steak evi. Japon teishoku (set menü) ile steak birleşimi. ~¥10,000-13,000 civarı harika kalite-fiyat.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥10,000-13,000</span>
+                  <span>📅 Rezervasyon önerilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Wagyu+Steak+Hafuu+Shogoin+Kyoto" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="meat">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=640&q=80" alt="Miyoshi">
+              <div class="restaurant-body">
+                <span class="restaurant-category meat">🥩 Wagyu Kaiseki</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Miyoshi+Wagyu+Gion+Kyoto" target="_blank" rel="noopener">Miyoshi</a></div>
+                <div class="restaurant-area">📍 Gion</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.8</span>
+                  <span class="restaurant-reviews">(180+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">World Best Steaks 2025 #40! Gion'da 8 kişilik hinoki bar'da wagyu kaiseki. Kombu-pressed ox tongue ve sirloin sashimi imza tatlar.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥20,000-30,000</span>
+                  <span>📅 Rezervasyon şart</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Miyoshi+Wagyu+Gion+Kyoto" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="pizza">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=640&q=80" alt="Goichi Pizza">
+              <div class="restaurant-body">
+                <span class="restaurant-category pizza">🍕 Pizza</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Goichi+Pizza+Kyoto" target="_blank" rel="noopener">Goichi Pizza</a></div>
+                <div class="restaurant-area">📍 Kyoto</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.7</span>
+                  <span class="restaurant-reviews">(594+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">"Kyoto'da İtalya tadı!" Yüksek puanlı otantik İtalyan pizzası. Napoliten hamur, taze malzemeler. Küçük mekan, sıra olabilir.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥1,500-2,500</span>
+                  <span>⏰ Sıra olabilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Goichi+Pizza+Kyoto" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="pizza">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=640&q=80" alt="Pizzeria Da Naghino">
+              <div class="restaurant-body">
+                <span class="restaurant-category pizza">🍕 Pizza</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Pizzeria+Da+Naghino+Kyoto" target="_blank" rel="noopener">Pizzeria Da Naghino</a></div>
+                <div class="restaurant-area">📍 Gion yakını</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.5</span>
+                  <span class="restaurant-reviews">(760+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Gion'un gizli pizzacısı! Napoliten tarz kırmızı ve beyaz pizza çeşitleri. Fushimi Inari/Gion sonrası ideal mola noktası.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥2,000-3,000</span>
+                  <span>📅 Rezervasyon önerilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Pizzeria+Da+Naghino+Kyoto" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+            <div class="restaurant-card" data-cat="local">
+              <img class="restaurant-img" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=640&q=80" alt="Gion Kappa">
+              <div class="restaurant-body">
+                <span class="restaurant-category local">🍱 Kaiseki</span>
+                <div class="restaurant-name"><a href="https://www.google.com/maps/search/Gion+Kappa+restaurant+Kyoto" target="_blank" rel="noopener">Gion Kappa</a></div>
+                <div class="restaurant-area">📍 Gion</div>
+                <div class="restaurant-rating">
+                  <span class="restaurant-stars">★★★★★</span>
+                  <span class="restaurant-score">4.6</span>
+                  <span class="restaurant-reviews">(350+ yorum)</span>
+                </div>
+                <div class="restaurant-desc">Gion'da geleneksel Kyoto kaiseki mutfağı. Mevsimsel malzemeler, zarif sunum. Kyoto'nun yemek kültürünü yaşamak için ideal.</div>
+                <div class="restaurant-meta">
+                  <span>💰 ~¥5,000-10,000</span>
+                  <span>📅 Rezervasyon önerilir</span>
+                </div>
+                <a class="restaurant-link" href="https://www.google.com/maps/search/Gion+Kappa+restaurant+Kyoto" target="_blank" rel="noopener">📍 Google Maps'te Aç</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- foodAll -->
+
+      <!-- MEAT ONLY -->
+      <div id="foodMeat" class="food-tab-content"></div>
+      <!-- PIZZA ONLY -->
+      <div id="foodPizza" class="food-tab-content"></div>
+      <!-- LOCAL ONLY -->
+      <div id="foodLocal" class="food-tab-content"></div>
+
+    </section>
+
     <!-- Quick Reference -->
     <section class="section">
       <div class="section-header">
@@ -3719,6 +4343,24 @@
       } else if (tabName === 'amazon') {
         document.getElementById('amazonTab').classList.add('active');
       }
+    }
+
+    // Food Tab Switcher
+    function switchFoodTab(category) {
+      document.querySelectorAll('.food-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.food-tab-content').forEach(c => c.classList.remove('active'));
+
+      if (category === 'all') {
+        document.getElementById('foodAll').classList.add('active');
+        document.querySelectorAll('#foodAll .restaurant-card').forEach(c => c.style.display = '');
+        return;
+      }
+
+      document.getElementById('foodAll').classList.add('active');
+      document.querySelectorAll('#foodAll .restaurant-card').forEach(card => {
+        card.style.display = card.dataset.cat === category ? '' : 'none';
+      });
     }
 
     // Countdown Timer Functions
