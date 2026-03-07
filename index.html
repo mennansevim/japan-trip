@@ -259,8 +259,9 @@
       font-size: 12px;
       font-weight: 600;
       color: white;
-      cursor: help;
+      cursor: pointer;
       transition: transform 0.2s;
+      text-decoration: none;
     }
 
     .ticket-badge:hover {
@@ -1672,9 +1673,9 @@
         <span class="top-cd-value" id="topSeconds">--</span><span class="top-cd-unit">sn</span>
       </div>
       <div class="top-countdown-tickets">
-        <span class="ticket-badge disney" title="Disneyland bileti 7 Mart'ta açılıyor → Hatırlatma: 6 Mart">🏰 <span id="topDisney">--</span></span>
-        <span class="ticket-badge usj" title="USJ bileti 1 Nisan'da açılıyor → Hatırlatma: 31 Mart">🎢 <span id="topUsj">--</span></span>
-        <span class="ticket-badge shinkansen" title="Shinkansen: 20 Nisan'a kadar">🚄 <span id="topShinkansen">--</span></span>
+        <a href="https://www.tokyodisneyresort.jp/en/ticket/" target="_blank" rel="noopener" class="ticket-badge disney" title="Disneyland bileti 18 Mart'ta açılıyor (ziyaret: 18 Mayıs)">🏰 <span id="topDisney">--</span></a>
+        <a href="https://www.usj.co.jp/web/en/us/ticket" target="_blank" rel="noopener" class="ticket-badge usj" title="USJ bileti 21 Mart'ta açılıyor (ziyaret: 21 Mayıs)">🎢 <span id="topUsj">--</span></a>
+        <a href="https://smart-ex.jp/en/" target="_blank" rel="noopener" class="ticket-badge shinkansen" title="Shinkansen rezervasyonu 20 Nisan'da açılıyor (yolculuk: 20 Mayıs)">🚄 <span id="topShinkansen">--</span></a>
       </div>
     </div>
   </div>
@@ -4436,11 +4437,12 @@
 
     // Countdown Timer Functions
     const tripDate = new Date('2026-05-13T16:00:00+03:00'); // Uçuş saati
-    // Takvim: Disneyland biletleri 7 Mart 2026'dan itibaren → 1 gün önce hatırlatma: 6 Mart
-    const disneyTicketDeadline = new Date('2026-03-06T23:59:59+03:00');
-    // Takvim: USJ Nisan açık, bilet alım 1 Nisan 2026 → 1 gün önce hatırlatma: 31 Mart
-    const usjTicketDeadline = new Date('2026-03-31T23:59:59+03:00');
-    const shinkansenDeadline = new Date('2026-04-19T23:59:59+03:00'); // Shinkansen - 1 gün önce hatırlatma (20 Nisan için)
+    // Disneyland ziyaret: 18 Mayıs → Biletler 2 ay önce açılıyor: 18 Mart 2026
+    const disneyTicketDeadline = new Date('2026-03-18T00:00:00+03:00');
+    // USJ ziyaret: 21 Mayıs → Biletler 2 ay önce açılıyor: 21 Mart 2026
+    const usjTicketDeadline = new Date('2026-03-21T00:00:00+03:00');
+    // Shinkansen: 20 Mayıs → Rezervasyon 1 ay önce açılıyor: 20 Nisan 2026
+    const shinkansenDeadline = new Date('2026-04-20T00:00:00+03:00');
 
     function updateTopCountdown() {
       const now = new Date();
