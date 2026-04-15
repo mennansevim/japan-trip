@@ -1953,7 +1953,7 @@
         <span class="top-cd-value" id="topSeconds">--</span><span class="top-cd-unit">sn</span>
       </div>
       <div class="top-countdown-tickets">
-        <a href="https://www.tokyo-skytree.jp/en/ticket/" target="_blank" rel="noopener" class="ticket-badge skytree" id="topSkytreeBadge" title="Tokyo Skytree resmi bilet — ön satış ziyaretten ~30 gün önce açılır (16 Mayıs 2026 varsayılan; JS’te tarih değiştirilebilir)">🗼 Skytree <span id="topSkytree">--</span></a>
+        <a href="https://www.tokyo-skytree.jp/en/ticket/" target="_blank" rel="noopener" class="ticket-badge skytree" id="topSkytreeBadge" title="Tokyo Skytree resmi bilet — ön satış ziyaretten ~30 gün önce açılır (15 Mayıs 2026 · Cuma, hafta içi)">🗼 Skytree <span id="topSkytree">--</span></a>
         <a href="#biletlerim" class="ticket-badge disney checked" title="Tokyo Disneyland - 19 Mayıs (Alındı ✓)">🏰 <span class="badge-check">✓</span> <span class="badge-date">19 May</span></a>
         <a href="#biletlerim" class="ticket-badge teamlab checked" title="teamLab Planets - 17 Mayıs (Alındı ✓)">🪐 <span class="badge-check">✓</span> <span class="badge-date">17 May</span></a>
         <a href="#biletlerim" class="ticket-badge usj checked" title="Universal Studios Japan - 21 Mayıs (Alındı ✓)">🎢 <span class="badge-check">✓</span> <span class="badge-date">21 May</span></a>
@@ -2222,10 +2222,11 @@
           </div>
           <div class="day-info">
             <div class="day-date">15 Mayıs 2026</div>
-            <div class="day-theme">🌿 Yumuşak başlangıç · Asakusa & Ueno</div>
+            <div class="day-theme">🗼 Asakusa & Skytree & Ueno</div>
           </div>
           <div class="day-tags">
             <span class="tag culture">⛩️ Senso-ji</span>
+            <span class="tag must">🗼 Skytree (hafta içi)</span>
             <span class="tag fun">🌳 Ueno</span>
             <span class="tag food">🍜 Sokak lezzeti</span>
           </div>
@@ -2264,10 +2265,24 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-time">14:15 - 18:00</div>
+                <div class="timeline-time">14:15 - 16:00</div>
+                <div class="timeline-title"><a href="https://www.google.com/maps/search/Tokyo+Skytree" target="_blank" rel="noopener">Tokyo Skytree 🗼 — hafta içi sakin slot</a></div>
+                <div class="timeline-desc">
+                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚶 Asakusa → Skytree: <strong>Yürüme</strong> | ~15 dk | Ücretsiz (Oshiage yönü)</span><br>
+                  Asakusa’dan yürüyerek ulaşılabilir — coğrafi açıdan mükemmel komşu. Hafta içi bekleme süresi <strong>30 dk’nın altında</strong>, hafta sonu ise 45–95 dk olabiliyor.<br>
+                  <strong>Combo Ticket</strong> (Kat 350 + 450): 3.000¥ | <strong>Tembo Deck</strong> (Kat 350): 1.800¥ — Online alırsan gişedeki 500¥ ekstradan kurtulursun.<br>
+                  <a href="https://www.tokyo-skytree.jp/en/ticket/" target="_blank" rel="noopener" style="color: #80cbc4;">→ tokyo-skytree.jp/en/ticket/</a>
+                </div>
+                <div class="timeline-tips">
+                  <p>💡 <strong>İpucu:</strong> Saat 14:00–16:00 bandı hafta içi en tenha slot. Gün batımı (18:00~) daha kalabalık ama manzara güzel — tercihe göre saati kaydırabilirsin.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">16:15 - 18:00</div>
                 <div class="timeline-title"><a href="https://www.google.com/maps/search/Ueno+Park+Tokyo" target="_blank" rel="noopener">Ueno Parkı — rahat tempo</a></div>
                 <div class="timeline-desc">
-                  <span style="display: inline-block; background: rgba(129, 199, 132, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚃 Asakusa → Ueno: <strong>Tokyo Metro Ginza</strong> | 10 dk | ~170¥/kişi</span><br>
+                  <span style="display: inline-block; background: rgba(100, 181, 246, 0.2); padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-bottom: 8px;">🚚 Skytree (Oshiage) → Ueno: <strong>Tokyo Metro Hanzomon → Ginza</strong> | 15 dk | ~210¥/kişi</span><br>
                   Göl kenarı, gölgelik yürüyüş, bankta mola; isterseniz <strong>Ameyoko</strong>’ya kısa bakış.
                 </div>
               </div>
@@ -4912,8 +4927,8 @@
     const shinkansenDeadline = new Date('2026-04-20T00:00:00+03:00');
 
     // Tokyo Skytree: resmi sitede ön bilet genelde ziyaret gününden ~30 gün önce (aynı gün JST 00:00 yaklaşımı)
-    const skytreeVisitDate = new Date('2026-05-16T23:59:59+09:00');
-    const skytreeBookingOpens = new Date('2026-04-16T00:00:00+09:00');
+    const skytreeVisitDate = new Date('2026-05-15T23:59:59+09:00');
+    const skytreeBookingOpens = new Date('2026-04-15T00:00:00+09:00');
 
     function updateSkytreeBadge() {
       const el = document.getElementById('topSkytree');
@@ -4933,7 +4948,7 @@
         const diff = skytreeBookingOpens - now;
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         el.textContent = `${days}g`;
-        badge.title = `Skytree ön bilet satışına ~${days} gün (16 Mayıs 2026 ziyaret · resmi site)`;
+        badge.title = `Skytree ön bilet satışına ~${days} gün (15 Mayıs 2026 Cuma · resmi site)`;
         if (days <= 14) badge.classList.add('urgent');
         return;
       }
