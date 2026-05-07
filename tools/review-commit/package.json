@@ -1,0 +1,22 @@
+{
+  "name": "review-commit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cursor SDK ile değişiklikleri yorumlayıp commit'leyen interaktif terminal agent'i",
+  "type": "module",
+  "scripts": {
+    "review": "tsx review.ts"
+  },
+  "dependencies": {
+    "@cursor/sdk": "latest",
+    "dotenv": "^17.4.2",
+    "execa": "^9.5.1",
+    "ssh2": "^1.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/ssh2": "^1.15.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  }
+}
